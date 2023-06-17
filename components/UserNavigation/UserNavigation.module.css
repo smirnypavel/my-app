@@ -1,0 +1,9 @@
+.container {
+  display: none;
+}
+@media (min-width: 768px) {
+  .container {
+    display: block;
+    border-right: 1px solid rgba(128, 128, 128, 0.5);
+  }
+}

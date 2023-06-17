@@ -1,0 +1,48 @@
+.container {
+  margin: 0 auto;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.userPhoto {
+  width: 200px;
+  height: auto;
+  background-color: rgba(72, 70, 70, 0.5);
+  margin: 0 auto;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(145, 151, 179, 0.5); /* Пример классной тени */
+}
+
+.userImage {
+  /* Стили для изображения */
+}
+
+.userInfoContainer {
+  /* Стили для информации о пользователе */
+  margin-top: 16px;
+}
+.userInfoText {
+  margin-bottom: 8px;
+}
+
+.userButton {
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+  /* Стили для кнопки редактирования */
+}
+.Button {
+  width: 200px;
+  background-color: #9197b3;
+  /* border: 1px solid gray; */
+  border-radius: 10px;
+  margin: 0 auto;
+  font-size: 10px;
+  margin-bottom: 16px;
+  /* box-shadow: 0px 0px 10px rgba(145, 151, 179, 0.5); Пример классной тени */
+
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}

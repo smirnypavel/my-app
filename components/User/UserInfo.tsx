@@ -1,44 +1,50 @@
-import React from "react";
+import React, { useState } from "react";
+import CustomModal from "../Modal/modal";
 import Image from "next/image";
-import photoNotFaund from "../../public/photoNotFaund.png";
+import photoNotFound from "../../public/photoNotFound.png";
+import styles from "./UserInfo.module.css";
 
 export default function UserInfo() {
+  const [name, setName] = useState("Pavlik");
+  const [phone, setPhone] = useState("+380934071309");
+  const [email, setEmail] = useState("Makakosik@ukr.net");
+  const [isOpen, setIsOpen] = useState(false);
+
+  const openModal = () => {
+    setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
   return (
-    <div className="w-screen h-fit ml-4 mb-4">
-      <h2 className="text-center font-bold">Ваш личный кабинет</h2>
-      <div className=" flex  ">
-        <div className=" bg-slate-400 h-fit w-fit rounded-md shadow-xl">
+    <div className={styles.container}>
+      <h2 className={styles.title}>Ваш личный кабинет</h2>
+      <div className={styles.userInfo}>
+        <div className={styles.userPhoto}>
           <Image
-            src={photoNotFaund}
+            src={photoNotFound}
             alt=""
-            width={155}
-            height={75}
+            priority={true}
+            className={styles.userImage}
           />
         </div>
-        <div className="ml-6">
-          <form action="">
-            <h3>Имя</h3>
-            <input
-              className="block w-64 py-2 px-4 border rounded-xl border-slate-400 mb-4 text-sm shadow-md"
-              type="text"
-              placeholder="Please enter your name"
-            />
-            <h3>Номер телефона</h3>
-            <input
-              className="block w-64 py-2 px-4 border rounded-xl border-slate-400 mb-4 text-sm shadow-md"
-              type="text"
-              placeholder="Please enter your number"
-            />
-            <h3>Ваш Email</h3>
-            <input
-              className="block w-64 py-2 px-4 border rounded-xl border-slate-400 shadow-md text-sm"
-              type="text"
-              placeholder="Please enter your mail address"
-            />
-            <button className=" mt-4 rounded-lg py-2 px-4 transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 ">
-              Save Changes
-            </button>
-          </form>
+        <div className={styles.userInfoContainer}>
+          <p className={styles.userInfoText}>Имя: {name}</p>
+          <p className={styles.userInfoText}>Телефон: {phone}</p>
+          <p>Email: {email}</p>
+        </div>
+        <div className={styles.userButton}>
+          <button
+            onClick={openModal}
+            className={styles.Button}>
+            Редактировать
+          </button>
+          <CustomModal
+            isOpen={isOpen}
+            onClose={closeModal}
+          />
         </div>
       </div>
     </div>
