@@ -1,5 +1,6 @@
 .container {
   margin: 0 auto;
+  /* background-color: rgb(254 252 232); */
 
   @media (min-width: 768px) {
   }

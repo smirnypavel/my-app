@@ -39,9 +39,9 @@ const CustomModal: React.FC<CustomModalProps> = ({ isOpen, onClose }) => {
       <h2 className=" text-center mb-4">Внесите свои данные</h2>
       <form onSubmit={handleSubmit}>
         <div className={styles.input}>
-          <h3>Имя:</h3>
+          <h3 className={styles.userInfoText}>Имя:</h3>
           <input
-            className={`block w-64 py-2 px-4 border rounded-xl border-slate-400 mb-4 text-sm shadow-md ${styles.input}`}
+            className={` w-64 py-2 px-4 border rounded-xl border-slate-400 text-sm shadow-md `}
             type="text"
             placeholder="Please enter your name"
             value={name}
@@ -49,9 +49,9 @@ const CustomModal: React.FC<CustomModalProps> = ({ isOpen, onClose }) => {
           />
         </div>
         <div className={styles.input}>
-          <h3>Номер телефона:</h3>
+          <h3 className={styles.userInfoText}>Номер телефона:</h3>
           <input
-            className={`block w-64 py-2 px-4 border rounded-xl border-slate-400 mb-4 text-sm shadow-md ${styles.input}`}
+            className={` w-64 py-2 px-4 border rounded-xl border-slate-400  text-sm shadow-md `}
             type="text"
             placeholder="Please enter your number"
             value={phoneNumber}
@@ -59,9 +59,9 @@ const CustomModal: React.FC<CustomModalProps> = ({ isOpen, onClose }) => {
           />
         </div>
         <div className={styles.input}>
-          <h3>Ваш Email:</h3>
+          <h3 className={styles.userInfoText}>Ваш Email:</h3>
           <input
-            className={`block w-64 py-2 px-4 border rounded-xl border-slate-400 shadow-md text-sm ${styles.input}`}
+            className={` w-64 py-2 px-4 border rounded-xl border-slate-400 shadow-md text-sm `}
             type="text"
             placeholder="Please enter your mail address"
             value={email}

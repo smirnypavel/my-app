@@ -11,15 +11,23 @@ const Navigation: React.FC = () => {
             <li>
               <Link
                 href="/"
-                className="text-red-500">
+                className={styles.link}>
                 Home
               </Link>
             </li>
             <li>
-              <Link href="/user">User</Link>
+              <Link
+                href="/user"
+                className={styles.link}>
+                User
+              </Link>
             </li>
             <li>
-              <Link href="/login">Login</Link>
+              <Link
+                href="/login"
+                className={styles.link}>
+                Login
+              </Link>
             </li>
           </ul>
         </nav>
