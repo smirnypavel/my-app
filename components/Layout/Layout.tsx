@@ -1,17 +1,14 @@
-import React from "react";
-import Navigation from "../Navigation/Navigation";
-import styles from "./Layout.module.css";
+import * as React from "react";
+import Header from "./Header";
+import Footer from "./Footer";
+import styles from "../../styles/components/Layout.module.css";
 
-interface LayoutProps {
-  children: React.ReactNode;
-}
-
-const Layout: React.FC<LayoutProps> = ({ children }) => {
+const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
-    <div className={styles.container}>
-      <Navigation />
-
-      <main>{children}</main>
+    <div className={styles.layout}>
+      <Header />
+      <div className={styles.content}>{children}</div>
+      <Footer />
     </div>
   );
 };

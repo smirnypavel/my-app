@@ -1,3 +1,14 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* styles/globals.css */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400; /* Нормальный (обычный) стиль шрифта */
+}
+
+h1 {
+  font-weight: 700; /* Жирный (полужирный) стиль шрифта */
+}

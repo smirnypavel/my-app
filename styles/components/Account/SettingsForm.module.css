@@ -1,0 +1,21 @@
+.settingsForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.settingsForm input,
+.settingsForm button {
+  padding: 0.5rem;
+}
+
+.settingsForm button {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.settingsForm button:hover {
+  background-color: #555;
+}

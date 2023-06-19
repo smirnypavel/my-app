@@ -1,0 +1,22 @@
+.itemForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.itemForm input,
+.itemForm textarea,
+.itemForm button {
+  padding: 0.5rem;
+}
+
+.itemForm button {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.itemForm button:hover {
+  background-color: #555;
+}
