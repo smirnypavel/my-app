@@ -1,7 +1,6 @@
 import React from "react";
 import ItemCard from "./ItemCard";
 import styles from "../../styles/components/ItemList.module.css";
-import Rectangle12 from "../../public/users/Rectangle12.png";
 import photo from "../../public/users/photo";
 
 const data = [

@@ -1,8 +1,6 @@
 import React from "react";
 import Image from "next/image";
 import styles from "../../styles/components/ItemList.module.css";
-// import Heart from "../../public/Heart.svg";
-// import { ReactComponent as Heart } from "../../public/Heart.svg";
 
 interface ItemCardProps {
   item: any; // Assuming you have an Item type defined
