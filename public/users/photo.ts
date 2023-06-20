@@ -1,4 +1,4 @@
-import Rectangle12 from "./rectangle12.png";
+import Rectangle12 from "./Rectangle12.png";
 import Rectangle13 from "./Rectangle13.png";
 import Rectangle14 from "./Rectangle14.png";
 import Rectangle15 from "./Rectangle15.png";
