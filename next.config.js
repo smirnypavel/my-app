@@ -2,6 +2,10 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-}
+  images: {
+    domains: ["fakestoreapi.com"],
+  },
+};
+// next.config.js
 
-module.exports = nextConfig
+module.exports = nextConfig;

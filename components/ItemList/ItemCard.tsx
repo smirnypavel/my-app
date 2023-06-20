@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import styles from "../../styles/components/ItemList.module.css";
 
 interface ItemCardProps {
@@ -9,7 +10,12 @@ const ItemCard: React.FC<ItemCardProps> = ({ item }) => {
   return (
     <div className={styles.itemCard}>
       <h3>{item.title}</h3>
-      <p>{item.description}</p>
+      <Image
+        src={item.image}
+        alt=""
+        width={150}
+        height={150}
+      />
       {/* Additional item details */}
     </div>
   );
