@@ -6,6 +6,64 @@
 }
 
 .itemCard {
-  border: 1px solid #ccc;
+  border-radius: 16px;
   padding: 1rem;
+  box-shadow: 0px 0px 20px 2px rgba(49, 97, 255, 0.104);
+  text-align: center;
+  position: relative;
+}
+.favoritesIcon {
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(7, 7, 33, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 10px;
+  top: 10px;
+}
+.favoritesIcon svg {
+  fill: #070721; /* Задайте желаемый цвет иконки здесь */
+}
+
+.favoritesIcon:hover,
+.favoritesIcon svg:hover {
+  fill: rgb(252, 54, 153);
+}
+.ownerInfo {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #8e8c9938;
+  padding-top: 5px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+.ownerImage {
+  /*  */
+}
+.ownerName {
+  font-size: 12px;
+  line-height: 20px;
+  color: #8e8c99;
+}
+.button {
+  width: 100px;
+  height: 34px;
+  border: 2px solid rgb(49, 98, 255);
+  border-radius: 16px;
+  background-color: transparent;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  color: #3162ff;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #3162ff;
+  color: #ffffff;
 }
