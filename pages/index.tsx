@@ -2,11 +2,12 @@ import React from "react";
 import type { NextPage } from "next";
 import Layout from "../components/Layout/Layout";
 import ItemList from "../components/ItemList/ItemList";
+import SimpleSlider from "../components/Slider/Slider";
 
 const Home: NextPage = () => {
   return (
     <Layout>
-      <h1>Welcome to the Item Exchange App!</h1>
+      <SimpleSlider />
       <ItemList items={undefined} />
     </Layout>
   );

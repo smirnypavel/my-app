@@ -1,14 +1,14 @@
 import React from "react";
-import Layout from "../../components/Layout/Layout";
 import LoginForm from "../../components/AuthForm/LoginForm";
 
-const LoginPage: React.FC = () => {
-  return (
-    <Layout>
-      <h1>Login</h1>
-      <LoginForm />
-    </Layout>
-  );
-};
+import Layout from "../../components/Layout/Layout";
 
-export default LoginPage;
+export default function login() {
+  return (
+    <>
+      <Layout>
+        <LoginForm />
+      </Layout>
+    </>
+  );
+}

@@ -1,14 +1,13 @@
 import React from "react";
-import Layout from "../../components/Layout/Layout";
 import RegisterForm from "../../components/AuthForm/RegisterForm";
+import Layout from "../../components/Layout/Layout";
 
-const RegisterPage: React.FC = () => {
+export default function register() {
   return (
-    <Layout>
-      <h1>Register</h1>
-      <RegisterForm />
-    </Layout>
+    <>
+      <Layout>
+        <RegisterForm />
+      </Layout>
+    </>
   );
-};
-
-export default RegisterPage;
+}

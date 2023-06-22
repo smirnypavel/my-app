@@ -42,9 +42,9 @@ const Header: React.FC = () => {
           </li>
           <li className={styles.li}>
             <Link
-              href="/auth"
+              href="/auth/login"
               className={`${styles.link} ${
-                isActiveLink("/auth") ? styles.activeLink : ""
+                isActiveLink("/auth/login") ? styles.activeLink : ""
               }`}>
               <p className={styles.textLink}>SignUp</p>
             </Link>
