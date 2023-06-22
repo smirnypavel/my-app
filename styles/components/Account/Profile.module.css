@@ -1,21 +1,8 @@
 .profile {
-  border: 1px solid #ccc;
-  padding: 1rem;
   display: flex;
+  margin-left: 16px;
 }
 .imageProfile {
-  width: 150px;
-  border: 2px dashed #daa06d;
-  border-radius: 15px;
-  background-color: #eaddca;
-  display: flex;
-  justify-content: center;
 }
 .userInfo {
-  margin-left: 20px;
-  padding-left: 20px;
-  width: 400px;
-  border: 2px dashed #daa06d;
-  border-radius: 15px;
-  background-color: #eaddca;
 }

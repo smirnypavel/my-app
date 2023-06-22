@@ -70,7 +70,12 @@ const RegisterForm: React.FC = () => {
         Submit
       </button>
       <p className={styles.signin}>
-        Already have an account? <Link href="./login">Signin</Link>
+        Already have an account?{" "}
+        <Link
+          className={styles.link}
+          href="./login">
+          LogIn
+        </Link>
       </p>
     </form>
   );

@@ -80,3 +80,18 @@
   width: 100px;
   height: auto;
 }
+
+.userLink {
+  text-decoration: none;
+  color: black;
+}
+.userHeader {
+  display: flex;
+}
+
+.userIcon {
+  text-align: right;
+}
+.photoUser {
+  margin-left: 10px;
+}

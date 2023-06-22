@@ -53,6 +53,10 @@
 
 .signin {
   text-align: center;
+  text-decoration: none;
+}
+.link {
+  text-decoration: none;
 }
 
 .signin a {

@@ -1,0 +1,51 @@
+.accountContainer {
+  display: flex;
+}
+.buttonContainer {
+  width: 200px;
+  height: 100vh;
+  background-color: #fff;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0px 0px 20px 2px rgba(49, 97, 255, 0.104);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.button {
+  margin-bottom: 36px;
+  width: 150px;
+  height: 34px;
+  border: 1px solid rgb(49, 98, 255);
+  border-radius: 16px;
+  background-color: transparent;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  color: #3162ff;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  position: relative;
+}
+.button:hover {
+  background-color: #3162ff;
+  color: #ffffff;
+}
+
+.notification {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1rem;
+  height: 1rem;
+  position: absolute;
+  top: -16px;
+  right: -5px;
+  font-size: 10px;
+  margin-left: 0.75rem;
+  border-radius: 50%;
+  margin: 0px;
+  background-color: rgba(255, 0, 0, 0.515);
+  transition: 0.15s ease-in;
+}

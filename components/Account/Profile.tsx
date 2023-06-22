@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import React, { useState } from "react";
-import Modal from "../Modal/Modal";
 import styles from "../../styles/components/Account/Profile.module.css";
 import photoNotFound from "../../public/photoNotFound.png";
 
@@ -20,6 +19,8 @@ const Profile: React.FC = () => {
     name: "John Doe",
     email: "johndoe@example.com",
     photo: photoNotFound,
+    phone: "+380990000000",
+    location: "Kiev",
     // Additional user data
   };
 
@@ -35,18 +36,11 @@ const Profile: React.FC = () => {
       <div className={styles.userInfo}>
         <h3>{user.name}</h3>
         <p>Email: {user.email}</p>
+        <p>Phone: {user.phone}</p>
+        <p>Location: {user.location}</p>
       </div>
-
       {/* Additional user details */}
       <Link href="./account/settings">Настройки профиля</Link>
-      <button onClick={openModal}>Open Modal</button>
-
-      <Modal
-        isOpen={isModalOpen}
-        onClose={closeModal}>
-        <h2>Modal Content</h2>
-        <p>This is the content of the modal.</p>
-      </Modal>
     </div>
   );
 };

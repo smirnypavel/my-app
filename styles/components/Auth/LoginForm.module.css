@@ -67,6 +67,10 @@
   color: #2d79f3;
   font-weight: 500;
   cursor: pointer;
+  text-decoration: none;
+}
+.span:hover {
+  text-decoration: underline royalblue;
 }
 
 .buttonSubmit {

@@ -3,7 +3,7 @@ import ItemCard from "./ItemCard";
 import styles from "../../styles/components/ItemList.module.css";
 import photo from "../../public/users/photo";
 
-const data = [
+export const data = [
   {
     id: 1,
     title: "Fjallraven - Foldsack  ",
