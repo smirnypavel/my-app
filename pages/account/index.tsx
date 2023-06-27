@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import Layout from "../../components/Layout/Layout";
+import { logOut } from "../../redux/auth/authOperations";
+import { useAppDispatch } from "../../redux/hooks";
+import { useRouter } from "next/router";
 import styles from "../../styles/Page/Account.module.css";
 import Profile from "../../components/Account/Profile";
 import Component1 from "../../components/Moderator/moderateProduct";
@@ -17,6 +20,13 @@ const AccountPage: React.FC = () => {
   const [activeComponent, setActiveComponent] = useState<ActiveComponent>(
     ActiveComponent.PROFILE
   );
+  const router = useRouter();
+  const dispatch = useAppDispatch();
+
+  const handleLogOut = async () => {
+    dispatch(logOut());
+    router.push("/");
+  };
 
   const handleComponentChange = (component: ActiveComponent) => {
     setActiveComponent(component);
@@ -67,6 +77,7 @@ const AccountPage: React.FC = () => {
             <span className={styles.notification}>2</span>
             moderateTradings
           </button>
+          <button onClick={handleLogOut}>LogOut</button>
         </div>
 
         {renderActiveComponent()}

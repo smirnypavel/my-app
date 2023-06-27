@@ -1,16 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
+import { useAppDispatch } from "../../redux/hooks";
 import styles from "../../styles/components/Auth/LoginForm.module.css";
+import { signIn } from "../../redux/auth/authOperations";
+import { useRouter } from "next/router";
 
 const LoginForm: React.FC = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const dispatch = useAppDispatch();
+  const router = useRouter();
+
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
+    dispatch(signIn({ email, password }));
+    router.push("/");
     // Handle form submission
+  };
+
+  const onChangeInputEmail = (event: { target: { value: string } }) => {
+    const mail = event.target.value;
+    setEmail(mail);
+  };
+
+  const onChangeInputPassword = (event: { target: { value: string } }) => {
+    const password = event.target.value;
+    setPassword(password);
   };
 
   return (
     <>
-      <form className={styles.form}>
+      <form
+        className={styles.form}
+        onSubmit={handleSubmit}>
         <div className={styles.flexColumn}>
           <label>Email</label>
         </div>
@@ -31,6 +54,8 @@ const LoginForm: React.FC = () => {
             placeholder="Enter your Email"
             className={styles.input}
             type="text"
+            value={email}
+            onChange={onChangeInputEmail}
           />
         </div>
 
@@ -50,6 +75,8 @@ const LoginForm: React.FC = () => {
             placeholder="Enter your Password"
             className={styles.input}
             type="password"
+            value={password}
+            onChange={onChangeInputPassword}
           />
         </div>
 
@@ -60,7 +87,11 @@ const LoginForm: React.FC = () => {
           </div>
           <span className={styles.span}>Forgot password?</span>
         </div>
-        <button className={styles.buttonSubmit}>Sign In</button>
+        <button
+          className={styles.buttonSubmit}
+          type="submit">
+          Sign In
+        </button>
         <p className={styles.p}>
           Don`t have an account?
           <Link

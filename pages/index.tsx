@@ -8,7 +8,7 @@ const Home: NextPage = () => {
   return (
     <Layout>
       <SimpleSlider />
-      <ItemList items={undefined} />
+      <ItemList />
     </Layout>
   );
 };

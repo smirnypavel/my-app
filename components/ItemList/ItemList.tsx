@@ -113,11 +113,11 @@ export const data = [
   },
 ];
 
-interface ItemListProps {
-  items: any;
-}
+// interface ItemListProps {
+//   items: any;
+// }
 
-const ItemList: React.FC<ItemListProps> = ({ items }) => {
+const ItemList: React.FC = () => {
   return (
     <div>
       <div className={styles.itemList}>
