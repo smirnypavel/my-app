@@ -3,9 +3,13 @@ import Image from "next/image";
 import React, { useState } from "react";
 import styles from "../../styles/components/Account/Profile.module.css";
 import photoNotFound from "../../public/photoNotFound.png";
+import { useSelector } from "react-redux";
+import { IUserAuth } from "../../redux/auth/authReducer";
+import { getUser } from "../../redux/auth/authSelectors";
 
 const Profile: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const user: IUserAuth = useSelector(getUser);
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -15,26 +19,19 @@ const Profile: React.FC = () => {
     setIsModalOpen(false);
   };
   // Assume user data is available
-  const user = {
-    name: "John Doe",
-    email: "johndoe@example.com",
-    photo: photoNotFound,
-    phone: "+380990000000",
-    location: "Kiev",
-    // Additional user data
-  };
 
   return (
     <div className={styles.profile}>
       <div className={styles.imageProfile}>
         <Image
-          src={user.photo}
+          src={photoNotFound}
           alt=""
           width={150}
         />
       </div>
       <div className={styles.userInfo}>
-        <h3>{user.name}</h3>
+        <h3>{user.firstName}</h3>
+        <h3>{user.firstName}</h3>
         <p>Email: {user.email}</p>
         <p>Phone: {user.phone}</p>
         <p>Location: {user.location}</p>

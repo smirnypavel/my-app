@@ -1,12 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import {
-  signUp,
-  signIn,
-  logOut,
-  currentUser,
-  updateUser,
-  getUser,
-} from "./authOperations";
+import { signUp, signIn, logOut, updateUser, getUser } from "./authOperations";
 
 export interface IUserAuth {
   _id: string;
@@ -17,7 +10,7 @@ export interface IUserAuth {
   avatarURL?: string;
   role: string;
   isOnline: boolean;
-  postsId?: any[];
+  postsId?: string[];
   token: string;
   createdAt?: string;
   updatedAt?: string;
@@ -92,31 +85,17 @@ export const authSlice = createSlice({
         state.isLoading = false;
         state.isRefreshing = false;
       })
-      .addCase(currentUser.pending, (state) => {
-        state.isRefreshing = true;
-      })
-      .addCase(currentUser.rejected, (state, action) => {
-        state.isLoggedIn = false;
-        state.isRefreshing = false;
-        state.error = action.error.message || "";
-      })
-      .addCase(currentUser.fulfilled, (state, action) => {
-        state.user.email = action.payload.email;
-        state.user.password = action.payload.password;
-        state.isLoggedIn = true;
-        state.isRefreshing = false;
-      })
       .addCase(updateUser.pending, (state) => {
         state.isLoading = true;
-      })
-      .addCase(updateUser.fulfilled, (state, action) => {
-        state.user = action.payload.data.user;
-        state.isLoggedIn = true;
-        state.isRefreshing = false;
       })
       .addCase(updateUser.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.error.message || "";
+      })
+      .addCase(updateUser.fulfilled, (state, action) => {
+        state.user = action.payload;
+        state.isLoggedIn = true;
+        state.isRefreshing = false;
       })
       .addCase(getUser.pending, (state) => {
         state.isLoading = true;

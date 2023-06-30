@@ -1,11 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { toast } from "react-hot-toast";
 import axios from "axios";
-import { RootState } from "../store";
 
 axios.defaults.baseURL = "https://test-server-thing.onrender.com/";
 
-const setAuthHeader = (token: string | null) => {
+const setAuthHeader = (token: string) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
@@ -64,7 +63,7 @@ export const signIn = createAsyncThunk(
       toast.success("Welcome!");
       return data;
     } catch (error: any) {
-      if (error.response.status === 401 || error.response.status === 500) {
+      if (error.response.status === 401) {
         toast.error("Wrong login or password");
       } else {
         toast.error("An error occurred during login");
@@ -88,33 +87,11 @@ export const logOut = createAsyncThunk("auth/logOut", async (_, thunkAPI) => {
   }
 });
 
-export const currentUser = createAsyncThunk(
-  "auth/currentUser",
-  async (_, thunkAPI) => {
-    const refreshToken = localStorage.getItem("refreshToken");
-    setAuthHeader(refreshToken);
-    const state: RootState = thunkAPI.getState();
-    const persistedToken = state.auth.token;
-    if (!persistedToken) {
-      toast.error("Unable to fetch user");
-      return thunkAPI.rejectWithValue("Unable to fetch user");
-    }
-    try {
-      setAuthHeader(persistedToken);
-      const { data } = await axios.get("/users/current");
-      return data;
-    } catch (error: any) {
-      toast.error("An error occurred while fetching user data");
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
-
 export const updateUser = createAsyncThunk(
   "auth/updateUser",
-  async (updatedData: any, thunkAPI) => {
+  async (credentials: {}, thunkAPI) => {
     try {
-      const { data } = await axios.put("/users/update", updatedData, {});
+      const { data } = await axios.put("/users", credentials);
       toast.success("User updated successfully");
       return data;
     } catch (error: any) {
