@@ -31,7 +31,7 @@ const Profile: React.FC = () => {
       </div>
       <div className={styles.userInfo}>
         <h3>{user.firstName}</h3>
-        <h3>{user.firstName}</h3>
+        <h3>{user.lastName}</h3>
         <p>Email: {user.email}</p>
         <p>Phone: {user.phone}</p>
         <p>Location: {user.location}</p>

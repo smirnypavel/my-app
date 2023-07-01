@@ -15,6 +15,7 @@ export interface IUserAuth {
   createdAt?: string;
   updatedAt?: string;
   firstName?: string;
+  lastName?: string;
 }
 
 interface IAuthState {
