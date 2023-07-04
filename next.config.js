@@ -3,7 +3,11 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ["fakestoreapi.com"],
+    domains: [
+      "fakestoreapi.com",
+      "cdn-icons-png.flaticon.com",
+      "lh3.googleusercontent.com",
+    ],
   },
 };
 // next.config.js

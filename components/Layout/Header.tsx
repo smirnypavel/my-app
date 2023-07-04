@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import styles from "../../styles/components/Layout.module.css";
-import Logo3 from "../../public/Logo3.svg";
+// import Logo3 from "../../public/Logo3.svg";
 import { data } from "../ItemList/ItemList";
 import { useSelector } from "react-redux";
 import { getUser, selectIsLoggedIn } from "../../redux/auth/authSelectors";
@@ -20,12 +20,9 @@ const Header: React.FC = () => {
 
   return (
     <header className={styles.header}>
-      <Image
-        src={Logo3}
-        alt="Logo"
-        className={styles.logo}
-      />{" "}
-      {/* Вставка логотипа */}
+      <h2 className={styles.logo}>
+        Trade <span className={styles.logoSpan}>In</span>
+      </h2>{" "}
       <nav className={styles.nav}>
         <ul className={styles.ul}>
           <li className={styles.li}>

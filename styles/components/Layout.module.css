@@ -16,6 +16,15 @@
   margin-top: 10px;
   align-items: center;
 }
+.logo {
+  color: #27dfad;
+}
+.logoSpan {
+  color: rgb(103, 103, 103);
+
+  font-size: 30px;
+  margin-left: -10px;
+}
 
 .nav {
   margin-right: 0;

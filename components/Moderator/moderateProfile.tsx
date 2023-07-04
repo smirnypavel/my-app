@@ -1,31 +1,23 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useSelector } from "react-redux";
-import { getUser } from "../../redux/auth/authSelectors";
 import { UserListItem } from "./userListItem";
 import { IUserAuth } from "../../redux/auth/authReducer";
 import styles from "../../styles/components/Moderator/moderateProfile.module.css";
 
 const ModerateProfile = () => {
   const [users, setUsers] = useState<IUserAuth[]>([]);
-  const { token } = useSelector(getUser);
 
   useEffect(() => {
     fetchNews();
   }, []);
 
-  const fetchNews = () => {
-    const url = "https://test-server-thing.onrender.com/users/";
-    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-    axios
-      .get(url)
-      .then((response) => {
-        console.log(response.data);
-        setUsers(response.data);
-      })
-      .catch((error) => {
-        console.log("Error:", error);
-      });
+  const fetchNews = async () => {
+    try {
+      const response = await axios.get("/users");
+      setUsers(response.data);
+    } catch (error) {
+      console.log("Error:", error);
+    }
   };
 
   return (

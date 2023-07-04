@@ -113,3 +113,30 @@ export const getUser = createAsyncThunk(
     }
   }
 );
+// export const getAllUser = createAsyncThunk(
+//   "auth/getAllUser",
+//   async (_, thunkAPI) => {
+//     try {
+//       const { data } = await axios.get("/users");
+//       return data;
+//     } catch (error: any) {
+//       return thunkAPI.rejectWithValue(error.message);
+//     }
+//   }
+// );
+export const signInGoogle = createAsyncThunk(
+  "auth/signInGoogle",
+  async (_, thunkAPI) => {
+    try {
+      const { data } = await axios.get("auth/google/login");
+      return data;
+    } catch (error: any) {
+      if (error.response.status === 401) {
+        toast.error("Wrong login or password");
+      } else {
+        toast.error("An error occurred during login");
+      }
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

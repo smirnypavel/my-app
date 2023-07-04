@@ -1,15 +1,21 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { signUp, signIn, logOut, updateUser, getUser } from "./authOperations";
+import { createSlice } from "@reduxjs/toolkit";
+import {
+  signUp,
+  signIn,
+  logOut,
+  updateUser,
+  getUser,
+  signInGoogle,
+} from "./authOperations";
 
 export interface IUserAuth {
   _id: string;
   email: string;
-  password: string;
   phone?: string;
   location?: string;
-  avatarURL?: string;
+  avatarURL: string;
   role: string;
-  isOnline: boolean;
+  isOnline?: boolean;
   postsId?: string[];
   token: string;
   createdAt?: string;
@@ -18,7 +24,7 @@ export interface IUserAuth {
   lastName?: string;
 }
 
-interface IAuthState {
+export interface IAuthState {
   user: IUserAuth;
   isLoggedIn: boolean;
   isLoading: boolean;
@@ -30,10 +36,10 @@ const initialState: IAuthState = {
   user: {
     _id: "",
     email: "",
-    password: "",
     token: "",
     role: "",
     isOnline: false,
+    avatarURL: "",
   },
   isLoggedIn: false,
   isLoading: false,
@@ -108,6 +114,24 @@ export const authSlice = createSlice({
       .addCase(getUser.fulfilled, (state, action) => {
         state.user = action.payload.data.posts;
         state.isLoading = false;
+      })
+      .addCase(signInGoogle.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(signInGoogle.rejected, (state, action) => {
+        state.user.token = "";
+        state.isLoggedIn = false;
+        state.isLoading = false;
+        state.error = action.error.message || "";
+      })
+      .addCase(signInGoogle.fulfilled, (state, action) => {
+        state.user = action.payload;
+        state.isLoggedIn = true;
+        state.isLoading = false;
       });
   },
 });
+
+export type AuthState = ReturnType<typeof authSlice.reducer>;
+
+export default authSlice.reducer;

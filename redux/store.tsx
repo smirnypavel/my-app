@@ -1,5 +1,6 @@
-import { configureStore } from "@reduxjs/toolkit";
-import { authSlice } from "./auth/authReducer";
+import { configureStore, Reducer, Action } from "@reduxjs/toolkit";
+import { authSlice, IAuthState } from "./auth/authReducer";
+import moderateReducer, { IModerateState } from "./moderate/moderateReducer";
 import storage from "redux-persist/lib/storage";
 import {
   persistStore,
@@ -11,6 +12,7 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
+import { PersistPartial } from "redux-persist/es/persistReducer";
 
 const authPersistConfig = {
   key: "auth",
@@ -18,8 +20,18 @@ const authPersistConfig = {
   whitelist: ["token", "user", "isLoggedIn"],
 };
 
+// Define explicit types for state and action
+type AuthReducerType = Reducer<IAuthState & PersistPartial, Action<any>>;
+type ModerateReducerType = Reducer<IModerateState, Action<any>>;
+
 export const store = configureStore({
-  reducer: { auth: persistReducer(authPersistConfig, authSlice.reducer) },
+  reducer: {
+    auth: persistReducer<IAuthState & PersistPartial, any>(
+      authPersistConfig,
+      authSlice.reducer as AuthReducerType
+    ),
+    moderate: moderateReducer as ModerateReducerType,
+  },
   middleware(getDefaultMiddleware) {
     return getDefaultMiddleware({
       serializableCheck: {
@@ -30,7 +42,6 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
-// Infer the `RootState` and `AppDispatch` types from the store itself
+
 export type RootState = ReturnType<typeof store.getState>;
-// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
 export type AppDispatch = typeof store.dispatch;

@@ -46,6 +46,7 @@ const SimpleSlider = () => {
           <Image
             src={sliderDefault}
             alt=""
+            priority
             style={{
               maxWidth: "100%",
               height: "auto",
@@ -56,6 +57,7 @@ const SimpleSlider = () => {
           <Image
             src={sliderDefault}
             alt=""
+            priority
             style={{
               maxWidth: "100%",
               height: "auto",
@@ -66,6 +68,7 @@ const SimpleSlider = () => {
           <Image
             src={sliderDefault}
             alt=""
+            priority
             style={{
               maxWidth: "100%",
               height: "auto",
@@ -76,6 +79,7 @@ const SimpleSlider = () => {
           <Image
             src={sliderDefault}
             alt=""
+            priority
             style={{
               maxWidth: "100%",
               height: "auto",
@@ -86,6 +90,7 @@ const SimpleSlider = () => {
           <Image
             src={sliderDefault}
             alt=""
+            priority
             style={{
               maxWidth: "100%",
               height: "auto",
@@ -96,6 +101,7 @@ const SimpleSlider = () => {
           <Image
             src={sliderDefault}
             alt=""
+            priority
             style={{
               maxWidth: "100%",
               height: "auto",

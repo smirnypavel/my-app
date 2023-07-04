@@ -6,10 +6,13 @@ import photoNotFound from "../../public/photoNotFound.png";
 import { useSelector } from "react-redux";
 import { IUserAuth } from "../../redux/auth/authReducer";
 import { getUser } from "../../redux/auth/authSelectors";
+import { useAppDispatch } from "../../redux/hooks";
+import { signInGoogle } from "../../redux/auth/authOperations";
 
 const Profile: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const user: IUserAuth = useSelector(getUser);
+  const dispatch = useAppDispatch();
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -18,15 +21,19 @@ const Profile: React.FC = () => {
   const closeModal = () => {
     setIsModalOpen(false);
   };
+  const handleClickGoogle = () => {
+    dispatch(signInGoogle);
+  };
   // Assume user data is available
 
   return (
     <div className={styles.profile}>
       <div className={styles.imageProfile}>
         <Image
-          src={photoNotFound}
+          src={user.avatarURL}
           alt=""
           width={150}
+          height={70}
         />
       </div>
       <div className={styles.userInfo}>
@@ -35,6 +42,7 @@ const Profile: React.FC = () => {
         <p>Email: {user.email}</p>
         <p>Phone: {user.phone}</p>
         <p>Location: {user.location}</p>
+        <button onClick={handleClickGoogle}>google</button>
       </div>
       {/* Additional user details */}
       <Link href="./account/settings">Настройки профиля</Link>
