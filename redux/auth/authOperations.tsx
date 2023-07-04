@@ -11,6 +11,12 @@ const setAuthHeader = (token: string) => {
 const clearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = "";
 };
+export const restoreToken = () => {
+  const token = localStorage.getItem("refreshToken");
+  if (token) {
+    setAuthHeader(token);
+  }
+};
 
 axios.interceptors.response.use(
   (res) => res,
@@ -23,7 +29,7 @@ axios.interceptors.response.use(
       try {
         const { data } = await axios.post("/users/refresh", { refreshToken });
         setAuthHeader(data.token);
-        localStorage.setItem("refreshToken", data.refreshToken);
+        localStorage.setItem("refreshToken", data.token);
         return axios(error.config);
       } catch (error) {
         toast.error("An error occurred during authentication");
@@ -40,7 +46,7 @@ export const signUp = createAsyncThunk(
     try {
       const { data } = await axios.post("/users", credentials);
       toast.success("Registration successful");
-      localStorage.setItem("refreshToken", data.refreshToken);
+      localStorage.setItem("refreshToken", data.token);
       return data;
     } catch (error: any) {
       if (error.response.data.message === "Email in use") {
@@ -59,7 +65,7 @@ export const signIn = createAsyncThunk(
     try {
       const { data } = await axios.post("/users/login", credentials);
       setAuthHeader(data.token);
-      localStorage.setItem("refreshToken", data.refreshToken);
+      localStorage.setItem("refreshToken", data.token);
       toast.success("Welcome!");
       return data;
     } catch (error: any) {
@@ -77,7 +83,6 @@ export const logOut = createAsyncThunk("auth/logOut", async (_, thunkAPI) => {
   try {
     await axios.post("/users/logout");
     clearAuthHeader();
-    localStorage.removeItem("refreshToken");
     localStorage.clear();
     toast.success("Logged out successfully");
   } catch (error: any) {
@@ -90,6 +95,10 @@ export const logOut = createAsyncThunk("auth/logOut", async (_, thunkAPI) => {
 export const updateUser = createAsyncThunk(
   "auth/updateUser",
   async (credentials: {}, thunkAPI) => {
+    const initialToken = localStorage.getItem("refreshToken");
+    if (initialToken) {
+      setAuthHeader(initialToken);
+    }
     try {
       const { data } = await axios.put("/users", credentials);
       toast.success("User updated successfully");
@@ -104,6 +113,10 @@ export const updateUser = createAsyncThunk(
 export const getUser = createAsyncThunk(
   "auth/getUser",
   async (userId: string, thunkAPI) => {
+    const initialToken = localStorage.getItem("refreshToken");
+    if (initialToken) {
+      setAuthHeader(initialToken);
+    }
     try {
       const { data } = await axios.get(`/users/?_id=${userId}`);
       return data;
@@ -113,17 +126,7 @@ export const getUser = createAsyncThunk(
     }
   }
 );
-// export const getAllUser = createAsyncThunk(
-//   "auth/getAllUser",
-//   async (_, thunkAPI) => {
-//     try {
-//       const { data } = await axios.get("/users");
-//       return data;
-//     } catch (error: any) {
-//       return thunkAPI.rejectWithValue(error.message);
-//     }
-//   }
-// );
+
 export const signInGoogle = createAsyncThunk(
   "auth/signInGoogle",
   async (_, thunkAPI) => {
