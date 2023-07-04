@@ -14,6 +14,7 @@ const initialState: IModerateState = {
     email: "",
     token: "",
     role: "",
+    avatarURL: "",
   },
   isLoading: false,
   error: "",
