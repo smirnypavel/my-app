@@ -1,9 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { IUserAuth } from "../../redux/auth/authReducer";
-import photoNotFound from "../../public/photoNotFound.png";
 import styles from "../../styles/components/Moderator/userListItem.module.css";
-import { userAgent } from "next/server";
 
 interface UserListItemProps {
   item: IUserAuth;
@@ -13,13 +11,19 @@ export const UserListItem: React.FC<UserListItemProps> = ({ item }) => {
   return (
     <>
       <div className={styles.userCard}>
-        <Image
-          src={item.avatarURL}
-          alt=""
-          width={50}
-          height={50}
-        />
-        <div className={styles.cardWraper}>
+        <div className={styles.imageWrapper}>
+          <Image
+            src={item.avatarURL}
+            alt=""
+            width={150}
+            height={200}
+            style={{
+              objectFit: "cover",
+              margin: "auto",
+            }}
+          />
+        </div>
+        <div className={styles.cardWrapper}>
           <p>
             {item.firstName} {item.lastName}
           </p>

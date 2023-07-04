@@ -3,8 +3,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import styles from "../../styles/components/Layout.module.css";
-// import Logo3 from "../../public/Logo3.svg";
-import { data } from "../ItemList/ItemList";
 import { useSelector } from "react-redux";
 import { getUser, selectIsLoggedIn } from "../../redux/auth/authSelectors";
 import { IUserAuth } from "../../redux/auth/authReducer";
@@ -89,13 +87,19 @@ const Header: React.FC = () => {
                       </svg>
                     </div>
                   </div>
-                  <Image
-                    src={data[1].userImage}
-                    alt="Logo"
-                    width={52}
-                    height={52}
-                    className={styles.photoUser}
-                  />
+                  <div className={styles.imageWrapper}>
+                    <Image
+                      src={user.avatarURL}
+                      alt="Logo"
+                      width={52}
+                      height={52}
+                      style={{
+                        objectFit: "cover",
+                        margin: "auto",
+                      }}
+                      className={styles.photoUser}
+                    />
+                  </div>
                 </div>
               </Link>
             ) : (

@@ -19,3 +19,16 @@
 .settingsForm button:hover {
   background-color: #555;
 }
+.imageContainer {
+  /* display: flex; */
+}
+.imageWrapper {
+  width: 150px;
+  height: 200px;
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center; /* Выравнивание по горизонтали */
+  align-items: center; /* Выравнивание по вертикали */
+}

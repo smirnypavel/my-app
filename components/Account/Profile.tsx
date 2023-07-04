@@ -2,7 +2,6 @@ import Link from "next/link";
 import Image from "next/image";
 import React, { useState } from "react";
 import styles from "../../styles/components/Account/Profile.module.css";
-import photoNotFound from "../../public/photoNotFound.png";
 import { useSelector } from "react-redux";
 import { IUserAuth } from "../../redux/auth/authReducer";
 import { getUser } from "../../redux/auth/authSelectors";
@@ -28,12 +27,16 @@ const Profile: React.FC = () => {
 
   return (
     <div className={styles.profile}>
-      <div className={styles.imageProfile}>
+      <div className={styles.imageWrapper}>
         <Image
           src={user.avatarURL}
-          alt=""
+          alt="avatar"
           width={150}
-          height={70}
+          height={200}
+          style={{
+            objectFit: "cover",
+            margin: "auto",
+          }}
         />
       </div>
       <div className={styles.userInfo}>

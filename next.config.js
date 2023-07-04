@@ -7,6 +7,7 @@ const nextConfig = {
       "fakestoreapi.com",
       "cdn-icons-png.flaticon.com",
       "lh3.googleusercontent.com",
+      "res.cloudinary.com",
     ],
   },
 };

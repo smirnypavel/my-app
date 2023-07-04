@@ -101,6 +101,16 @@
 .userIcon {
   text-align: right;
 }
+.imageWrapper {
+  width: 48px;
+  height: 48px;
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center; /* Выравнивание по горизонтали */
+  align-items: center; /* Выравнивание по вертикали */
+}
 .photoUser {
   margin-left: 10px;
 }
