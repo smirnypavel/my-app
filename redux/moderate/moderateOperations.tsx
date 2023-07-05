@@ -29,7 +29,7 @@ export const getUserById = createAsyncThunk(
       setAuthHeader(initialToken);
     }
     try {
-      const { data } = await axios.get(`/users/find${userId}`);
+      const { data } = await axios.get(`/users/find/${userId}`);
       return data;
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.message);

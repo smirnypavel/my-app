@@ -62,6 +62,7 @@ const AccountPage: React.FC = () => {
             <span className={styles.notification}>2</span>
             Profile
           </button>
+
           {role === "admin" && (
             <>
               <hr className={styles.line} />
@@ -81,6 +82,36 @@ const AccountPage: React.FC = () => {
                 <span className={styles.notification}>2</span>
                 moderateProfile
               </button>
+              <button
+                className={styles.button}
+                onClick={() =>
+                  handleComponentChange(ActiveComponent.COMPONENT3)
+                }>
+                <span className={styles.notification}>2</span>
+                moderateTradings
+              </button>
+            </>
+          )}
+
+          {role === "moderator" && (
+            <>
+              <hr className={styles.line} />
+              <button
+                className={styles.button}
+                onClick={() =>
+                  handleComponentChange(ActiveComponent.COMPONENT1)
+                }>
+                <span className={styles.notification}>2</span>
+                moderateProduct
+              </button>
+              {/* <button
+                className={styles.button}
+                onClick={() =>
+                  handleComponentChange(ActiveComponent.COMPONENT2)
+                }>
+                <span className={styles.notification}>2</span>
+                moderateProfile
+              </button> */}
               <button
                 className={styles.button}
                 onClick={() =>
