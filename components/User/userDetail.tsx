@@ -19,8 +19,12 @@ const UserDetail: React.FC<UserDetailProps> = ({ userId }) => {
   const user: IUserAuth = useSelector(getUserSelect);
 
   useEffect(() => {
-    if (typeof id === "string") {
-      dispatch(getUserById(id));
+    try {
+      if (typeof id === "string") {
+        dispatch(getUserById(id));
+      }
+    } catch (e) {
+      return;
     }
   }, [id]);
 

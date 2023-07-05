@@ -9,8 +9,8 @@
   border-radius: 10px;
   overflow: hidden;
   display: flex;
-  justify-content: center; /* Выравнивание по горизонтали */
-  align-items: center; /* Выравнивание по вертикали */
+  justify-content: center;
+  align-items: center;
 }
 
 .userInfo {
