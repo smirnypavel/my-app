@@ -40,9 +40,7 @@ const Profile: React.FC = () => {
         <p>Email: {user.email}</p>
         <p>Phone: {user.phone}</p>
         <p>Location: {user.location}</p>
-        {/* <button onClick={handleClickGoogle}>google</button> */}
       </div>
-      {/* Additional user details */}
       <Link href="./account/settings">Настройки профиля</Link>
     </div>
   );
