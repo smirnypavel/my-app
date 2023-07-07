@@ -8,8 +8,7 @@ import Profile from "./Profile";
 import Component1 from "../../components/Moderator/moderateProduct";
 import Component2 from "../../components/Moderator/moderateProfile";
 import Component3 from "../../components/Moderator/moderateTradings";
-
-import { getRole } from "../../redux/auth/authSelectors";
+import { HiMiniArrowLeftOnRectangle } from "react-icons/hi2";
 
 enum ActiveComponent {
   PROFILE = "profile",
@@ -42,7 +41,7 @@ const AccountPage: React.FC = () => {
       case ActiveComponent.COMPONENT1:
         return <Component1 />;
       case ActiveComponent.COMPONENT2:
-        return <Component2 />;
+        return <Component2 filterRole={""} />;
       case ActiveComponent.COMPONENT3:
         return <Component3 />;
       default:
@@ -63,7 +62,11 @@ const AccountPage: React.FC = () => {
             Profile
           </button>
 
-          <button onClick={handleLogOut}>LogOut</button>
+          <button
+            onClick={handleLogOut}
+            className={styles.logOutButton}>
+            <HiMiniArrowLeftOnRectangle className={styles.icon} /> LogOut
+          </button>
         </div>
         {renderActiveComponent()}
       </div>

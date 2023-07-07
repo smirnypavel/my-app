@@ -3,9 +3,9 @@
 }
 .statUsersCard {
   display: flex;
-  width: 80px;
+  width: 70px;
   height: 30px;
-  background-color: rgba(255, 255, 255, 0.481);
+  /* background-color: rgba(255, 255, 255, 0.481);
   border-radius: 10px;
   padding: 0.2rem;
   box-shadow: 0px 0px 20px 2px rgba(49, 97, 255, 0.104);
@@ -14,7 +14,62 @@
   cursor: pointer;
   text-align: center;
   align-items: center;
-  justify-content: center;
+  justify-content: center; */
+  cursor: pointer;
+  margin-bottom: 4px;
+  margin-left: 5px;
+  padding-left: 12px;
+  padding-right: 12px;
+  display: flex;
+  align-items: center;
+  border: none;
+  background-color: #fff;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  color: rgba(47, 43, 61, 0.849);
+  transition: background-color 0.5s ease-in, color 0.5s ease-in;
+  position: relative;
+  border-bottom-left-radius: 6.4px;
+  border-bottom-right-radius: 6.4px;
+  border-top-left-radius: 6.4px;
+  border-top-right-radius: 6.4px;
+}
+.button {
+  /* width: 190px;
+  height: 38px; */
+  margin-bottom: 4px;
+  margin-left: 5px;
+  padding-left: 12px;
+  padding-right: 12px;
+  display: flex;
+  align-items: center;
+  border: none;
+  background-color: transparent;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  color: rgba(47, 43, 61, 0.68);
+  transition: background-color 0.5s ease, color 0.5s ease;
+  position: relative;
+  border-bottom-left-radius: 6.4px;
+  border-bottom-right-radius: 6.4px;
+  border-top-left-radius: 6.4px;
+  border-top-right-radius: 6.4px;
+}
+
+.statUsersCard:hover {
+  background-color: #f5f5f5;
+}
+
+.activeButton {
+  background-image: linear-gradient(
+    72.47deg,
+    rgb(115, 103, 240) 22.16%,
+    rgba(115, 103, 240, 0.7) 76.47%
+  );
+  box-shadow: rgba(115, 103, 240, 0.48) 0px 2px 6px 0px;
+  color: rgb(255, 255, 255);
 }
 .title {
   font-size: 9px;

@@ -13,6 +13,7 @@ const Statistic: React.FC = () => {
   const [quantityUsersBan, setQuantityUsersBan] = useState<number>(0);
   const [showUsersList, setShowUsersList] = useState(false);
   const [filterRole, setFilterRole] = useState("");
+  const [activeIndex, setActiveIndex] = useState<number>(-1);
 
   useEffect(() => {
     fetchUsers();
@@ -40,9 +41,13 @@ const Statistic: React.FC = () => {
     }
   };
 
-  const handleViewClick = (role: string) => {
+  const handleViewClick = (role: string, index: number) => {
     setFilterRole(role);
     setShowUsersList(true);
+    setActiveIndex(index);
+  };
+  const isFilterActive = (index: number) => {
+    return index === activeIndex ? styles.activeButton : "";
   };
 
   return (
@@ -51,60 +56,51 @@ const Statistic: React.FC = () => {
         <div>Statistic</div>
         <ul className={styles.statUsersList}>
           <li
-            className={styles.statUsersCard}
-            onClick={() => handleViewClick("")} // Пустая строка в качестве фильтра для "All users"
-          >
+            className={`${styles.statUsersCard} ${isFilterActive(0)}`}
+            onClick={() => handleViewClick("", 0)}>
             <p className={styles.title}>All users: {users.length}</p>
           </li>
           <li
-            className={styles.statUsersCard}
-            onClick={() => handleViewClick("moderator")} // Фильтр по модераторам
-          >
+            className={`${styles.statUsersCard} ${isFilterActive(1)}`}
+            onClick={() => handleViewClick("moderator", 1)}>
             <p className={styles.title}> Moderators: {quantityModerator}</p>
           </li>
           <li
-            className={styles.statUsersCard}
-            onClick={() => handleViewClick("admin")} // Фильтр по админам
-          >
+            className={`${styles.statUsersCard} ${isFilterActive(2)}`}
+            onClick={() => handleViewClick("admin", 2)}>
             <p className={styles.title}>Admin: {quantityAdmin}</p>
           </li>
           <li
-            className={styles.statUsersCard}
-            onClick={() => handleViewClick("user")} // Фильтр по админам
-          >
+            className={`${styles.statUsersCard} ${isFilterActive(3)}`}
+            onClick={() => handleViewClick("user", 3)}>
             <p className={styles.title}>Users: {quantityUsers}</p>
           </li>
           <li
-            className={styles.statUsersCard}
-            onClick={() => handleViewClick("ban")} // Фильтр по админам
-          >
+            className={`${styles.statUsersCard} ${isFilterActive(4)}`}
+            onClick={() => handleViewClick("ban", 4)}>
             <p className={styles.title}>Users ban: {quantityUsersBan}</p>
           </li>
         </ul>
         <ul className={styles.statUsersList}>
           <li
-            className={styles.statUsersCard}
-            onClick={() => handleViewClick("")} // Пустая строка в качестве фильтра для "All users"
-          >
+            className={`${styles.statUsersCard} ${isFilterActive(5)}`}
+            onClick={() => handleViewClick("", 5)}>
             <p className={styles.title}>All posts: {users.length}</p>
           </li>
           <li
-            className={styles.statUsersCard}
-            onClick={() => handleViewClick("moderator")} // Фильтр по модераторам
-          >
-            <p className={styles.title}>new posts: {quantityModerator}</p>
+            className={`${styles.statUsersCard} ${isFilterActive(6)}`}
+            onClick={() => handleViewClick("moderator", 6)}>
+            <p className={styles.title}> new posts: {quantityModerator}</p>
           </li>
           <li
-            className={styles.statUsersCard}
-            onClick={() => handleViewClick("admin")} // Фильтр по админам
-          >
-            <p className={styles.title}>publish posts: {quantityAdmin}</p>
+            className={`${styles.statUsersCard} ${isFilterActive(7)}`}
+            onClick={() => handleViewClick("admin", 7)}>
+            <p className={styles.title}>Publish posts: {quantityAdmin}</p>
           </li>
           <li
-            className={styles.statUsersCard}
-            onClick={() => handleViewClick("user")} // Фильтр по админам
-          >
-            <p className={styles.title}>ban posts {quantityUsers}</p>
+            className={`${styles.statUsersCard} ${isFilterActive(8)}`}
+            onClick={() => handleViewClick("user", 8)}>
+            <p className={styles.title}>ban posts: {quantityUsers}</p>
           </li>
         </ul>
         <ul>{showUsersList && <UsersList filterRole={filterRole} />}</ul>
