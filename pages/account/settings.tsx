@@ -5,7 +5,6 @@ import SettingsForm from "../../components/Account/SettingsForm";
 const SettingsPage: React.FC = () => {
   return (
     <Layout>
-      <h1>Account Settings</h1>
       <SettingsForm />
     </Layout>
   );

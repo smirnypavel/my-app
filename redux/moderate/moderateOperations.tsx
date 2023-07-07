@@ -36,3 +36,18 @@ export const getUserById = createAsyncThunk(
     }
   }
 );
+export const roleSelect = createAsyncThunk(
+  "moderate/roleSelect",
+  async (userId: string, thunkAPI) => {
+    const initialToken = localStorage.getItem("refreshToken");
+    if (initialToken) {
+      setAuthHeader(initialToken);
+    }
+    try {
+      const { data } = await axios.patch(`/users/role/${userId}`);
+      return data;
+    } catch (error: any) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

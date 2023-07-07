@@ -4,12 +4,17 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import styles from "../../styles/components/Layout.module.css";
 import { useSelector } from "react-redux";
-import { getUser, selectIsLoggedIn } from "../../redux/auth/authSelectors";
+import {
+  getRole,
+  getUser,
+  selectIsLoggedIn,
+} from "../../redux/auth/authSelectors";
 import { IUserAuth } from "../../redux/auth/authReducer";
 
 const Header: React.FC = () => {
   const user: IUserAuth = useSelector(getUser);
   const isLoggedIn = useSelector(selectIsLoggedIn);
+  const role = useSelector(getRole);
   const router = useRouter();
 
   const isActiveLink = (path: string): boolean => {
@@ -44,6 +49,24 @@ const Header: React.FC = () => {
 
           <li className={styles.li}>
             {isLoggedIn ? (
+              role !== "user" && (
+                <Link
+                  href="/admin"
+                  className={styles.link}>
+                  <p className={styles.textLink}>Admin Panel</p>
+                </Link>
+              )
+            ) : (
+              <Link
+                href="/auth/login"
+                className={`${styles.link} ${
+                  isActiveLink("/auth/login") ? styles.activeLink : ""
+                }`}>
+                <p className={styles.textLink}>SignUp</p>
+              </Link>
+            )}
+
+            {isLoggedIn && (
               <Link
                 href="/account"
                 className={styles.userLink}>
@@ -101,14 +124,6 @@ const Header: React.FC = () => {
                     />
                   </div>
                 </div>
-              </Link>
-            ) : (
-              <Link
-                href="/auth/login"
-                className={`${styles.link} ${
-                  isActiveLink("/auth/login") ? styles.activeLink : ""
-                }`}>
-                <p className={styles.textLink}>SignUp</p>
               </Link>
             )}
           </li>

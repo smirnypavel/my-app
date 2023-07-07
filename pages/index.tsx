@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import type { NextPage } from "next";
 import Layout from "../components/Layout/Layout";
 import ItemList from "../components/ItemList/ItemList";

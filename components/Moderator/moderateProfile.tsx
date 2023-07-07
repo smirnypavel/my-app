@@ -3,15 +3,18 @@ import axios from "axios";
 import { UserListItem } from "./userListItem";
 import { IUserAuth } from "../../redux/auth/authReducer";
 import styles from "../../styles/components/Moderator/moderateProfile.module.css";
+interface Props {
+  filterRole: string; // Типизация параметра filterRole
+}
 
-const ModerateProfile = () => {
+const ModerateProfile: React.FC<Props> = ({ filterRole }) => {
   const [users, setUsers] = useState<IUserAuth[]>([]);
 
   useEffect(() => {
-    fetchNews();
+    fetchUsers();
   }, []);
 
-  const fetchNews = async () => {
+  const fetchUsers = async () => {
     try {
       const response = await axios.get("/users");
       setUsers(response.data);
@@ -26,13 +29,18 @@ const ModerateProfile = () => {
         <p>Список профилей пуст</p>
       ) : (
         <ul>
-          {users.map((item: IUserAuth) => (
-            <li
-              key={item._id}
-              className={styles.list}>
-              <UserListItem item={item} />
-            </li>
-          ))}
+          {users.map((item: IUserAuth) => {
+            if (filterRole === "" || item.role === filterRole) {
+              return (
+                <li
+                  key={item._id}
+                  className={styles.list}>
+                  <UserListItem item={item} />
+                </li>
+              );
+            }
+            return null;
+          })}
         </ul>
       )}
     </>

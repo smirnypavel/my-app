@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { IUserAuth } from "../auth/authReducer";
-import { getUser, getUserById } from "./moderateOperations";
+import { getUser, getUserById, roleSelect } from "./moderateOperations";
 
 export interface IModerateState {
   user: IUserAuth;
@@ -15,6 +15,7 @@ const initialState: IModerateState = {
     token: "",
     role: "",
     avatarURL: "",
+    ban: false,
   },
   isLoading: false,
   error: "",
@@ -45,6 +46,17 @@ export const moderateSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(getUserById.fulfilled, (state, action) => {
+        state.user = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(roleSelect.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(roleSelect.rejected, (state, action) => {
+        state.error = action.payload as string;
+        state.isLoading = false;
+      })
+      .addCase(roleSelect.fulfilled, (state, action) => {
         state.user = action.payload;
         state.isLoading = false;
       });

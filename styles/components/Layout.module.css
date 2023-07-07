@@ -64,6 +64,7 @@
 }
 
 .li {
+  display: flex;
   outline: none;
   transition: 0.1s ease-in-out, 0.4s color;
   margin-left: 16px;
@@ -92,6 +93,7 @@
 .userLink {
   text-decoration: none;
   color: black;
+  margin-left: 10px;
 }
 .userHeader {
   display: flex;

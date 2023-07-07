@@ -5,7 +5,7 @@ import {
   logOut,
   updateUser,
   getUser,
-  signInGoogle,
+  // signInGoogle,
 } from "./authOperations";
 
 export interface IUserAuth {
@@ -22,6 +22,7 @@ export interface IUserAuth {
   updatedAt?: string;
   firstName?: string;
   lastName?: string;
+  ban?: boolean;
 }
 
 export interface IAuthState {
@@ -114,21 +115,21 @@ export const authSlice = createSlice({
       .addCase(getUser.fulfilled, (state, action) => {
         state.user = action.payload.data.posts;
         state.isLoading = false;
-      })
-      .addCase(signInGoogle.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(signInGoogle.rejected, (state, action) => {
-        state.user.token = "";
-        state.isLoggedIn = false;
-        state.isLoading = false;
-        state.error = action.error.message || "";
-      })
-      .addCase(signInGoogle.fulfilled, (state, action) => {
-        state.user = action.payload;
-        state.isLoggedIn = true;
-        state.isLoading = false;
       });
+    // .addCase(signInGoogle.pending, (state) => {
+    //   state.isLoading = true;
+    // })
+    // .addCase(signInGoogle.rejected, (state, action) => {
+    //   state.user.token = "";
+    //   state.isLoggedIn = false;
+    //   state.isLoading = false;
+    //   state.error = action.error.message || "";
+    // })
+    // .addCase(signInGoogle.fulfilled, (state, action) => {
+    //   state.user = action.payload;
+    //   state.isLoggedIn = true;
+    //   state.isLoading = false;
+    // });
   },
 });
 
