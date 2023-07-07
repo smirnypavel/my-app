@@ -12,7 +12,6 @@ import { getUserSelect } from "../../redux/moderate/moderateSelector";
 import styles from "../../styles/components/User/UserDetail.module.css";
 import { getRole } from "../../redux/auth/authSelectors";
 import photoNotFound from "../../public/photoNotFound.png";
-import ModerateLayout from "../Moderator/ModerateLoyout";
 
 interface UserDetailProps {
   userId: string;

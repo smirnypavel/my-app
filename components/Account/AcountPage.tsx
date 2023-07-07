@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import { useSelector } from "react-redux";
 import { logOut } from "../../redux/auth/authOperations";
 import { useAppDispatch } from "../../redux/hooks";
 import { useRouter } from "next/router";

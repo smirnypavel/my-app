@@ -5,13 +5,11 @@ import styles from "../../styles/components/Account/Profile.module.css";
 import { useSelector } from "react-redux";
 import { IUserAuth } from "../../redux/auth/authReducer";
 import { getUser } from "../../redux/auth/authSelectors";
-// import { useAppDispatch } from "../../redux/hooks";
-// import { signInGoogle } from "../../redux/auth/authOperations";
+import photoNotFound from "../../public/photoNotFound.png";
 
 const Profile: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const user: IUserAuth = useSelector(getUser);
-  // const dispatch = useAppDispatch();
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -20,18 +18,13 @@ const Profile: React.FC = () => {
   const closeModal = () => {
     setIsModalOpen(false);
   };
-
-  // const handleClickGoogle = () => {
-  //   dispatch(signInGoogle());
-  // };
-
-  // Assume user data is available
+  const avatarURL = user.avatarURL || photoNotFound; // Используйте photoNotFound, если avatarURL не определен
 
   return (
     <div className={styles.profile}>
       <div className={styles.imageWrapper}>
         <Image
-          src={user.avatarURL}
+          src={avatarURL}
           alt="avatar"
           width={150}
           height={200}
@@ -48,10 +41,6 @@ const Profile: React.FC = () => {
         <p>Phone: {user.phone}</p>
         <p>Location: {user.location}</p>
         {/* <button onClick={handleClickGoogle}>google</button> */}
-        <Link
-          href={"https://test-server-thing.onrender.com/auth/google/redirect"}>
-          google
-        </Link>
       </div>
       {/* Additional user details */}
       <Link href="./account/settings">Настройки профиля</Link>
