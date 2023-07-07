@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import styles from "../../styles/components/AuthForm.module.css";
 import { useAppDispatch } from "../../redux/hooks";
-import { signUp, signInn } from "../../redux/auth/authOperations";
+import { signUp, signIn } from "../../redux/auth/authOperations";
 
 const RegisterForm: React.FC = () => {
   const [firstName, setFirstname] = useState("");
@@ -21,7 +21,7 @@ const RegisterForm: React.FC = () => {
       if (!singUpResp) {
         return;
       }
-      await dispatch(signInn({ email, password }));
+      await dispatch(signIn({ email, password }));
       router.push("/account/settings");
     } catch (error) {
       // console.error('Error logging in:', error);
