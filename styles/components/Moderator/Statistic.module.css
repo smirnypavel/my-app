@@ -1,61 +1,49 @@
+.statContainer {
+  background-color: rgb(255, 255, 255);
+  margin-left: 20px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 20px 2px rgba(49, 97, 255, 0.104);
+  padding-top: 20px;
+  width: 100%;
+}
+.statTitle {
+  text-align: center;
+}
+.categoryTitle {
+  margin-left: 10px;
+}
+.statBox {
+  margin-bottom: 10px;
+  padding-top: 10px;
+  box-shadow: 0px 0px 20px 2px rgba(49, 97, 255, 0.104);
+  height: stretch;
+  width: 100%;
+}
+
 .statUsersList {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 10px 10px;
+  margin: 0;
+  padding: 10px;
 }
 .statUsersCard {
-  display: flex;
-  width: 70px;
-  height: 30px;
-  /* background-color: rgba(255, 255, 255, 0.481);
-  border-radius: 10px;
-  padding: 0.2rem;
-  box-shadow: 0px 0px 20px 2px rgba(49, 97, 255, 0.104);
-  list-style: none;
-  margin-right: 10px;
+  width: 120px;
+  height: 120px;
   cursor: pointer;
-  text-align: center;
-  align-items: center;
-  justify-content: center; */
-  cursor: pointer;
-  margin-bottom: 4px;
-  margin-left: 5px;
   padding-left: 12px;
   padding-right: 12px;
   display: flex;
-  align-items: center;
   border: none;
   background-color: #fff;
-  font-size: 14px;
+  box-shadow: 0px 0px 20px 2px rgba(49, 97, 255, 0.104);
+  font-size: 20px;
   line-height: 20px;
   text-align: center;
   color: rgba(47, 43, 61, 0.849);
   transition: background-color 0.5s ease-in, color 0.5s ease-in;
   position: relative;
-  border-bottom-left-radius: 6.4px;
-  border-bottom-right-radius: 6.4px;
-  border-top-left-radius: 6.4px;
-  border-top-right-radius: 6.4px;
-}
-.button {
-  /* width: 190px;
-  height: 38px; */
-  margin-bottom: 4px;
-  margin-left: 5px;
-  padding-left: 12px;
-  padding-right: 12px;
-  display: flex;
-  align-items: center;
-  border: none;
-  background-color: transparent;
-  font-size: 14px;
-  line-height: 20px;
-  text-align: center;
-  color: rgba(47, 43, 61, 0.68);
-  transition: background-color 0.5s ease, color 0.5s ease;
-  position: relative;
-  border-bottom-left-radius: 6.4px;
-  border-bottom-right-radius: 6.4px;
-  border-top-left-radius: 6.4px;
-  border-top-right-radius: 6.4px;
+  border-radius: 6.4px;
 }
 
 .statUsersCard:hover {
@@ -72,5 +60,6 @@
   color: rgb(255, 255, 255);
 }
 .title {
-  font-size: 9px;
+  font-size: 16px;
+  line-height: 20px;
 }
