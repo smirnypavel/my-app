@@ -19,11 +19,11 @@ const Error404 = () => {
           <p className={styles.pA}>
             . The page you were looking for could not be found
           </p>
-          <p className={styles.pB}>... Back to previous page</p>
+          <p className={styles.pB}>... Back to home page</p>
           <Link
             href="/"
             className={styles.back}>
-            ... Back to previous page
+            ... Back to home page
           </Link>
         </div>
       </Layout>
