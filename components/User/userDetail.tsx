@@ -7,8 +7,8 @@ import { useAppDispatch } from "../../redux/hooks";
 import {
   getUserById,
   roleSelect,
-} from "../../redux/moderate/moderateOperations";
-import { getUserSelect } from "../../redux/moderate/moderateSelector";
+} from "../../redux/moderator/moderateOperations";
+import { getUserSelect } from "../../redux/moderator/moderateSelector";
 import styles from "../../styles/components/User/UserDetail.module.css";
 import { getRole } from "../../redux/auth/authSelectors";
 import photoNotFound from "../../public/photoNotFound.png";

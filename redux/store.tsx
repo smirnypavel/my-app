@@ -1,6 +1,6 @@
 import { configureStore, Reducer, Action } from "@reduxjs/toolkit";
 import { authSlice, IAuthState } from "./auth/authReducer";
-import moderateReducer, { IModerateState } from "./moderate/moderateReducer";
+import moderateReducer, { IModerateState } from "./moderator/moderateReducer";
 import storage from "redux-persist/lib/storage";
 import {
   persistStore,
