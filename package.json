@@ -30,7 +30,8 @@
     "react-slick": "^0.29.0",
     "react-world-flags": "^1.5.1",
     "redux-persist": "^6.0.0",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "types-json": "^4.0.1"
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
