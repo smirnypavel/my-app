@@ -4,11 +4,13 @@ import { useAppDispatch } from "../../redux/hooks";
 import styles from "../../styles/components/Auth/LoginForm.module.css";
 import { signIn } from "../../redux/auth/authOperations";
 import { useRouter } from "next/router";
+import { useTranslation } from "react-i18next";
 
 const LoginForm: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const router = useRouter();
 
@@ -35,7 +37,7 @@ const LoginForm: React.FC = () => {
         className={styles.form}
         onSubmit={handleSubmit}>
         <div className={styles.flexColumn}>
-          <label>Email</label>
+          <label>{t("login.mail")}</label>
         </div>
         <div className={styles.inputForm}>
           <svg
@@ -51,7 +53,7 @@ const LoginForm: React.FC = () => {
           </svg>
           <input
             required
-            placeholder="Enter your Email"
+            placeholder={t("login.enterMail")}
             className={styles.input}
             type="text"
             value={email}
@@ -60,7 +62,7 @@ const LoginForm: React.FC = () => {
         </div>
 
         <div className={styles.flexColumn}>
-          <label>Password</label>
+          <label>{t("login.password")}</label>
         </div>
         <div className={styles.inputForm}>
           <svg
@@ -72,7 +74,7 @@ const LoginForm: React.FC = () => {
             <path d="m304 224c-8.832031 0-16-7.167969-16-16v-80c0-52.929688-43.070312-96-96-96s-96 43.070312-96 96v80c0 8.832031-7.167969 16-16 16s-16-7.167969-16-16v-80c0-70.59375 57.40625-128 128-128s128 57.40625 128 128v80c0 8.832031-7.167969 16-16 16zm0 0"></path>
           </svg>
           <input
-            placeholder="Enter your Password"
+            placeholder={t("login.enterPassword")}
             className={styles.input}
             type="password"
             value={password}
@@ -83,21 +85,21 @@ const LoginForm: React.FC = () => {
         <div className={styles.flexRow}>
           <div>
             <input type="radio" />
-            <label>Remember me</label>
+            <label>{t("login.remember")}</label>
           </div>
-          <span className={styles.span}>Forgot password?</span>
+          <span className={styles.span}>{t("login.forgotPassword")}?</span>
         </div>
         <button
           className={styles.buttonSubmit}
           type="submit">
-          Sign In
+          {t("login.logIn")}
         </button>
         <p className={styles.p}>
-          Don`t have an account?
+          {t("login.Don`thave")}?
           <Link
             href="./register"
             className={styles.span}>
-            Sign Up
+            {t("login.signUp")}
           </Link>
         </p>
       </form>

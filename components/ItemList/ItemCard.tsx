@@ -33,6 +33,7 @@ const ItemCard: React.FC<ItemCardProps> = ({ item }) => {
         alt=""
         width={150}
         height={150}
+        priority
       />
       <h3>{item.title}</h3>
       <div className={styles.ownerInfo}>

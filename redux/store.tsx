@@ -1,6 +1,7 @@
 import { configureStore, Reducer, Action } from "@reduxjs/toolkit";
 import { authSlice, IAuthState } from "./auth/authReducer";
 import moderateReducer, { IModerateState } from "./moderator/moderateReducer";
+import postsReducer, { IPostState } from "./posts/postsReducer";
 import storage from "redux-persist/lib/storage";
 import {
   persistStore,
@@ -23,6 +24,7 @@ const authPersistConfig = {
 // Define explicit types for state and action
 type AuthReducerType = Reducer<IAuthState & PersistPartial, Action<any>>;
 type ModerateReducerType = Reducer<IModerateState, Action<any>>;
+type PostReducerType = Reducer<IPostState, Action<any>>;
 
 export const store = configureStore({
   reducer: {
@@ -31,6 +33,7 @@ export const store = configureStore({
       authSlice.reducer as AuthReducerType
     ),
     moderate: moderateReducer as ModerateReducerType,
+    post: postsReducer as PostReducerType,
   },
   middleware(getDefaultMiddleware) {
     return getDefaultMiddleware({

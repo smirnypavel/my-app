@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -10,12 +10,15 @@ import {
   selectIsLoggedIn,
 } from "../../redux/auth/authSelectors";
 import { IUserAuth } from "../../redux/auth/authReducer";
+import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher";
+import { useTranslation } from "react-i18next";
 
 const Header: React.FC = () => {
   const user: IUserAuth = useSelector(getUser);
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const role = useSelector(getRole);
   const router = useRouter();
+  const { t } = useTranslation();
 
   const isActiveLink = (path: string): boolean => {
     return router.pathname === path;
@@ -34,7 +37,7 @@ const Header: React.FC = () => {
               className={`${styles.link} ${
                 isActiveLink("/") ? styles.activeLink : ""
               }`}>
-              <p className={styles.textLink}>Home</p>
+              <p className={styles.textLink}>{t("header.home")}</p>
             </Link>
           </li>
           <li className={styles.li}>
@@ -43,10 +46,9 @@ const Header: React.FC = () => {
               className={`${styles.link} ${
                 isActiveLink("/items") ? styles.activeLink : ""
               }`}>
-              <p className={styles.textLink}>Items</p>
+              <p className={styles.textLink}>{t("header.products")}</p>
             </Link>
           </li>
-
           <li className={styles.li}>
             {isLoggedIn ? (
               role !== "user" && (
@@ -62,7 +64,7 @@ const Header: React.FC = () => {
                 className={`${styles.link} ${
                   isActiveLink("/auth/login") ? styles.activeLink : ""
                 }`}>
-                <p className={styles.textLink}>SignUp</p>
+                <p className={styles.textLink}>{t("header.login")}</p>
               </Link>
             )}
 
@@ -126,6 +128,9 @@ const Header: React.FC = () => {
                 </div>
               </Link>
             )}
+          </li>
+          <li>
+            <LanguageSwitcher />
           </li>
         </ul>
       </nav>
