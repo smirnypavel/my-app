@@ -1,8 +1,8 @@
-import header from "./header.json";
-import login from "./login.json";
+import headerUkr from "./header.json";
+import loginUkr from "./login.json";
 
 const translationsUkr = {
-  header: header,
-  login: login,
+  header: headerUkr,
+  login: loginUkr,
 };
 export default translationsUkr;

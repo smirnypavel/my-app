@@ -1,8 +1,8 @@
-import header from "./header.json";
-import login from "./login.json";
+import headerEng from "./header.json";
+import loginEng from "./login.json";
 
 export const translationsEng = {
-  header: header,
-  login: login,
+  header: headerEng,
+  login: loginEng,
 };
 export default translationsEng;
