@@ -12,7 +12,6 @@
     "@headlessui/react": "^1.7.15",
     "@heroicons/react": "^2.0.18",
     "@reduxjs/toolkit": "^1.9.5",
-    "@types/json-schema": "^7.0.12",
     "axios": "^1.4.0",
     "babel-preset-next": "^1.4.0",
     "dotenv": "^16.3.1",
@@ -26,13 +25,11 @@
     "react-i18next": "^13.0.2",
     "react-icons": "^4.10.1",
     "react-modal": "^3.16.1",
-    "react-query": "^3.39.3",
     "react-redux": "^8.1.1",
     "react-slick": "^0.29.0",
     "react-world-flags": "^1.5.1",
     "redux-persist": "^6.0.0",
-    "slick-carousel": "^1.8.1",
-    "types-json": "^4.0.1"
+    "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
