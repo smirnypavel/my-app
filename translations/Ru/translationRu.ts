@@ -1,5 +1,5 @@
 import headerRU from "./header.json";
-import loginRu from "./login.json";
+import loginRu from "./auth.json";
 
 const translationsRU = {
   header: headerRU,
