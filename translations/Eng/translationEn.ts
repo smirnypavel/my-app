@@ -1,5 +1,5 @@
 import headerEng from "./header.json";
-import loginEng from "./login.json";
+import loginEng from "./auth.json";
 
 export const translationsEng = {
   header: headerEng,
