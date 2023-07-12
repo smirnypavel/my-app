@@ -2,8 +2,5 @@
   "home": "Home",
   "products": "Products",
   "login": "Login",
-  "language": "Language",
-
-  "mail": "Email",
-  "enter mail": "Enter your Email"
+  "language": "Language"
 }
