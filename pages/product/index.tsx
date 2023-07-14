@@ -1,9 +1,9 @@
 import React from "react";
-import Layout from "../components/Layout/Layout";
-import { ItemList } from "../components/ItemList/ItemList";
-import SearchBar from "../components/SearchBar/SearchBar";
+import Layout from "../../components/Layout/Layout";
+import { ItemList } from "../../components/Product/ProductList/ProductList";
+import SearchBar from "../../components/SearchBar/SearchBar";
 import axios from "axios";
-import { IPosts } from "../redux/posts/postsReducer";
+import { IPosts } from "../../redux/posts/postsReducer";
 
 interface ItemsPageProps {
   post: IPosts[];
@@ -22,9 +22,7 @@ const ItemsPage: React.FC<ItemsPageProps> = ({ post }) => {
 
 export async function getServerSideProps() {
   try {
-    console.log("Sending request..."); // Вывод сообщения в консоль
     const response = await axios.get("/posts");
-    console.log("Response received:", response.data); // Вывод ответа в консоль
     const post: IPosts[] = response.data;
     return {
       props: {
@@ -37,6 +35,7 @@ export async function getServerSideProps() {
       props: {
         post: [],
       },
+      revalidate: 10,
     };
   }
 }

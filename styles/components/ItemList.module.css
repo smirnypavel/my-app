@@ -43,7 +43,9 @@
   margin-bottom: 5px;
 }
 .ownerImage {
-  /*  */
+  width: 28px;
+  height: 28px;
+  border-radius: 5px;
 }
 .ownerName {
   font-size: 12px;

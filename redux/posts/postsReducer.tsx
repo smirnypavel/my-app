@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { createPost } from "./postsOperations";
+import { createPost, getPostById, updatePostStatus } from "./postsOperations";
 
 export interface Owner {
   id: string;
@@ -69,18 +69,29 @@ export const postsSlice = createSlice({
       })
       .addCase(createPost.fulfilled, (state, action) => {
         state.post = action.payload;
+      })
+      .addCase(getPostById.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getPostById.rejected, (state, action) => {
+        state.error = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(getPostById.fulfilled, (state, action) => {
+        state.post = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(updatePostStatus.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(updatePostStatus.rejected, (state, action) => {
+        state.error = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(updatePostStatus.fulfilled, (state, action) => {
+        state.post = action.payload;
+        state.isLoading = false;
       });
-    // .addCase(getUser.pending, (state) => {
-    //   state.isLoading = true;
-    // })
-    // .addCase(getUser.rejected, (state, action) => {
-    //   state.error = action.payload;
-    //   state.isLoading = false;
-    // })
-    // .addCase(getUser.fulfilled, (state, action) => {
-    //   state.user = action.payload.data.posts;
-    //   state.isLoading = false;
-    // });
   },
 });
 

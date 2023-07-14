@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { IPosts } from "../../redux/posts/postsReducer";
 import styles from "../../styles/components/ItemList.module.css";
 import styles2 from "../../styles/components/Moderator/moderateProduct.module.css";
-import ItemCard from "../ItemList/ItemCard";
+import ItemCard from "../Product/ProductList/ProductCard";
 
 const ModerateProduct = () => {
   const [post, setPost] = useState<IPosts[]>([]);

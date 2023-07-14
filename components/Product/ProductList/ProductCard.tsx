@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import Image from "next/image";
-import styles from "../../styles/components/ItemList.module.css";
-import photoNotFound from "../../public/photoNotFound.png";
-import productNotFound from "../../public/productNotFound.jpeg";
-import { IPosts, IPostState, Owner } from "../../redux/posts/postsReducer";
+import styles from "../../../styles/components/ItemList.module.css";
+import photoNotFound from "../../../public/photoNotFound.png";
+import productNotFound from "../../../public/productNotFound.jpeg";
+import { IPosts, IPostState, Owner } from "../../../redux/posts/postsReducer";
+import Link from "next/link";
 
 interface ItemCardProps {
   item: any; // Assuming you have an Item type defined
@@ -53,9 +54,15 @@ const ItemCard: React.FC<ItemCardProps> = ({ item }) => {
           height={28}
           className={styles.ownerImage}
         />
-        <p className={styles.ownerName}>Owner: </p>
+        <p className={styles.ownerName}>Owner: {owner?.firstName}</p>
       </div>
-      <button className={styles.button}>TradeIn</button>
+      <p className={styles.ownerName}>VIEWS: {item.views}</p>
+      <Link
+        href="/product/[id]"
+        as={`/product/${item._id}`}
+        className={styles.button}>
+        TradeIn
+      </Link>
     </div>
   );
 };

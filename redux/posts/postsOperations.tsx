@@ -23,6 +23,7 @@ export interface MyPostResponse {
   _id: string;
   title: string;
   description: string;
+  category: string;
   img: string;
   price: number;
   verify: string;
@@ -75,7 +76,7 @@ export const createPost = createAsyncThunk(
 );
 
 export const getAllPosts = createAsyncThunk(
-  "auth/getAllPosts",
+  "posts/getAllPosts",
   async (_, thunkAPI) => {
     const initialToken = localStorage.getItem("refreshToken");
     if (initialToken) {
@@ -91,7 +92,7 @@ export const getAllPosts = createAsyncThunk(
   }
 );
 export const getPostById = createAsyncThunk(
-  "auth/getPostById",
+  "posts/getPostById",
   async (postId: string, thunkAPI) => {
     const initialToken = localStorage.getItem("refreshToken");
     if (initialToken) {
@@ -101,7 +102,23 @@ export const getPostById = createAsyncThunk(
       const { data } = await axios.get(`/posts/find/${postId}`);
       return data;
     } catch (error: any) {
-      // toast.error('An error occurred while fetching user data');
+      toast.error("An error occurred while fetching product data");
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+export const getView = createAsyncThunk(
+  "posts/getView",
+  async (postId: string, thunkAPI) => {
+    const initialToken = localStorage.getItem("refreshToken");
+    if (initialToken) {
+      setAuthHeader(initialToken);
+    }
+    try {
+      const { data } = await axios.patch(`/posts/view/${postId}`);
+      return data;
+    } catch (error: any) {
+      toast.error("An error occurred while fetching product data");
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -110,13 +127,29 @@ export const updatePost = createAsyncThunk<
   MyPostResponse,
   { postId: string; credentials: {} },
   { rejectValue: string }
->("auth/updatePost", async ({ postId, credentials }, thunkAPI) => {
+>("posts/updatePost", async ({ postId, credentials }, thunkAPI) => {
   const initialToken = localStorage.getItem("refreshToken");
   if (initialToken) {
     setAuthHeader(initialToken);
   }
   try {
     const { data } = await axios.get(`/posts/${postId}`, credentials);
+    return data;
+  } catch (error: any) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});
+export const updatePostStatus = createAsyncThunk<
+  MyPostResponse,
+  { postId: string; credentials: {} },
+  { rejectValue: string }
+>("posts/updatePostStatus", async ({ postId, credentials }, thunkAPI) => {
+  const initialToken = localStorage.getItem("refreshToken");
+  if (initialToken) {
+    setAuthHeader(initialToken);
+  }
+  try {
+    const { data } = await axios.patch(`/posts/verify/${postId}`, credentials);
     return data;
   } catch (error: any) {
     return thunkAPI.rejectWithValue(error.message);

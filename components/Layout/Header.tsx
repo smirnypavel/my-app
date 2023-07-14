@@ -42,9 +42,9 @@ const Header: React.FC = () => {
           </li>
           <li className={styles.li}>
             <Link
-              href="/items"
+              href="/product"
               className={`${styles.link} ${
-                isActiveLink("/items") ? styles.activeLink : ""
+                isActiveLink("/product") ? styles.activeLink : ""
               }`}>
               <p className={styles.textLink}>{t("header.products")}</p>
             </Link>

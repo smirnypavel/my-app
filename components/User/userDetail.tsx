@@ -17,7 +17,7 @@ interface UserDetailProps {
   userId: string;
 }
 
-const UserDetail: React.FC<UserDetailProps> = ({ userId }) => {
+const UserDetail: React.FC<UserDetailProps> = () => {
   const router = useRouter();
   const { id } = router.query;
   const dispatch = useAppDispatch();

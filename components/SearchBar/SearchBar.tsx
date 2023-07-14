@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import styles from "../../styles/Page/ItemPage.module.css";
 
@@ -53,6 +54,12 @@ export default function SearchBar() {
           </button>
         </form>
         <div className={styles.container}>
+          <Link
+            href={"./product/create"}
+            className={styles.linkAdd}>
+            Add your product
+          </Link>
+
           <div className={styles.tabs}>
             <input
               type="radio"

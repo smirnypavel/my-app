@@ -1,7 +1,7 @@
 import React from "react";
-import ItemCard from "./ItemCard";
-import styles from "../../styles/components/ItemList.module.css";
-import { IPosts } from "../../redux/posts/postsReducer";
+import ProductCard from "./ProductCard";
+import styles from "../../../styles/components/ItemList.module.css";
+import { IPosts } from "../../../redux/posts/postsReducer";
 
 interface ItemListProps {
   post: IPosts[];
@@ -16,7 +16,7 @@ export const ItemList: React.FC<ItemListProps> = ({ post }) => {
     <div>
       <div className={styles.itemList}>
         {post.map((item) => (
-          <ItemCard
+          <ProductCard
             key={item._id}
             item={item}
           />
