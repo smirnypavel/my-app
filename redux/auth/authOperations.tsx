@@ -21,18 +21,18 @@ export const restoreToken = () => {
 axios.interceptors.response.use(
   (res) => res,
   async (error) => {
-    if (error.response.status === 400) {
+    if (error.response.status === 401) {
       const refreshToken = localStorage.getItem("refreshToken");
       if (!refreshToken) {
         return Promise.reject(error);
       }
       try {
-        const { data } = await axios.post("/auth/refresh", { refreshToken });
+        const { data } = await axios.patch("/auth/refresh");
         setAuthHeader(data.token);
         localStorage.setItem("refreshToken", data.token);
         return axios(error.config);
       } catch (error) {
-        toast.error("An error occurred during authentication");
+        // toast.error("An error occurred during authentication");
         return Promise.reject(error);
       }
     }
@@ -69,7 +69,7 @@ export const signIn = createAsyncThunk(
       toast.success("Welcome!");
       return data;
     } catch (error: any) {
-      if (error.response.status === 401) {
+      if (error.response.status === 404) {
         toast.error("Wrong login or password");
       } else {
         toast.error("An error occurred during login");

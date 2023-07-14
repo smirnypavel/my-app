@@ -50,7 +50,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ productId }) => {
         if (statusNew) {
           newStatus = "new";
         } else if (statusApprove) {
-          newStatus = "aprove";
+          newStatus = "approve";
         } else if (statusReject) {
           newStatus = "reject";
         }

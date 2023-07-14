@@ -3,8 +3,8 @@ import Image from "next/image";
 
 import { useAppDispatch } from "../../../redux/hooks";
 import { createPost } from "../../../redux/posts/postsOperations";
-import styles from "../../styles/components/ItemForm.module.css";
-// import productNotFound from "../../public/productNotFound.jpeg";
+import styles from "../../../styles/components/ItemForm.module.css";
+import productNotFound from "../../../public/productNotFound.jpeg";
 
 const cloudName = "dvt0czglz";
 const uploadPreset = "eqykdqjy";
@@ -64,13 +64,14 @@ const ItemForm: React.FC = () => {
 
     return response.json();
   };
+  const productImg = img || productNotFound; // Используйте productNotFound, если avatarURL не определен
 
   return (
     <>
       <div className={styles.imageContainer}>
         <div className={styles.imageWrapper}>
           <Image
-            src={img}
+            src={productImg}
             alt="product image"
             width={150}
             height={200}

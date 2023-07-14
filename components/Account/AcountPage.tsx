@@ -6,6 +6,7 @@ import styles from "../../styles/Page/Account.module.css";
 import Profile from "./Profile";
 import Component1 from "../../components/Moderator/moderateProduct";
 import Component2 from "../../components/Moderator/moderateProfile";
+import UserProduct from "../../components/Account/UserProduct";
 import Component3 from "../../components/Moderator/moderateTradings";
 import { HiMiniArrowLeftOnRectangle } from "react-icons/hi2";
 
@@ -14,6 +15,7 @@ enum ActiveComponent {
   COMPONENT1 = "component1",
   COMPONENT2 = "component2",
   COMPONENT3 = "component3",
+  MYPRODUCT = "UserProduct",
 }
 
 const AccountPage: React.FC = () => {
@@ -39,10 +41,12 @@ const AccountPage: React.FC = () => {
         return <Profile />;
       case ActiveComponent.COMPONENT1:
         return <Component1 />;
-      case ActiveComponent.COMPONENT2:
-        return <Component2 filterRole={""} />;
       case ActiveComponent.COMPONENT3:
         return <Component3 />;
+      case ActiveComponent.COMPONENT2:
+        return <Component2 filterRole={""} />;
+      case ActiveComponent.MYPRODUCT:
+        return <UserProduct />;
       default:
         return null;
     }
