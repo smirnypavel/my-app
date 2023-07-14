@@ -3,19 +3,25 @@ import { createPost } from "./postsOperations";
 
 export interface Owner {
   id: string;
-  email: string;
+  firstName: string;
+  lastName: string;
   phone: string;
+  avatarURL: string;
+  location: string;
 }
 export interface IPosts {
+  _id: string;
   title: string;
   description: string;
   category: string;
   img: string;
-  favorite: string[];
-  owner: Owner;
   price: number;
-  verify: boolean;
+  verify: string;
   views: number;
+  favorite: string[];
+  createdAt?: string;
+  updatedAt?: string;
+  owner: Owner;
 }
 
 export interface IPostState {
@@ -26,6 +32,7 @@ export interface IPostState {
 
 const initialState: IPostState = {
   post: {
+    _id: "",
     title: "",
     description: "",
     category: "",
@@ -33,11 +40,14 @@ const initialState: IPostState = {
     favorite: [],
     owner: {
       id: "",
-      email: "",
+      firstName: "",
+      lastName: "",
       phone: "",
+      avatarURL: "",
+      location: "",
     },
     price: 0,
-    verify: false,
+    verify: "",
     views: 0,
   },
   isLoading: false,

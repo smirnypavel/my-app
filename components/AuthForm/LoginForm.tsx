@@ -79,6 +79,7 @@ const LoginForm: React.FC = () => {
             type="password"
             value={password}
             onChange={onChangeInputPassword}
+            autoComplete="false"
           />
         </div>
 

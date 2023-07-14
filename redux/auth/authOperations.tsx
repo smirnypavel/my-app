@@ -21,13 +21,13 @@ export const restoreToken = () => {
 axios.interceptors.response.use(
   (res) => res,
   async (error) => {
-    if (error.response.status === 401) {
+    if (error.response.status === 400) {
       const refreshToken = localStorage.getItem("refreshToken");
       if (!refreshToken) {
         return Promise.reject(error);
       }
       try {
-        const { data } = await axios.post("/users/refresh", { refreshToken });
+        const { data } = await axios.post("/auth/refresh", { refreshToken });
         setAuthHeader(data.token);
         localStorage.setItem("refreshToken", data.token);
         return axios(error.config);

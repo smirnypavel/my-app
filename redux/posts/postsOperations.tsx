@@ -2,22 +2,42 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 
-interface MyPostResponse {
-  // Структура ответа от сервера
-  // Возможно, вам придется добавить другие поля, если они есть в ответе сервера
+// interface MyPostResponse {
+//   // Структура ответа от сервера
+//   // Возможно, вам придется добавить другие поля, если они есть в ответе сервера
+//   title: string;
+//   description: string;
+//   category: string;
+//   img: string;
+//   favorite: string;
+//   owner: {
+//     id: string;
+//     email: string;
+//     phone: string;
+//   };
+//   price: number;
+//   verify: boolean;
+//   views: number;
+// }
+export interface MyPostResponse {
+  _id: string;
   title: string;
   description: string;
-  category: string;
   img: string;
-  favorite: string;
+  price: number;
+  verify: string;
+  views: number;
+  favorite: any[];
+  createdAt: string;
+  updatedAt: string;
   owner: {
     id: string;
-    email: string;
+    firstName: string;
+    lastName: string;
     phone: string;
+    avatarURL: string;
+    location: string;
   };
-  price: number;
-  verify: boolean;
-  views: number;
 }
 
 axios.defaults.baseURL = "https://test-server-thing.onrender.com/";

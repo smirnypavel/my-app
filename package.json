@@ -12,6 +12,7 @@
     "@headlessui/react": "^1.7.15",
     "@heroicons/react": "^2.0.18",
     "@reduxjs/toolkit": "^1.9.5",
+    "@types/i18next": "^13.0.0",
     "axios": "^1.4.0",
     "babel-preset-next": "^1.4.0",
     "dotenv": "^16.3.1",

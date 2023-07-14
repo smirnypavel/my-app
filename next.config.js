@@ -1,4 +1,3 @@
-/** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
@@ -14,6 +13,19 @@ const nextConfig = {
       "res.cloudinary.com",
       "ldsound.info",
     ],
+  },
+  async headers() {
+    return [
+      {
+        source: "/posts",
+        headers: [
+          {
+            key: "Access-Control-Allow-Origin",
+            value: "*", // Разрешить доступ со всех доменов
+          },
+        ],
+      },
+    ];
   },
 };
 

@@ -1,12 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import styles from "../../styles/components/ItemList.module.css";
+import photoNotFound from "../../public/photoNotFound.png";
+import productNotFound from "../../public/productNotFound.jpeg";
+import { IPosts, IPostState, Owner } from "../../redux/posts/postsReducer";
 
 interface ItemCardProps {
   item: any; // Assuming you have an Item type defined
 }
 
 const ItemCard: React.FC<ItemCardProps> = ({ item }) => {
+  // const [product, setProduct] = useState<IPostState>(item);
+  const owner = item.owner;
+
+  const productPhoto = item.img || productNotFound; // Используйте photoNotFound, если productPhoto не определен
+  const avatarURL = owner?.avatarURL || photoNotFound; // Используйте photoNotFound, если avatarURL не определен
+
   return (
     <div className={styles.itemCard}>
       <div className={styles.favoritesIcon}>
@@ -29,7 +38,7 @@ const ItemCard: React.FC<ItemCardProps> = ({ item }) => {
         </svg>
       </div>
       <Image
-        src={item.image}
+        src={productPhoto}
         alt=""
         width={150}
         height={150}
@@ -38,13 +47,13 @@ const ItemCard: React.FC<ItemCardProps> = ({ item }) => {
       <h3>{item.title}</h3>
       <div className={styles.ownerInfo}>
         <Image
-          src={item.userImage}
+          src={avatarURL}
           alt=""
           width={28}
           height={28}
           className={styles.ownerImage}
         />
-        <p className={styles.ownerName}>Owner: {item.ownerName}</p>
+        <p className={styles.ownerName}>Owner: </p>
       </div>
       <button className={styles.button}>TradeIn</button>
     </div>

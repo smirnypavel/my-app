@@ -1,7 +1,7 @@
 import { IUserAuth } from "../auth/authReducer";
+import { IPosts, IPostState } from "./postsReducer";
 
-export const getUser = (state: { auth: { user: IUserAuth } }) =>
-  state.auth.user;
+export const getAllPost = (state: { post: { post: IPosts } }) => state.post;
 
 export const selectIsLoggedIn = (state: { auth: { isLoggedIn: boolean } }) =>
   state.auth.isLoggedIn;
@@ -9,5 +9,5 @@ export const selectIsLoggedIn = (state: { auth: { isLoggedIn: boolean } }) =>
 export const selectToken = (state: { auth: { user: { token: string } } }) =>
   state.auth.user.token;
 
-export const getRole = (state: { auth: { user: IUserAuth } }) =>
-  state.auth.user.role;
+export const getOwner = (state: { post: { post: IPostState } }) =>
+  state.post.post;

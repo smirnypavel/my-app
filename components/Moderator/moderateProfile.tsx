@@ -11,17 +11,16 @@ const ModerateProfile: React.FC<Props> = ({ filterRole }) => {
   const [users, setUsers] = useState<IUserAuth[]>([]);
 
   useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response = await axios.get("/users");
+        setUsers(response.data);
+      } catch (error) {
+        console.log("Error:", error);
+      }
+    };
     fetchUsers();
   }, []);
-
-  const fetchUsers = async () => {
-    try {
-      const response = await axios.get("/users");
-      setUsers(response.data);
-    } catch (error) {
-      console.log("Error:", error);
-    }
-  };
 
   return (
     <>
