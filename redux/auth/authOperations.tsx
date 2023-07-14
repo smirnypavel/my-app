@@ -22,15 +22,15 @@ axios.interceptors.response.use(
   (res) => res,
   async (error) => {
     if (error.response.status === 401) {
-      const refreshToken = localStorage.getItem("refreshToken");
-      if (!refreshToken) {
-        return Promise.reject(error);
-      }
+      // const refreshToken = localStorage.getItem("refreshToken");
+      // if (!refreshToken) {
+      //   return Promise.reject(error);
+      // }
       try {
         const { data } = await axios.patch("/auth/refresh");
         setAuthHeader(data.token);
         localStorage.setItem("refreshToken", data.token);
-        return axios(error.config);
+        return;
       } catch (error) {
         // toast.error("An error occurred during authentication");
         return Promise.reject(error);
