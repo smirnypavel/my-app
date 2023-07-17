@@ -75,10 +75,12 @@ const ItemForm: React.FC = () => {
             alt="product image"
             width={150}
             height={200}
-            style={{
-              objectFit: "cover",
-              margin: "auto",
-            }}
+            style={
+              {
+                // objectFit: "cover"
+                // margin: "auto",
+              }
+            }
           />
         </div>
         <input

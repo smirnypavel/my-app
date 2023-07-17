@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { IUserAuth } from "../../redux/auth/authReducer";
 import { useAppDispatch } from "../../redux/hooks";
 import {
+  banSelect,
   getUserById,
   roleSelect,
 } from "../../redux/moderator/moderateOperations";
@@ -24,6 +25,7 @@ const UserDetail: React.FC<UserDetailProps> = () => {
   const user: IUserAuth | null = useSelector(getUserSelect);
   const role = useSelector(getRole);
   const [selectedRole, setSelectedRole] = useState<string>(user?.role || "");
+  const [selectedBan, setSelectedBan] = useState<boolean>(false);
 
   const handleRoleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedRole(event.target.value);
@@ -31,6 +33,17 @@ const UserDetail: React.FC<UserDetailProps> = () => {
     try {
       if (typeof id === "string" && user) {
         dispatch(roleSelect(user._id));
+      }
+    } catch (e) {
+      return;
+    }
+  };
+  const handleBanChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedBan(event.target.value === "true");
+
+    try {
+      if (typeof id === "string" && user) {
+        dispatch(banSelect(user._id));
       }
     } catch (e) {
       return;
@@ -86,10 +99,10 @@ const UserDetail: React.FC<UserDetailProps> = () => {
             <option value="user">User</option>
           </select>
           <select
-            value={selectedRole}
-            onChange={handleRoleChange}>
-            <option value="moderator">Moderator</option>
-            <option value="user">User</option>
+            value={selectedBan.toString()}
+            onChange={handleBanChange}>
+            <option value="true">to ban</option>
+            <option value="false">not ban</option>
           </select>
         </>
       )}

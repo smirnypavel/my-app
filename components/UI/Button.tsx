@@ -2,8 +2,9 @@ import React, { MouseEvent } from "react";
 import styles from "../../styles/components/UI/Button.module.css";
 
 interface ButtonProps {
-  onClick: (event: MouseEvent<HTMLButtonElement>) => void;
+  onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
   children: React.ReactNode;
+  type?: "button" | "submit" | "reset";
 }
 
 const Button: React.FC<ButtonProps> = ({ onClick, children }) => {

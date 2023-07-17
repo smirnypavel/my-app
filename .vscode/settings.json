@@ -1,3 +1,4 @@
 {
-  "cSpell.words": ["persistor"]
+  "cSpell.words": ["persistor"],
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

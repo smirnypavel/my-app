@@ -64,6 +64,12 @@ const AccountPage: React.FC = () => {
             {/* <span className={styles.notification}>2</span> */}
             Profile
           </button>
+          <button
+            className={styles.button}
+            onClick={() => handleComponentChange(ActiveComponent.MYPRODUCT)}>
+            {/* <span className={styles.notification}>2</span> */}
+            My Product
+          </button>
 
           <button
             onClick={handleLogOut}

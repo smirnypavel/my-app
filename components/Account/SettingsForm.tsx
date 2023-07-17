@@ -7,6 +7,8 @@ import { updateUser } from "../../redux/auth/authOperations";
 import { IUserAuth } from "../../redux/auth/authReducer";
 import { useSelector } from "react-redux";
 import { getUser } from "../../redux/auth/authSelectors";
+import Button from "../UI/Button";
+import Input from "../UI/Input";
 
 const cloudName = "dvt0czglz";
 const uploadPreset = "eqykdqjy";
@@ -14,11 +16,11 @@ const uploadPreset = "eqykdqjy";
 const SettingsForm: React.FC = () => {
   const user: IUserAuth = useSelector(getUser);
 
-  const [firstName, setFirstName] = useState(user.firstName);
-  const [lastName, setLastName] = useState(user.lastName);
-  const [avatarURL, setAvatarURL] = useState(user.avatarURL);
-  const [phone, setPhone] = useState(user.phone);
-  const [location, setLocation] = useState(user.location);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [avatarURL, setAvatarURL] = useState("");
+  const [phone, setPhone] = useState("");
+  const [location, setLocation] = useState("");
   const [isOnline, setIsOnline] = useState(false);
   const dispatch = useAppDispatch();
   const router = useRouter();
@@ -73,15 +75,25 @@ const SettingsForm: React.FC = () => {
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    dispatch(
-      updateUser({
-        firstName,
-        lastName,
-        phone,
-        location,
-        isOnline,
-      })
-    );
+
+    const updatedUser: Partial<IUserAuth> = {}; // Создаем пустой объект
+
+    // Проверяем каждое поле и добавляем только непустые значения в объект updatedUser
+    if (firstName) {
+      updatedUser.firstName = firstName;
+    }
+    if (lastName) {
+      updatedUser.lastName = lastName;
+    }
+    if (phone) {
+      updatedUser.phone = phone;
+    }
+    if (location) {
+      updatedUser.location = location;
+    }
+    updatedUser.isOnline = isOnline;
+
+    dispatch(updateUser(updatedUser));
     router.push("/account");
   };
 
@@ -100,58 +112,57 @@ const SettingsForm: React.FC = () => {
             }}
           />
         </div>
+        <label
+          htmlFor="fileInput"
+          className={styles.imageButton}>
+          Загрузить файл
+        </label>
         <input
           id="fileInput"
           name="photo"
           type="file"
-          placeholder="First Name"
+          accept="image/*"
           onChange={handleFileInputChange}
+          className={styles.hiddenInput}
         />
       </div>
       <form
         className={styles.settingsForm}
         onSubmit={handleSubmit}>
-        <input
+        <Input
           name="firstName"
           type="text"
-          placeholder="First Name"
+          placeholder={firstName ? firstName : "First Name"}
           value={firstName}
           onChange={(event) => {
             setFirstName(event.target.value);
           }}
         />
-        <input
+
+        <Input
           name="lastName"
           type="text"
-          placeholder="Last Name"
+          placeholder={lastName ? lastName : "Last Name"}
           value={lastName}
           onChange={(event) => {
             setLastName(event.target.value);
           }}
         />
 
-        {/* <input
-          name="avatarURL"
-          type="text"
-          placeholder="Avatar URL"
-          value={avatarURL}
-          onChange={(event) => {
-            setAvatarURL(event.target.value);
-          }}
-        /> */}
-        <input
+        <Input
           name="phone"
           type="text"
-          placeholder="Phone"
+          placeholder={phone ? phone : "Phone"}
           value={phone}
           onChange={(event) => {
             setPhone(event.target.value);
           }}
         />
-        <input
+
+        <Input
           name="location"
           type="text"
-          placeholder="Location"
+          placeholder={location ? location : "Location"}
           value={location}
           onChange={(event) => {
             setLocation(event.target.value);
@@ -166,7 +177,7 @@ const SettingsForm: React.FC = () => {
             setIsOnline(event.target.checked);
           }}
         />
-        <button type="submit">Save Changes</button>
+        <Button type="submit">Save Changes</Button>
       </form>
     </>
   );

@@ -4,24 +4,31 @@
   gap: 0.5rem;
 }
 
-.settingsForm input,
-.settingsForm button {
-  padding: 0.5rem;
-}
-
-.settingsForm button {
-  background-color: #333;
+.imageButton {
+  width: 128px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  border: 1.5px solid #46c578;
+  background: #46c578;
   color: #fff;
-  border: none;
-  cursor: pointer;
+  text-align: center;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
-.settingsForm button:hover {
-  background-color: #555;
+.imageButton:hover {
+  background: #248a4c;
 }
-.imageContainer {
-  /* display: flex; */
+.imageButton:active {
+  background: #095527;
 }
+.hiddenInput {
+  display: none;
+}
+
 .imageWrapper {
   width: 150px;
   height: 200px;
