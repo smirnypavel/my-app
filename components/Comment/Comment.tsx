@@ -15,6 +15,11 @@ const Comment = ({ comment }: { comment: IComment }) => {
               alt={"avatarURL"}
               height={50}
               width={50}
+              style={{
+                objectFit: "cover",
+                margin: "auto",
+                borderRadius: 10,
+              }}
             />
             <h6>{comment.user.firstName}</h6>
           </div>
@@ -33,6 +38,11 @@ const Comment = ({ comment }: { comment: IComment }) => {
                     alt={"avatarURL"}
                     height={30}
                     width={30}
+                    style={{
+                      objectFit: "cover",
+                      margin: "auto",
+                      borderRadius: 5,
+                    }}
                   />
                 </div>
                 <p>{answer.text}</p>
