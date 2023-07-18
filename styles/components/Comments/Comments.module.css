@@ -1,0 +1,15 @@
+.commentsList {
+  list-style: none;
+}
+.comment {
+  display: flex;
+  align-items: center;
+}
+
+.answerList {
+  list-style: none;
+}
+.answer {
+  display: flex;
+  align-items: center;
+}

@@ -10,6 +10,7 @@ import {
 import { getPost } from "../../../redux/posts/postsSelectors";
 import productNotFound from "../../../public/productNotFound.jpeg";
 import { getRole } from "../../../redux/auth/authSelectors";
+import Comment from "../../Comment/Comment";
 
 interface ProductDetailProps {
   productId: string;
@@ -81,7 +82,6 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ productId }) => {
         priority
       />
       <p>{product.title}</p>
-      <p>{product.category}</p>
       <p>{product.description}</p>
       <p>Price: {product.price}</p>
       <p>Views: {product.views}</p>
@@ -116,6 +116,14 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ productId }) => {
           <button onClick={handleStatusChange}>Save</button>
         </>
       ) : null}
+      <ul>
+        {product.comments?.map((item) => (
+          <Comment
+            key={item.id}
+            comment={item}
+          />
+        ))}
+      </ul>
     </div>
   );
 };

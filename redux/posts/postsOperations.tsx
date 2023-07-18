@@ -31,6 +31,7 @@ export interface MyPostResponse {
   favorite: any[];
   createdAt: string;
   updatedAt: string;
+  comments?: [];
   owner: {
     id: string;
     firstName: string;

@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { createPost, getPostById, updatePostStatus } from "./postsOperations";
 
-export interface Owner {
+export interface IOwner {
   id: string;
   firstName: string;
   lastName: string;
@@ -9,19 +9,39 @@ export interface Owner {
   avatarURL: string;
   location: string;
 }
+export interface IComment {
+  text: string;
+  id: string;
+  user: User;
+  answer: Answer[];
+}
+export interface Answer {
+  text: string;
+  id: string;
+  user: User;
+}
+export interface User {
+  firstName: string;
+  lastName: string;
+  avatarURL: string;
+  isOnline: boolean;
+}
+
 export interface IPosts {
   _id: string;
   title: string;
   description: string;
-  category: string;
   img: string;
   price: number;
   verify: string;
-  views: number;
-  favorite: string[];
+  views?: number;
+  favorite?: any[];
   createdAt?: string;
   updatedAt?: string;
-  owner: Owner;
+  owner: IOwner;
+  comments?: IComment[];
+  toExchange?: any[];
+  isActive?: boolean;
 }
 
 export interface IPostState {
@@ -35,7 +55,6 @@ const initialState: IPostState = {
     _id: "",
     title: "",
     description: "",
-    category: "",
     img: "",
     favorite: [],
     owner: {
@@ -49,6 +68,7 @@ const initialState: IPostState = {
     price: 0,
     verify: "",
     views: 0,
+    comments: [],
   },
   isLoading: false,
   error: "",
