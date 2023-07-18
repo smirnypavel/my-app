@@ -5,13 +5,11 @@ import { useSelector } from "react-redux";
 import { useAppDispatch } from "../../../redux/hooks";
 import {
   getPostById,
-  getView,
   updatePostStatus,
 } from "../../../redux/posts/postsOperations";
 import { getPost } from "../../../redux/posts/postsSelectors";
 import productNotFound from "../../../public/productNotFound.jpeg";
 import { getRole } from "../../../redux/auth/authSelectors";
-import { IPosts } from "../../../redux/posts/postsReducer";
 
 interface ProductDetailProps {
   productId: string;

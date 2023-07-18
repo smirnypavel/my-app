@@ -2,7 +2,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import Layout from "../../components/Layout/Layout";
-import { ProductDetail } from "../../components/Product/ProductList/productDetail";
+import { ProductDetail } from "../../components/Product/ProductList/ProductDetail";
 
 const ItemDetailsPage: React.FC = () => {
   const router = useRouter();
