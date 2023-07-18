@@ -5,18 +5,18 @@ import ItemCard from "../Product/ProductList/ProductCard";
 import styles from "../../styles/components/ItemList.module.css";
 import styles2 from "../../styles/components/Moderator/moderateProduct.module.css";
 
-const UserProduct = () => {
+const MyFavorites = () => {
   const [post, setPost] = useState<IPosts[]>([]);
   useEffect(() => {
-    const fetchProduct = async () => {
+    const fetchFavorite = async () => {
       try {
-        const response = await axios.get("/posts/my");
+        const response = await axios.get("/posts/myfav");
         setPost(response.data);
       } catch (error) {
         console.log("Error:", error);
       }
     };
-    fetchProduct();
+    fetchFavorite();
   }, []);
 
   return (
@@ -35,4 +35,4 @@ const UserProduct = () => {
     </>
   );
 };
-export default UserProduct;
+export default MyFavorites;

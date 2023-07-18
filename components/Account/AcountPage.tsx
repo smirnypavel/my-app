@@ -4,17 +4,15 @@ import { useAppDispatch } from "../../redux/hooks";
 import { useRouter } from "next/router";
 import styles from "../../styles/Page/Account.module.css";
 import Profile from "./Profile";
-import Component1 from "../../components/Moderator/moderateProduct";
-import Component2 from "../../components/Moderator/moderateProfile";
+
 import UserProduct from "../../components/Account/UserProduct";
-import Component3 from "../../components/Moderator/moderateTradings";
+import MyFavorites from "../../components/Account/MyFavorites";
+
 import { HiMiniArrowLeftOnRectangle } from "react-icons/hi2";
 
 enum ActiveComponent {
   PROFILE = "profile",
-  COMPONENT1 = "component1",
-  COMPONENT2 = "component2",
-  COMPONENT3 = "component3",
+  FAVORITES = "MyFavorites",
   MYPRODUCT = "UserProduct",
 }
 
@@ -39,12 +37,8 @@ const AccountPage: React.FC = () => {
     switch (activeComponent) {
       case ActiveComponent.PROFILE:
         return <Profile />;
-      case ActiveComponent.COMPONENT1:
-        return <Component1 />;
-      case ActiveComponent.COMPONENT3:
-        return <Component3 />;
-      case ActiveComponent.COMPONENT2:
-        return <Component2 filterRole={""} />;
+      case ActiveComponent.FAVORITES:
+        return <MyFavorites />;
       case ActiveComponent.MYPRODUCT:
         return <UserProduct />;
       default:
@@ -69,6 +63,12 @@ const AccountPage: React.FC = () => {
             onClick={() => handleComponentChange(ActiveComponent.MYPRODUCT)}>
             {/* <span className={styles.notification}>2</span> */}
             My Product
+          </button>
+          <button
+            className={styles.button}
+            onClick={() => handleComponentChange(ActiveComponent.FAVORITES)}>
+            {/* <span className={styles.notification}>2</span> */}
+            My Favorites
           </button>
 
           <button

@@ -14,10 +14,8 @@ interface ItemCardProps {
 
 const ItemCard: React.FC<ItemCardProps> = ({ item }) => {
   const myPost = useSelector(getUser);
-  console.log(myPost);
-  console.log("item", item._id);
   const owner = item.owner;
-  console.log(owner);
+
   const handleAddFavorite: React.MouseEventHandler<HTMLDivElement> = (
     event
   ) => {
@@ -39,7 +37,11 @@ const ItemCard: React.FC<ItemCardProps> = ({ item }) => {
     <div className={styles.itemCard}>
       {owner.id !== myPost._id && ( // Добавленная проверка. Если myPost равен true, иконка не отображается
         <div
-          className={styles.favoritesIcon}
+          className={
+            item.favorite.includes(myPost._id)
+              ? styles.favoritesIconActive
+              : styles.favoritesIcon
+          }
           onClick={handleAddFavorite}>
           <svg
             width="20"

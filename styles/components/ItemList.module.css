@@ -27,6 +27,22 @@
 .favoritesIcon svg {
   fill: #070721; /* Задайте желаемый цвет иконки здесь */
 }
+.favoritesIconActive {
+  fill: rgb(252, 54, 153);
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(7, 7, 33, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 10px;
+  top: 10px;
+}
+.favoritesIconActive svg {
+  fill: rgb(252, 54, 153);
+}
 
 .favoritesIcon:hover,
 .favoritesIcon svg:hover {
