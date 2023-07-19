@@ -12,7 +12,7 @@ import { useRouter } from "next/router";
 import { IPosts } from "../../../redux/posts/postsReducer";
 
 interface ItemCardProps {
-  item: IPosts; // Assuming you have an Item type defined
+  item: any; // Assuming you have an Item type defined
 }
 
 const ItemCard: React.FC<ItemCardProps> = ({ item }) => {
