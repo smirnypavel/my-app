@@ -5,14 +5,14 @@ import styles from "../../styles/components/Product/ProductVerifyView.module.css
 import { IPosts } from "../../redux/posts/postsReducer";
 
 interface ProductVerifyViewProps {
-  item: IPosts;
+  post: IPosts;
 }
 
-const ProductVerifyView: React.FC<ProductVerifyViewProps> = ({ item }) => {
+const ProductVerifyView: React.FC<ProductVerifyViewProps> = ({ post }) => {
   let indicatorClass;
-  if (item.verify === "approve") {
+  if (post.verify === "approve") {
     indicatorClass = styles.indicatorApprove;
-  } else if (item.verify === "rejected") {
+  } else if (post.verify === "rejected") {
     indicatorClass = styles.indicatorRejected;
   } else {
     // Default to "new" if the value is not "approve" or "rejected"

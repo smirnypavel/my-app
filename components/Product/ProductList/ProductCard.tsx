@@ -87,7 +87,7 @@ const ItemCard: React.FC<ItemCardProps> = ({ item }) => {
       </div>
       <p className={styles.ownerName}>VIEWS: {item.views}</p>
       {isAccountPage && owner.id === myPost._id && (
-        <ProductVerifyView item={item} />
+        <ProductVerifyView post={item} />
       )}
       <Link
         href="/product/[id]"
