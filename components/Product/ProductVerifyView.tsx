@@ -19,7 +19,7 @@ const ProductVerifyView = () => {
   return (
     <>
       <div>
-        Status: {post.verify} <div className={indicatorClass}></div>
+        <div className={indicatorClass}></div>
       </div>
     </>
   );
