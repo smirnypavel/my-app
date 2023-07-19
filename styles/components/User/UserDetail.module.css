@@ -8,3 +8,7 @@
   justify-content: center; /* Выравнивание по горизонтали */
   align-items: center; /* Выравнивание по вертикали */
 }
+.moderatorContent {
+  display: flex;
+  width: 250px;
+}

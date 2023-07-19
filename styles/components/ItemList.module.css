@@ -48,6 +48,11 @@
 .favoritesIcon svg:hover {
   fill: rgb(252, 54, 153);
 }
+.cardTitle {
+  white-space: nowrap; /* Запретить перенос слов на новую строку */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .ownerInfo {
   display: flex;
   flex-direction: row-reverse;

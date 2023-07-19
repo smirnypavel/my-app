@@ -13,6 +13,7 @@ import { getUserSelect } from "../../redux/moderator/moderateSelector";
 import styles from "../../styles/components/User/UserDetail.module.css";
 import { getRole } from "../../redux/auth/authSelectors";
 import photoNotFound from "../../public/photoNotFound.png";
+import CustomDropdown from "../UI/CustomDropdown";
 
 interface UserDetailProps {
   userId: string;
@@ -25,11 +26,10 @@ const UserDetail: React.FC<UserDetailProps> = () => {
   const user: IUserAuth | null = useSelector(getUserSelect);
   const role = useSelector(getRole);
   const [selectedRole, setSelectedRole] = useState<string>(user?.role || "");
-  const [selectedBan, setSelectedBan] = useState<boolean>(false);
+  const [selectedBan, setSelectedBan] = useState("ban");
 
-  const handleRoleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedRole(event.target.value);
-
+  const handleRoleChange = (selectedOption: string) => {
+    setSelectedRole(selectedOption);
     try {
       if (typeof id === "string" && user) {
         dispatch(roleSelect(user._id));
@@ -38,9 +38,9 @@ const UserDetail: React.FC<UserDetailProps> = () => {
       return;
     }
   };
-  const handleBanChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedBan(event.target.value === "true");
 
+  const handleBanChange = (selectedOption: string) => {
+    setSelectedBan(selectedOption);
     try {
       if (typeof id === "string" && user) {
         dispatch(banSelect(user._id));
@@ -91,20 +91,18 @@ const UserDetail: React.FC<UserDetailProps> = () => {
       <p>{user.createdAt}</p>
       {user.ban ? <p>забанин</p> : <p>разрешенный</p>}
       {role === "admin" && (
-        <>
-          <select
-            value={selectedRole}
-            onChange={handleRoleChange}>
-            <option value="moderator">Moderator</option>
-            <option value="user">User</option>
-          </select>
-          <select
-            value={selectedBan.toString()}
-            onChange={handleBanChange}>
-            <option value="true">to ban</option>
-            <option value="false">not ban</option>
-          </select>
-        </>
+        <div className={styles.moderatorContent}>
+          <CustomDropdown
+            options={["Moderator", "User"]}
+            defaultOption={selectedRole}
+            onSelect={handleRoleChange}
+          />
+          <CustomDropdown
+            options={["to ban", "not ban"]}
+            defaultOption={selectedBan.toString()}
+            onSelect={handleBanChange}
+          />
+        </div>
       )}
       <p>список обьявлений</p>
     </div>

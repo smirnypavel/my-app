@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useAppDispatch } from "../../../redux/hooks";
 import {
@@ -11,6 +11,7 @@ import { getPost } from "../../../redux/posts/postsSelectors";
 import productNotFound from "../../../public/productNotFound.jpeg";
 import { getRole } from "../../../redux/auth/authSelectors";
 import Comment from "../../Comment/Comment";
+import CustomDropdown from "../../UI/CustomDropdown";
 
 interface ProductDetailProps {
   productId: string;
@@ -19,15 +20,6 @@ interface ProductDetailProps {
 export const ProductDetail: React.FC<ProductDetailProps> = ({ productId }) => {
   const product = useSelector(getPost);
   const role = useSelector(getRole);
-  const [statusNew, setStatusNew] = useState<boolean>(
-    product?.verify === "new"
-  );
-  const [statusApprove, setStatusApprove] = useState<boolean>(
-    product?.verify === "approve"
-  );
-  const [statusReject, setStatusReject] = useState<boolean>(
-    product?.verify === "reject"
-  );
   const router = useRouter();
   const { id } = router.query;
   const dispatch = useAppDispatch();
@@ -42,18 +34,9 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ productId }) => {
     }
   }, [id]);
 
-  const handleStatusChange = async () => {
+  const handleStatusChange = async (newStatus: string) => {
     try {
       if (typeof id === "string" && product) {
-        let newStatus = "";
-        if (statusNew) {
-          newStatus = "new";
-        } else if (statusApprove) {
-          newStatus = "approve";
-        } else if (statusReject) {
-          newStatus = "reject";
-        }
-
         await dispatch(
           updatePostStatus({
             postId: product._id,
@@ -66,7 +49,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ productId }) => {
     }
   };
 
-  const productPhoto = product.img || productNotFound; // Используйте productNotFound, если avatarURL не определен
+  const productPhoto = product.img || productNotFound;
 
   return (
     <div>
@@ -89,31 +72,14 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ productId }) => {
       {role === "admin" || role === "moderator" ? (
         <>
           <p>Status: {product.verify}</p>
-          <label>
-            <input
-              type="checkbox"
-              checked={statusNew}
-              onChange={() => setStatusNew(!statusNew)}
-            />
-            New
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              checked={statusApprove}
-              onChange={() => setStatusApprove(!statusApprove)}
-            />
-            Approve
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              checked={statusReject}
-              onChange={() => setStatusReject(!statusReject)}
-            />
-            Reject
-          </label>
-          <button onClick={handleStatusChange}>Save</button>
+          <CustomDropdown
+            options={["Approve", "Reject"]}
+            defaultOption={product.verify}
+            onSelect={(option) => handleStatusChange(option.toLowerCase())}
+          />
+          <button onClick={() => handleStatusChange(product.verify)}>
+            Save
+          </button>
         </>
       ) : null}
       <ul>
@@ -127,3 +93,5 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ productId }) => {
     </div>
   );
 };
+
+export default ProductDetail;

@@ -69,7 +69,7 @@ const ItemCard: React.FC<ItemCardProps> = ({ item }) => {
         height={150}
         priority
       />
-      <h3>{item.title}</h3>
+      <h3 className={styles.cardTitle}>{item.title}</h3>
       <div className={styles.ownerInfo}>
         <Image
           src={avatarURL}
