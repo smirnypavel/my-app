@@ -1,0 +1,18 @@
+.indicatorApprove {
+  width: 15px;
+  height: 15px;
+  background-color: rgba(0, 198, 0, 0.635);
+  border-radius: 50%;
+}
+.indicatorRejected {
+  width: 15px;
+  height: 15px;
+  background-color: rgba(198, 0, 0, 0.635);
+  border-radius: 50%;
+}
+.indicatorNew {
+  width: 15px;
+  height: 15px;
+  background-color: rgba(255, 255, 0, 0.635);
+  border-radius: 50%;
+}

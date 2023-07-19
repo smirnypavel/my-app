@@ -7,6 +7,8 @@ import Link from "next/link";
 import { useSelector } from "react-redux";
 import { getUser } from "../../../redux/auth/authSelectors";
 import axios from "axios";
+import ProductVerifyView from "../ProductVerifyView";
+import { useRouter } from "next/router";
 
 interface ItemCardProps {
   item: any; // Assuming you have an Item type defined
@@ -15,6 +17,8 @@ interface ItemCardProps {
 const ItemCard: React.FC<ItemCardProps> = ({ item }) => {
   const myPost = useSelector(getUser);
   const owner = item.owner;
+  const router = useRouter();
+  const isAccountPage = router.pathname === "/account";
 
   const handleAddFavorite: React.MouseEventHandler<HTMLDivElement> = (
     event
@@ -81,6 +85,7 @@ const ItemCard: React.FC<ItemCardProps> = ({ item }) => {
         <p className={styles.ownerName}>Owner: {owner?.firstName}</p>
       </div>
       <p className={styles.ownerName}>VIEWS: {item.views}</p>
+      {isAccountPage && <ProductVerifyView />}
       <Link
         href="/product/[id]"
         as={`/product/${item._id}`}
