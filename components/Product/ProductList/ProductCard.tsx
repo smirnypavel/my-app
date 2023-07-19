@@ -9,9 +9,10 @@ import { getUser } from "../../../redux/auth/authSelectors";
 import axios from "axios";
 import ProductVerifyView from "../ProductVerifyView";
 import { useRouter } from "next/router";
+import { IPosts } from "../../../redux/posts/postsReducer";
 
 interface ItemCardProps {
-  item: any; // Assuming you have an Item type defined
+  item: IPosts; // Assuming you have an Item type defined
 }
 
 const ItemCard: React.FC<ItemCardProps> = ({ item }) => {
@@ -42,7 +43,7 @@ const ItemCard: React.FC<ItemCardProps> = ({ item }) => {
       {owner.id !== myPost._id && ( // Добавленная проверка. Если myPost равен true, иконка не отображается
         <div
           className={
-            item.favorite.includes(myPost._id)
+            item.favorite?.includes(myPost._id)
               ? styles.favoritesIconActive
               : styles.favoritesIcon
           }
@@ -85,7 +86,9 @@ const ItemCard: React.FC<ItemCardProps> = ({ item }) => {
         <p className={styles.ownerName}>Owner: {owner?.firstName}</p>
       </div>
       <p className={styles.ownerName}>VIEWS: {item.views}</p>
-      {isAccountPage && owner.id === myPost._id && <ProductVerifyView />}
+      {isAccountPage && owner.id === myPost._id && (
+        <ProductVerifyView item={item} />
+      )}
       <Link
         href="/product/[id]"
         as={`/product/${item._id}`}

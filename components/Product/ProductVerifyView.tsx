@@ -2,14 +2,17 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { getPost } from "../../redux/posts/postsSelectors";
 import styles from "../../styles/components/Product/ProductVerifyView.module.css";
+import { IPosts } from "../../redux/posts/postsReducer";
 
-const ProductVerifyView = () => {
-  const post = useSelector(getPost);
+interface ProductVerifyViewProps {
+  item: IPosts;
+}
 
+const ProductVerifyView: React.FC<ProductVerifyViewProps> = ({ item }) => {
   let indicatorClass;
-  if (post.verify === "approve") {
+  if (item.verify === "approve") {
     indicatorClass = styles.indicatorApprove;
-  } else if (post.verify === "rejected") {
+  } else if (item.verify === "rejected") {
     indicatorClass = styles.indicatorRejected;
   } else {
     // Default to "new" if the value is not "approve" or "rejected"
