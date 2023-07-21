@@ -31,6 +31,8 @@ export interface MyPostResponse {
   favorite: any[];
   createdAt: string;
   updatedAt: string;
+  location: string;
+
   comments?: [];
   owner: {
     id: string;
@@ -126,15 +128,15 @@ export const getView = createAsyncThunk(
 );
 export const updatePost = createAsyncThunk<
   MyPostResponse,
-  { postId: string; credentials: {} },
+  { productId: string; credentials: {} },
   { rejectValue: string }
->("posts/updatePost", async ({ postId, credentials }, thunkAPI) => {
+>("posts/updatePost", async ({ productId, credentials }, thunkAPI) => {
   const initialToken = localStorage.getItem("refreshToken");
   if (initialToken) {
     setAuthHeader(initialToken);
   }
   try {
-    const { data } = await axios.get(`/posts/${postId}`, credentials);
+    const { data } = await axios.put(`/posts/${productId}`, credentials);
     return data;
   } catch (error: any) {
     return thunkAPI.rejectWithValue(error.message);

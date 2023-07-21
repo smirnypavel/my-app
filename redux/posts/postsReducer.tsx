@@ -42,6 +42,7 @@ export interface IPosts {
   comments?: IComment[];
   toExchange?: any[];
   isActive?: boolean;
+  location: string;
 }
 
 export interface IPostState {
@@ -56,6 +57,7 @@ const initialState: IPostState = {
     title: "",
     description: "",
     img: "",
+    location: "",
     favorite: [],
     owner: {
       id: "",

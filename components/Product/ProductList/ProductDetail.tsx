@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useAppDispatch } from "../../../redux/hooks";
 import {
@@ -9,20 +9,28 @@ import {
 } from "../../../redux/posts/postsOperations";
 import { getPost } from "../../../redux/posts/postsSelectors";
 import productNotFound from "../../../public/productNotFound.jpeg";
-import { getRole } from "../../../redux/auth/authSelectors";
+import { getRole, getUser } from "../../../redux/auth/authSelectors";
 import Comment from "../../Comment/Comment";
 import CustomDropdown from "../../UI/CustomDropdown";
+// import UpdateItemForm from "../ProductForm/UpdateProductForm";
+import Link from "next/link";
+import ProductVerifyView from "../ProductVerifyView";
 
 interface ProductDetailProps {
   productId: string;
 }
 
 export const ProductDetail: React.FC<ProductDetailProps> = ({ productId }) => {
+  const [comment, setComment] = useState("");
   const product = useSelector(getPost);
+  const myPost = useSelector(getUser);
+
   const role = useSelector(getRole);
   const router = useRouter();
   const { id } = router.query;
   const dispatch = useAppDispatch();
+
+  const updateProductLink = `/product/${productId}/update`;
 
   useEffect(() => {
     try {
@@ -77,11 +85,15 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ productId }) => {
             defaultOption={product.verify}
             onSelect={(option) => handleStatusChange(option.toLowerCase())}
           />
-          <button onClick={() => handleStatusChange(product.verify)}>
-            Save
-          </button>
         </>
       ) : null}
+      {product.owner.id === myPost._id && (
+        <>
+          <ProductVerifyView post={product} />{" "}
+          <Link href={updateProductLink}>Update Product</Link>
+        </>
+      )}
+
       <ul>
         {product.comments?.map((item) => (
           <Comment
@@ -90,6 +102,10 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ productId }) => {
           />
         ))}
       </ul>
+      <textarea
+        placeholder="leave your comment"
+        onChange={(e) => setComment(e.target.value)}
+      />
     </div>
   );
 };

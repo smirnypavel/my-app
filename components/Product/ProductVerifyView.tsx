@@ -12,7 +12,7 @@ const ProductVerifyView: React.FC<ProductVerifyViewProps> = ({ post }) => {
   let indicatorClass;
   if (post.verify === "approve") {
     indicatorClass = styles.indicatorApprove;
-  } else if (post.verify === "rejected") {
+  } else if (post.verify === "reject") {
     indicatorClass = styles.indicatorRejected;
   } else {
     // Default to "new" if the value is not "approve" or "rejected"

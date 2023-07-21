@@ -9,7 +9,6 @@ import { getUser } from "../../../redux/auth/authSelectors";
 import axios from "axios";
 import ProductVerifyView from "../ProductVerifyView";
 import { useRouter } from "next/router";
-import { IPosts } from "../../../redux/posts/postsReducer";
 
 interface ItemCardProps {
   item: any; // Assuming you have an Item type defined
@@ -72,6 +71,10 @@ const ItemCard: React.FC<ItemCardProps> = ({ item }) => {
         alt=""
         width={150}
         height={150}
+        style={{
+          objectFit: "cover",
+          margin: "auto",
+        }}
         priority
       />
       <h3 className={styles.cardTitle}>{item.title}</h3>
