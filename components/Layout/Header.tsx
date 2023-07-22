@@ -129,10 +129,8 @@ const Header: React.FC = () => {
               </Link>
             )}
           </li>
-          <li>
-            <LanguageSwitcher />
-          </li>
         </ul>
+        <LanguageSwitcher />
       </nav>
     </header>
   );

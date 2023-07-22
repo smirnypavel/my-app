@@ -3,6 +3,7 @@
 .layout {
   display: flex;
   flex-direction: column;
+  min-width: 1176px;
   min-height: 100vh;
 }
 
@@ -17,7 +18,7 @@
   align-items: center;
 }
 .logo {
-  color: #27dfad;
+  color: #46c578;
 }
 .logoSpan {
   color: rgb(103, 103, 103);
@@ -28,6 +29,7 @@
 
 .nav {
   margin-right: 0;
+  display: flex;
 }
 
 .ul {
@@ -40,7 +42,7 @@
 
 .link {
   text-decoration: none;
-  color: #27dfad;
+  color: #46c578;
 }
 
 .link:hover {

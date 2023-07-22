@@ -1,10 +1,18 @@
-.profile {
+.profileContainer {
   display: flex;
   margin-left: 16px;
+  flex-direction: column;
+  /* width: fit-content; */
+  width: 100%;
+}
+.profile {
+  display: flex;
+  width: 100%;
+  /* width: fit-content; */
 }
 .imageWrapper {
-  width: 150px;
-  height: 200px;
+  width: 250px;
+  height: 300px;
   position: relative;
   border-radius: 10px;
   overflow: hidden;
@@ -13,6 +21,50 @@
   align-items: center;
 }
 
-.userInfo {
-  margin-left: 10px;
+.profileInfo {
+  margin-left: 50px;
+  display: flex;
+  gap: 30px;
+}
+.profileInfoList {
+  display: flex;
+  flex-direction: column;
+}
+.profileInfoItem {
+  display: flex;
+  list-style: none;
+  width: 288px;
+  height: 50px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  border: 1px solid var(--text-color-captions, #a7aed2);
+  align-items: center;
+  color: #a7aed2;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 100%; /* 16px */
+  margin-bottom: 20px;
+}
+.profileInfoItemText {
+  margin-left: 16px;
+}
+.buttonUpdateProfile {
+  margin-top: 23px;
+  width: 288px;
+  height: 50px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  border: 1.5px solid var(--main-color-green, #46c578);
+  background: #fff;
+  color: #46c578;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.buttonUpdateProfile:hover {
+  background: #46c578;
+  color: #fff;
 }

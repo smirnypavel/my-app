@@ -6,11 +6,16 @@
 }
 
 .itemCard {
-  border-radius: 16px;
+  border-radius: 10px;
   padding: 1rem;
-  box-shadow: 0px 0px 20px 2px rgba(49, 97, 255, 0.104);
+  box-shadow: 0px 0px 10px 2px rgba(49, 97, 255, 0.104);
   text-align: center;
   position: relative;
+  transition: box-shadow 0.3s, color 0.3s;
+}
+.itemCard:hover {
+  box-shadow: 0px 0px 10px 2px rgba(2, 3, 4, 0.17);
+  cursor: pointer;
 }
 .favoritesIcon {
   position: absolute;
@@ -28,7 +33,7 @@
   fill: #070721; /* Задайте желаемый цвет иконки здесь */
 }
 .favoritesIconActive {
-  fill: rgb(252, 54, 153);
+  fill: rgb(255, 0, 0);
   position: absolute;
   width: 36px;
   height: 36px;
@@ -41,12 +46,12 @@
   top: 10px;
 }
 .favoritesIconActive svg {
-  fill: rgb(252, 54, 153);
+  fill: rgb(255, 0, 0);
 }
 
 .favoritesIcon:hover,
 .favoritesIcon svg:hover {
-  fill: rgb(252, 54, 153);
+  fill: rgb(255, 0, 0);
 }
 .cardTitle {
   white-space: nowrap; /* Запретить перенос слов на новую строку */
@@ -55,40 +60,84 @@
 }
 .ownerInfo {
   display: flex;
-  flex-direction: row-reverse;
   align-items: center;
-  justify-content: space-between;
   border-top: 1px solid #8e8c9938;
   padding-top: 5px;
   border-radius: 5px;
   margin-bottom: 5px;
 }
+.linkWrapper {
+  display: flex;
+  align-items: center;
+}
 .ownerImage {
-  width: 28px;
-  height: 28px;
+  width: 36px;
+  height: 36px;
   border-radius: 5px;
+  object-fit: cover;
+}
+.ownerNameWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 10px;
 }
 .ownerName {
-  font-size: 12px;
+  font-size: 18px;
+  line-height: 20px;
+  color: #383838;
+}
+.views {
+  display: flex;
+  font-size: 18px;
   line-height: 20px;
   color: #8e8c99;
+  justify-content: center;
+  align-items: center;
+}
+.viewsIcon {
+  font-size: 22px;
+  line-height: 20px;
+  color: #a7aed2;
+  margin-right: 5px;
+}
+.views {
+  display: flex;
+  font-size: 18px;
+  line-height: 20px;
+  color: #3e3d42;
+  justify-content: center;
+}
+
+.footerCard {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
 }
 .button {
-  width: 100px;
-  height: 34px;
-  border: 2px solid rgb(49, 98, 255);
-  border-radius: 16px;
-  padding: 5px;
-  background-color: transparent;
-  font-size: 14px;
-  line-height: 20px;
+  width: 60px;
+  height: 30px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  border: 1.5px solid #46c578;
+  background: #46c578;
+  color: #fff;
   text-align: center;
-  color: #3162ff;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
   text-decoration: none;
+  padding: 1px 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .button:hover {
-  background-color: #3162ff;
-  color: #ffffff;
+  background: #248a4c;
+}
+.button:active {
+  background: #095527;
 }

@@ -1,5 +1,6 @@
 .accountContainer {
   display: flex;
+  width: fit-content;
 }
 .buttonContainer {
   width: 200px;

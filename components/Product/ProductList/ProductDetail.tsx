@@ -30,6 +30,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ productId }) => {
   const router = useRouter();
   const { id } = router.query;
   const dispatch = useAppDispatch();
+  const isAccountPage = router.pathname === "/admin";
 
   const updateProductLink = `/product/${productId}/update`;
 
@@ -93,7 +94,8 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ productId }) => {
       <p>Price: {product.price}</p>
       <p>Views: {product.views}</p>
       <p>Location: {product.owner.location}</p>
-      {role === "admin" || role === "moderator" ? (
+      {(isAccountPage && role === "admin") ||
+      (isAccountPage && role === "moderator") ? (
         <>
           <p>Status: {product.verify}</p>
           <CustomDropdown

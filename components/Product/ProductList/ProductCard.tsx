@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
+import { MdVisibility } from "react-icons/md";
 import styles from "../../../styles/components/ItemList.module.css";
 import photoNotFound from "../../../public/photoNotFound.png";
 import productNotFound from "../../../public/productNotFound.jpeg";
@@ -39,6 +40,9 @@ const ItemCard: React.FC<ItemCardProps> = ({ item }) => {
 
   return (
     <div className={styles.itemCard}>
+      {isAccountPage && owner.id === myPost._id && (
+        <ProductVerifyView post={item} />
+      )}
       {owner.id !== myPost._id && ( // Добавленная проверка. Если myPost равен true, иконка не отображается
         <div
           className={
@@ -79,25 +83,34 @@ const ItemCard: React.FC<ItemCardProps> = ({ item }) => {
       />
       <h3 className={styles.cardTitle}>{item.title}</h3>
       <div className={styles.ownerInfo}>
-        <Image
-          src={avatarURL}
-          alt=""
-          width={28}
-          height={28}
-          className={styles.ownerImage}
-        />
-        <p className={styles.ownerName}>Owner: {owner?.firstName}</p>
+        <Link
+          href="/user/[id]"
+          as={`/user/${owner?.id}`}
+          className={styles.linkWrapper}>
+          <Image
+            src={avatarURL}
+            alt=""
+            width={28}
+            height={28}
+            className={styles.ownerImage}
+          />
+        </Link>
+        <div className={styles.ownerNameWrapper}>
+          <p className={styles.ownerName}> {owner?.firstName}</p>
+          <p className={styles.ownerName}> {owner?.location}</p>
+        </div>
       </div>
-      <p className={styles.ownerName}>VIEWS: {item.views}</p>
-      {isAccountPage && owner.id === myPost._id && (
-        <ProductVerifyView post={item} />
-      )}
-      <Link
-        href="/product/[id]"
-        as={`/product/${item._id}`}
-        className={styles.button}>
-        View details
-      </Link>
+      <div className={styles.footerCard}>
+        <p className={styles.views}>
+          <MdVisibility className={styles.viewsIcon} /> {item.views}
+        </p>
+        <Link
+          href="/product/[id]"
+          as={`/product/${item._id}`}
+          className={styles.button}>
+          View
+        </Link>
+      </div>
     </div>
   );
 };

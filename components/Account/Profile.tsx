@@ -21,28 +21,63 @@ const Profile: React.FC = () => {
   const avatarURL = user.avatarURL || photoNotFound; // Используйте photoNotFound, если avatarURL не определен
 
   return (
-    <div className={styles.profile}>
-      <div className={styles.imageWrapper}>
-        <Image
-          src={avatarURL}
-          alt="avatar"
-          width={150}
-          height={200}
-          style={{
-            objectFit: "cover",
-            margin: "auto",
-          }}
-        />
+    <>
+      <div className={styles.profileContainer}>
+        <h1>Ваш профиль</h1>
+        <div className={styles.profile}>
+          <div className={styles.imageWrapper}>
+            <Image
+              src={avatarURL}
+              alt="avatar"
+              width={250}
+              height={300}
+              style={{
+                objectFit: "cover",
+                margin: "auto",
+              }}
+            />
+          </div>
+          <div className={styles.profileInfo}>
+            <ul className={styles.profileInfoList}>
+              <label>Firs tName</label>
+              <li className={styles.profileInfoItem}>
+                <h3 className={styles.profileInfoItemText}>{user.firstName}</h3>
+              </li>
+              <label>Phone</label>
+              <li className={styles.profileInfoItem}>
+                <p className={styles.profileInfoItemText}> {user.phone}</p>
+              </li>
+
+              <label>Email</label>
+              <li className={styles.profileInfoItem}>
+                {" "}
+                <p className={styles.profileInfoItemText}> {user.email}</p>
+              </li>
+            </ul>
+            <ul>
+              <label>Last Name</label>
+              <li className={styles.profileInfoItem}>
+                {" "}
+                <h3 className={styles.profileInfoItemText}>{user.lastName}</h3>
+              </li>
+
+              <label>Location</label>
+              <li className={styles.profileInfoItem}>
+                {" "}
+                <p className={styles.profileInfoItemText}> {user.location}</p>
+              </li>
+              <li>
+                <Link
+                  href="./account/settings"
+                  className={styles.buttonUpdateProfile}>
+                  Настройки профиля
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div className={styles.userInfo}>
-        <h3>{user.firstName}</h3>
-        <h3>{user.lastName}</h3>
-        <p>Email: {user.email}</p>
-        <p>Phone: {user.phone}</p>
-        <p>Location: {user.location}</p>
-      </div>
-      <Link href="./account/settings">Настройки профиля</Link>
-    </div>
+    </>
   );
 };
 

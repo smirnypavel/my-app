@@ -1,41 +1,62 @@
+.settingsFormContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 36px;
+}
+.settingsFormTitle {
+  text-align: center;
+}
+
 .settingsForm {
+  margin-left: 30px;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.7rem;
 }
 
 .imageButton {
-  width: 128px;
+  flex: 1;
+  max-width: 128px;
   height: 40px;
-  flex-shrink: 0;
   border-radius: 10px;
   border: 1.5px solid #46c578;
-  background: #46c578;
-  color: #fff;
+  background: #fff;
+  color: #46c578;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
   text-align: center;
   font-size: 15px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  padding: 8px 50px;
 }
 
 .imageButton:hover {
-  background: #248a4c;
+  background: #46c578;
+  color: #fff;
 }
+
 .imageButton:active {
   background: #095527;
 }
+
 .hiddenInput {
   display: none;
 }
 
+.imageContainer {
+  text-align: center;
+}
+
 .imageWrapper {
-  width: 150px;
-  height: 200px;
+  width: 200px;
+  height: 250px;
   position: relative;
   border-radius: 10px;
   overflow: hidden;
   display: flex;
-  justify-content: center; /* Выравнивание по горизонтали */
-  align-items: center; /* Выравнивание по вертикали */
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 18px;
 }

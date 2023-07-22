@@ -99,76 +99,78 @@ const SettingsForm: React.FC = () => {
 
   return (
     <>
-      <div className={styles.imageContainer}>
-        <div className={styles.imageWrapper}>
-          <Image
-            src={user.avatarURL}
-            alt="avatar"
-            width={150}
-            height={200}
-            style={{
-              objectFit: "cover",
-              margin: "auto",
-            }}
+      <h1 className={styles.settingsFormTitle}>Change your Profile</h1>
+      <div className={styles.settingsFormContainer}>
+        <div className={styles.imageContainer}>
+          <div className={styles.imageWrapper}>
+            <Image
+              src={user.avatarURL}
+              alt="avatar"
+              width={200}
+              height={250}
+              style={{
+                objectFit: "cover",
+                margin: "auto",
+              }}
+            />
+          </div>
+          <label
+            htmlFor="fileInput"
+            className={styles.imageButton}>
+            Upload photo
+          </label>
+          <input
+            id="fileInput"
+            name="photo"
+            type="file"
+            accept="image/*"
+            onChange={handleFileInputChange}
+            className={styles.hiddenInput}
           />
         </div>
-        <label
-          htmlFor="fileInput"
-          className={styles.imageButton}>
-          Загрузить файл
-        </label>
-        <input
-          id="fileInput"
-          name="photo"
-          type="file"
-          accept="image/*"
-          onChange={handleFileInputChange}
-          className={styles.hiddenInput}
-        />
-      </div>
-      <form
-        className={styles.settingsForm}
-        onSubmit={handleSubmit}>
-        <Input
-          name="firstName"
-          type="text"
-          placeholder={firstName ? firstName : "First Name"}
-          value={firstName}
-          onChange={(event) => {
-            setFirstName(event.target.value);
-          }}
-        />
+        <form
+          className={styles.settingsForm}
+          onSubmit={handleSubmit}>
+          <Input
+            name="firstName"
+            type="text"
+            placeholder={firstName ? firstName : "First Name"}
+            value={firstName}
+            onChange={(event) => {
+              setFirstName(event.target.value);
+            }}
+          />
 
-        <Input
-          name="lastName"
-          type="text"
-          placeholder={lastName ? lastName : "Last Name"}
-          value={lastName}
-          onChange={(event) => {
-            setLastName(event.target.value);
-          }}
-        />
+          <Input
+            name="lastName"
+            type="text"
+            placeholder={lastName ? lastName : "Last Name"}
+            value={lastName}
+            onChange={(event) => {
+              setLastName(event.target.value);
+            }}
+          />
 
-        <Input
-          name="phone"
-          type="text"
-          placeholder={phone ? phone : "Phone"}
-          value={phone}
-          onChange={(event) => {
-            setPhone(event.target.value);
-          }}
-        />
+          <Input
+            name="phone"
+            type="text"
+            placeholder={phone ? phone : "Phone"}
+            value={phone}
+            onChange={(event) => {
+              setPhone(event.target.value);
+            }}
+          />
 
-        <Input
-          name="location"
-          type="text"
-          placeholder={location ? location : "Location"}
-          value={location}
-          onChange={(event) => {
-            setLocation(event.target.value);
-          }}
-        />
-        <label style={{ textAlign: "center" }}>Is Online?</label>
+          <Input
+            name="location"
+            type="text"
+            placeholder={location ? location : "Location"}
+            value={location}
+            onChange={(event) => {
+              setLocation(event.target.value);
+            }}
+          />
+          {/* <label style={{ textAlign: "center" }}>Is Online?</label>
         <input
           name="isOnline"
           type="checkbox"
@@ -176,9 +178,10 @@ const SettingsForm: React.FC = () => {
           onChange={(event) => {
             setIsOnline(event.target.checked);
           }}
-        />
-        <Button type="submit">Save Changes</Button>
-      </form>
+        /> */}
+          <Button type="submit">Save Changes</Button>
+        </form>
+      </div>
     </>
   );
 };

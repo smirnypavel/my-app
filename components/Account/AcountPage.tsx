@@ -48,8 +48,6 @@ const AccountPage: React.FC = () => {
 
   return (
     <>
-      <h1>Account</h1>
-
       <div className={styles.accountContainer}>
         <div className={styles.buttonContainer}>
           <button
