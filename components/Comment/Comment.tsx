@@ -1,12 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import { IComment } from "../../redux/posts/postsReducer";
 import Image from "next/image";
 import styles from "../../styles/components/Comments/Comments.module.css";
+import { useAppDispatch } from "../../redux/hooks";
+import { replyPostComment } from "../../redux/posts/postsOperations";
+import { useRouter } from "next/router";
 
 const Comment = ({ comment }: { comment: IComment }) => {
+  const router = useRouter();
+  const { id } = router.query;
+  const dispatch = useAppDispatch();
+  const [commentReply, setCommentReply] = useState("");
+
+  const handleCommentAdd = async () => {
+    try {
+      if (typeof id === "string") {
+        await dispatch(
+          replyPostComment({
+            postId: id,
+            commentId: comment.id,
+            credentials: { text: commentReply },
+          })
+        );
+        setCommentReply("");
+      }
+    } catch (e) {
+      console.error("An error occurred:", e);
+    }
+  };
   return (
     <>
-      <div>Comment</div>
       <li className={styles.commentsList}>
         <div className={styles.comment}>
           <div>
@@ -24,6 +47,16 @@ const Comment = ({ comment }: { comment: IComment }) => {
             <h6>{comment.user.firstName}</h6>
           </div>
           <p>{comment.text}</p>
+          <textarea
+            value={commentReply}
+            placeholder="leave your comment"
+            onChange={(e) => setCommentReply(e.target.value)}
+          />
+          <button
+            type="button"
+            onClick={() => handleCommentAdd()}>
+            Submit
+          </button>
         </div>
         <ul>
           {comment.answer.map((answer) => (

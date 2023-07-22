@@ -1,5 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { createPost, getPostById, updatePostStatus } from "./postsOperations";
+import {
+  createPost,
+  getPostById,
+  updatePostStatus,
+  addPostComment,
+  replyPostComment,
+} from "./postsOperations";
 
 export interface IOwner {
   id: string;
@@ -111,6 +117,28 @@ export const postsSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(updatePostStatus.fulfilled, (state, action) => {
+        state.post = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(addPostComment.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(addPostComment.rejected, (state, action) => {
+        state.error = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(addPostComment.fulfilled, (state, action) => {
+        state.post = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(replyPostComment.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(replyPostComment.rejected, (state, action) => {
+        state.error = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(replyPostComment.fulfilled, (state, action) => {
         state.post = action.payload;
         state.isLoading = false;
       });

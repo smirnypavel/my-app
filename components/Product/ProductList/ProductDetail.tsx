@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useAppDispatch } from "../../../redux/hooks";
 import {
+  addPostComment,
   getPostById,
   updatePostStatus,
 } from "../../../redux/posts/postsOperations";
@@ -56,6 +57,21 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ productId }) => {
       console.error("An error occurred:", e);
     }
   };
+  const handleCommentAdd = async () => {
+    try {
+      if (typeof id === "string" && product) {
+        await dispatch(
+          addPostComment({
+            postId: product._id,
+            credentials: { text: comment },
+          })
+        );
+        setComment("");
+      }
+    } catch (e) {
+      console.error("An error occurred:", e);
+    }
+  };
 
   const productPhoto = product.img || productNotFound;
 
@@ -103,9 +119,15 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ productId }) => {
         ))}
       </ul>
       <textarea
+        value={comment}
         placeholder="leave your comment"
         onChange={(e) => setComment(e.target.value)}
       />
+      <button
+        type="button"
+        onClick={() => handleCommentAdd()}>
+        Submit
+      </button>
     </div>
   );
 };

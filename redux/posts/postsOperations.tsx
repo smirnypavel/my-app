@@ -158,3 +158,44 @@ export const updatePostStatus = createAsyncThunk<
     return thunkAPI.rejectWithValue(error.message);
   }
 });
+
+/////////////////////////////////POST COMMENT////////////////////////////////////////////
+
+export const addPostComment = createAsyncThunk<
+  MyPostResponse,
+  { postId: string; credentials: {} },
+  { rejectValue: string }
+>("posts/addPostComment", async ({ postId, credentials }, thunkAPI) => {
+  const initialToken = localStorage.getItem("refreshToken");
+  if (initialToken) {
+    setAuthHeader(initialToken);
+  }
+  try {
+    const { data } = await axios.post(`/posts/comments/${postId}`, credentials);
+    return data;
+  } catch (error: any) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});
+export const replyPostComment = createAsyncThunk<
+  MyPostResponse,
+  { postId: string; commentId: string; credentials: {} },
+  { rejectValue: string }
+>(
+  "posts/replyPostComment",
+  async ({ postId, commentId, credentials }, thunkAPI) => {
+    const initialToken = localStorage.getItem("refreshToken");
+    if (initialToken) {
+      setAuthHeader(initialToken);
+    }
+    try {
+      const { data } = await axios.post(
+        `/posts/comments/${postId}/${commentId}`,
+        credentials
+      );
+      return data;
+    } catch (error: any) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
