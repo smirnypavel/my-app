@@ -21,7 +21,7 @@ const SettingsForm: React.FC = () => {
   const [avatarURL, setAvatarURL] = useState("");
   const [phone, setPhone] = useState("");
   const [location, setLocation] = useState("");
-  const [isOnline, setIsOnline] = useState(false);
+  // const [isOnline, setIsOnline] = useState(false);
   const dispatch = useAppDispatch();
   const router = useRouter();
 
@@ -170,15 +170,6 @@ const SettingsForm: React.FC = () => {
               setLocation(event.target.value);
             }}
           />
-          {/* <label style={{ textAlign: "center" }}>Is Online?</label>
-        <input
-          name="isOnline"
-          type="checkbox"
-          checked={isOnline}
-          onChange={(event) => {
-            setIsOnline(event.target.checked);
-          }}
-        /> */}
           <Button type="submit">Save Changes</Button>
         </form>
       </div>
