@@ -199,3 +199,23 @@ export const replyPostComment = createAsyncThunk<
     }
   }
 );
+
+///////////////////// EXCHANGE////////////////////////////////
+export const offerPostExchange = createAsyncThunk<
+  MyPostResponse,
+  { postId: string; offerId: string },
+  { rejectValue: string }
+>("posts/offerPostExchange", async ({ postId, offerId }, thunkAPI) => {
+  const initialToken = localStorage.getItem("refreshToken");
+  if (initialToken) {
+    setAuthHeader(initialToken);
+  }
+  try {
+    const { data } = await axios.post(
+      `/posts/to-exchange/${postId}/${offerId}`
+    );
+    return data;
+  } catch (error: any) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});
