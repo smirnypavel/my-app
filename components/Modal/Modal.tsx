@@ -1,5 +1,7 @@
 import React, { useState, useEffect, ReactNode } from "react";
 import ReactDOM from "react-dom";
+import styles from "../../styles/components/Modal/Modal.module.css";
+import { MdClear } from "react-icons/md";
 
 interface ModalProps {
   isOpen: boolean;
@@ -39,13 +41,15 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
         <div
           className="modal"
           onClick={handleBackdropClick}>
-          <div className="modal-content">
-            {children}
-            <button
-              className="modal-close"
-              onClick={onClose}>
-              Close
-            </button>
+          <div className="modal-wrapper">
+            <div className="modal-content">
+              {children}
+              <button
+                className="modal-close"
+                onClick={onClose}>
+                <MdClear />
+              </button>
+            </div>
           </div>
         </div>,
         document.body

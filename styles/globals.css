@@ -59,13 +59,36 @@ li {
   align-items: center;
   z-index: 999;
 }
+.modal-wrapper {
+  position: relative;
+}
 
 .modal-content {
   background-color: #fff;
   padding: 20px;
   border-radius: 4px;
+  overflow: hidden;
+  overflow-y: scroll; /* Allow content to scroll if it exceeds the height of the modal */
+  max-height: 80vh; /* Set a maximum height for the modal content */
 }
 
 .modal-close {
-  margin-top: 10px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  border: 1px solid #f4f5fa;
+  border-radius: 50%;
+  font-size: 17px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+.modal-close:hover {
+  font-size: 14px;
+  background-color: #f4f5fa;
 }

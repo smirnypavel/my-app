@@ -16,23 +16,34 @@ import CustomDropdown from "../../UI/CustomDropdown";
 import Link from "next/link";
 import ProductVerifyView from "../ProductVerifyView";
 import styles from "../../../styles/components/Product/ProductDetail.module.css";
+import Modal from "../../Modal/Modal";
+import UserExchangeList from "../../Account/ProductExchange/UserExchangeList";
 
 interface ProductDetailProps {
   productId: string;
 }
 
 export const ProductDetail: React.FC<ProductDetailProps> = ({ productId }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [comment, setComment] = useState("");
   const product = useSelector(getPost);
   const myPost = useSelector(getUser);
-
   const role = useSelector(getRole);
   const router = useRouter();
   const { id } = router.query;
   const dispatch = useAppDispatch();
-  const isAccountPage = router.pathname === "/admin";
 
+  const isAccountPage = router.pathname === "/admin";
   const updateProductLink = `/product/${productId}/update`;
+
+  const openModal = () => {
+    console.log("click");
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   useEffect(() => {
     try {
@@ -101,11 +112,11 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ productId }) => {
                 Update Product
               </Link>
             ) : (
-              <Link
-                href={updateProductLink}
-                className={styles.buttonUpdateProduct}>
+              <button
+                className={styles.buttonUpdateProduct}
+                onClick={openModal}>
                 Offer to exchange
-              </Link>
+              </button>
             )}
           </div>
           <div className={styles.productInfo}>
@@ -154,7 +165,8 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ productId }) => {
           <div></div>
         </div>
 
-        {role === "admin" || role === "moderator" ? (
+        {(isAccountPage && role === "admin") ||
+        (isAccountPage && role === "moderator") ? (
           <>
             <p>Status: {product.verify}</p>
             <CustomDropdown
@@ -185,6 +197,13 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ productId }) => {
         </button>
       </div>
       {product.owner.id === myPost._id && <ProductVerifyView post={product} />}
+      {isModalOpen && (
+        <Modal
+          isOpen={true}
+          onClose={() => setIsModalOpen(false)}>
+          <UserExchangeList />
+        </Modal>
+      )}
     </>
   );
 };

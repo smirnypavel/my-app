@@ -1,0 +1,13 @@
+.exchangeList {
+  display: flex;
+  width: 400px;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 5px;
+  border-radius: 10px;
+  border: 1px solid #f4f5fa;
+}
+.exchangeList:hover {
+  background-color: #f4f5fa;
+}
