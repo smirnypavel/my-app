@@ -8,17 +8,15 @@ const ItemDetailsPage: React.FC = () => {
   const router = useRouter();
   const { id } = router.query;
   useEffect(() => {
-    console.log("fetchViews");
     const fetchViews = async () => {
       try {
         const response = await axios.patch(`/posts/view/${id}`);
-        // setPost(response.data);
       } catch (error) {
         console.log("Error:", error);
       }
     };
     fetchViews();
-  });
+  }, []);
 
   return (
     <Layout>

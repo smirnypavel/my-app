@@ -6,10 +6,7 @@ import Image from "next/image";
 import Button from "../../UI/Button";
 import { useRouter } from "next/router";
 import { useAppDispatch } from "../../../redux/hooks";
-import {
-  offerPostExchange,
-  updatePost,
-} from "../../../redux/posts/postsOperations";
+import { offerPostExchange } from "../../../redux/posts/postsOperations";
 
 const UserExchangeList = () => {
   const [posts, setPosts] = useState<IPosts[]>([]);

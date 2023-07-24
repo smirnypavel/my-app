@@ -7,6 +7,7 @@ import Profile from "./Profile";
 
 import UserProduct from "../../components/Account/UserProduct";
 import MyFavorites from "../../components/Account/MyFavorites";
+import OfferExchange from "../../components/Account/OfferExchangeList";
 
 import { HiMiniArrowLeftOnRectangle } from "react-icons/hi2";
 
@@ -14,6 +15,7 @@ enum ActiveComponent {
   PROFILE = "profile",
   FAVORITES = "MyFavorites",
   MYPRODUCT = "UserProduct",
+  MEOFFER = "OfferExchange",
 }
 
 const AccountPage: React.FC = () => {
@@ -41,6 +43,8 @@ const AccountPage: React.FC = () => {
         return <MyFavorites />;
       case ActiveComponent.MYPRODUCT:
         return <UserProduct />;
+      case ActiveComponent.MEOFFER:
+        return <OfferExchange />;
       default:
         return null;
     }
@@ -67,6 +71,12 @@ const AccountPage: React.FC = () => {
             onClick={() => handleComponentChange(ActiveComponent.FAVORITES)}>
             {/* <span className={styles.notification}>2</span> */}
             My Favorites
+          </button>
+          <button
+            className={styles.button}
+            onClick={() => handleComponentChange(ActiveComponent.MEOFFER)}>
+            {/* <span className={styles.notification}>2</span> */}
+            Me Offer
           </button>
 
           <button
