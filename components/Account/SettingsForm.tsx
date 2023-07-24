@@ -88,9 +88,9 @@ const SettingsForm: React.FC = () => {
     if (phone) {
       updatedUser.phone = phone;
     }
-    // if (location) {
-    //   updatedUser.location = location;
-    // }
+    if (location) {
+      updatedUser.location = location;
+    }
     // updatedUser.isOnline = isOnline;
 
     dispatch(updateUser(updatedUser));
