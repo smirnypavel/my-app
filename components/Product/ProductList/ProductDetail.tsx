@@ -89,7 +89,8 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
     }
   };
 
-  const productPhoto = product.img || productNotFound;
+  // const productPhoto = product.img || productNotFound;
+  const productPhoto = productData.img || productNotFound;
 
   return (
     <>
@@ -109,7 +110,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
                 priority
               />
             </div>
-            {product.owner.id === myPost._id ? (
+            {productData.owner.id === myPost._id ? (
               <Link
                 href={updateProductLink}
                 className={styles.buttonUpdateProduct}>
@@ -126,42 +127,43 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
           <div className={styles.productInfo}>
             <div>
               <ul className={styles.productInfoList}>
-                <h2>{product.title}</h2>
+                <h2>{productData.title}</h2>
                 <li className={styles.productInfoItem}>
                   <p className={styles.productInfoItemText}>
-                    Price: {product.price}
+                    Price: {productData.price}
                   </p>
                 </li>
                 <label>Location:</label>
                 <li className={styles.productInfoItem}>
                   <p className={styles.productInfoItemText}>
-                    {product.owner.location}
+                    {productData.owner.location}
                   </p>
                 </li>
               </ul>
-              <p>Views: {product.views}</p>
+              <p>Views: {productData.views}</p>
               <label>Description:</label>
               <div className={styles.productInfoItem}>
                 <p className={styles.productInfoItemDescription}>
-                  {product.description} Lorem ipsum dolor sit amet consectetur
-                  adipisicing elit. Est, earum deserunt alias nobis consequuntur
-                  dolor ab nam, id esse laborum ducimus distinctio porro tenetur
-                  quidem vero! Est necessitatibus et omnis. Consectetur ipsa
-                  numquam vel provident quaerat esse quibusdam aut tempora hic
-                  facilis quas earum velit, deleniti quam doloremque aliquid
-                  quos. Nostrum nesciunt eum quibusdam qui quidem, commodi
-                  laboriosam ipsa esse. Dolorem voluptas aliquam sit dolores
-                  cupiditate hic, quasi ea omnis, deserunt labore perferendis,
-                  sapiente officiis? Atque consectetur culpa commodi debitis
-                  ullam, vel beatae, officiis et quaerat, nobis ipsum voluptates
-                  placeat! At odio accusamus libero dolorem voluptatibus
-                  aspernatur, beatae doloribus tempora magnam unde illum,
-                  voluptate dignissimos officia perspiciatis quaerat nesciunt.
-                  Porro explicabo ducimus commodi provident reprehenderit ut
-                  laboriosam tempora, suscipit iusto. Saepe nesciunt, sunt
-                  dolorum minima eligendi doloribus corrupti maiores iste
-                  expedita quidem, animi incidunt ratione fugiat fuga. Ipsam
-                  voluptas ab quae repudiandae, quod dolorum cum nulla omnis
+                  {productData.description} Lorem ipsum dolor sit amet
+                  consectetur adipisicing elit. Est, earum deserunt alias nobis
+                  consequuntur dolor ab nam, id esse laborum ducimus distinctio
+                  porro tenetur quidem vero! Est necessitatibus et omnis.
+                  Consectetur ipsa numquam vel provident quaerat esse quibusdam
+                  aut tempora hic facilis quas earum velit, deleniti quam
+                  doloremque aliquid quos. Nostrum nesciunt eum quibusdam qui
+                  quidem, commodi laboriosam ipsa esse. Dolorem voluptas aliquam
+                  sit dolores cupiditate hic, quasi ea omnis, deserunt labore
+                  perferendis, sapiente officiis? Atque consectetur culpa
+                  commodi debitis ullam, vel beatae, officiis et quaerat, nobis
+                  ipsum voluptates placeat! At odio accusamus libero dolorem
+                  voluptatibus aspernatur, beatae doloribus tempora magnam unde
+                  illum, voluptate dignissimos officia perspiciatis quaerat
+                  nesciunt. Porro explicabo ducimus commodi provident
+                  reprehenderit ut laboriosam tempora, suscipit iusto. Saepe
+                  nesciunt, sunt dolorum minima eligendi doloribus corrupti
+                  maiores iste expedita quidem, animi incidunt ratione fugiat
+                  fuga. Ipsam voluptas ab quae repudiandae, quod dolorum cum
+                  nulla omnis
                 </p>
               </div>
             </div>
