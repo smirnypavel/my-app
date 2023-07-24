@@ -20,7 +20,9 @@ const ItemCard: React.FC<ItemCardProps> = ({ item }) => {
   const owner = item.owner;
   const router = useRouter();
   const isAccountPage = router.pathname === "/account";
-
+  const handleLinkClick = () => {
+    router.push(`/product/${item._id}`);
+  };
   const handleAddFavorite: React.MouseEventHandler<HTMLDivElement> = (
     event
   ) => {
@@ -75,6 +77,7 @@ const ItemCard: React.FC<ItemCardProps> = ({ item }) => {
         alt=""
         width={150}
         height={150}
+        onClick={handleLinkClick}
         style={{
           objectFit: "cover",
           margin: "auto",

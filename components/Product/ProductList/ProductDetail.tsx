@@ -21,9 +21,13 @@ import UserExchangeList from "../../Account/ProductExchange/UserExchangeList";
 
 interface ProductDetailProps {
   productId: string;
+  productData: any; // Assuming you have a type for product data, adjust this type accordingly
 }
 
-export const ProductDetail: React.FC<ProductDetailProps> = ({ productId }) => {
+export const ProductDetail: React.FC<ProductDetailProps> = ({
+  productId,
+  productData,
+}) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [comment, setComment] = useState("");
   const product = useSelector(getPost);
@@ -165,8 +169,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ productId }) => {
           <div></div>
         </div>
 
-        {(isAccountPage && role === "admin") ||
-        (isAccountPage && role === "moderator") ? (
+        {role === "admin" || role === "moderator" ? (
           <>
             <p>Status: {product.verify}</p>
             <CustomDropdown
