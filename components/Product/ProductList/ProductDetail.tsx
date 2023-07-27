@@ -17,7 +17,7 @@ import Link from "next/link";
 import ProductVerifyView from "../ProductVerifyView";
 import styles from "../../../styles/components/Product/ProductDetail.module.css";
 import Modal from "../../Modal/Modal";
-import UserExchangeList from "../../Account/ProductExchange/UserExchangeList";
+import ToExchangeList from "../../Account/ProductExchange/ToExchangeList";
 
 interface ProductDetailProps {
   productId: string;
@@ -89,8 +89,8 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
     }
   };
 
-  // const productPhoto = product.img || productNotFound;
-  const productPhoto = productData.img || productNotFound;
+  const productPhoto = product.img || productNotFound;
+  // const productPhoto = productData.img || productNotFound;
 
   return (
     <>
@@ -110,7 +110,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
                 priority
               />
             </div>
-            {productData.owner.id === myPost._id ? (
+            {product.owner.id === myPost._id ? (
               <Link
                 href={updateProductLink}
                 className={styles.buttonUpdateProduct}>
@@ -127,43 +127,42 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
           <div className={styles.productInfo}>
             <div>
               <ul className={styles.productInfoList}>
-                <h2>{productData.title}</h2>
+                <h2>{product.title}</h2>
                 <li className={styles.productInfoItem}>
                   <p className={styles.productInfoItemText}>
-                    Price: {productData.price}
+                    Price: {product.price}
                   </p>
                 </li>
                 <label>Location:</label>
                 <li className={styles.productInfoItem}>
                   <p className={styles.productInfoItemText}>
-                    {productData.owner.location}
+                    {product.owner.location}
                   </p>
                 </li>
               </ul>
-              <p>Views: {productData.views}</p>
+              <p>Views: {product.views}</p>
               <label>Description:</label>
               <div className={styles.productInfoItem}>
                 <p className={styles.productInfoItemDescription}>
-                  {productData.description} Lorem ipsum dolor sit amet
-                  consectetur adipisicing elit. Est, earum deserunt alias nobis
-                  consequuntur dolor ab nam, id esse laborum ducimus distinctio
-                  porro tenetur quidem vero! Est necessitatibus et omnis.
-                  Consectetur ipsa numquam vel provident quaerat esse quibusdam
-                  aut tempora hic facilis quas earum velit, deleniti quam
-                  doloremque aliquid quos. Nostrum nesciunt eum quibusdam qui
-                  quidem, commodi laboriosam ipsa esse. Dolorem voluptas aliquam
-                  sit dolores cupiditate hic, quasi ea omnis, deserunt labore
-                  perferendis, sapiente officiis? Atque consectetur culpa
-                  commodi debitis ullam, vel beatae, officiis et quaerat, nobis
-                  ipsum voluptates placeat! At odio accusamus libero dolorem
-                  voluptatibus aspernatur, beatae doloribus tempora magnam unde
-                  illum, voluptate dignissimos officia perspiciatis quaerat
-                  nesciunt. Porro explicabo ducimus commodi provident
-                  reprehenderit ut laboriosam tempora, suscipit iusto. Saepe
-                  nesciunt, sunt dolorum minima eligendi doloribus corrupti
-                  maiores iste expedita quidem, animi incidunt ratione fugiat
-                  fuga. Ipsam voluptas ab quae repudiandae, quod dolorum cum
-                  nulla omnis
+                  {product.description} Lorem ipsum dolor sit amet consectetur
+                  adipisicing elit. Est, earum deserunt alias nobis consequuntur
+                  dolor ab nam, id esse laborum ducimus distinctio porro tenetur
+                  quidem vero! Est necessitatibus et omnis. Consectetur ipsa
+                  numquam vel provident quaerat esse quibusdam aut tempora hic
+                  facilis quas earum velit, deleniti quam doloremque aliquid
+                  quos. Nostrum nesciunt eum quibusdam qui quidem, commodi
+                  laboriosam ipsa esse. Dolorem voluptas aliquam sit dolores
+                  cupiditate hic, quasi ea omnis, deserunt labore perferendis,
+                  sapiente officiis? Atque consectetur culpa commodi debitis
+                  ullam, vel beatae, officiis et quaerat, nobis ipsum voluptates
+                  placeat! At odio accusamus libero dolorem voluptatibus
+                  aspernatur, beatae doloribus tempora magnam unde illum,
+                  voluptate dignissimos officia perspiciatis quaerat nesciunt.
+                  Porro explicabo ducimus commodi provident reprehenderit ut
+                  laboriosam tempora, suscipit iusto. Saepe nesciunt, sunt
+                  dolorum minima eligendi doloribus corrupti maiores iste
+                  expedita quidem, animi incidunt ratione fugiat fuga. Ipsam
+                  voluptas ab quae repudiandae, quod dolorum cum nulla omnis
                 </p>
               </div>
             </div>
@@ -206,7 +205,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
         <Modal
           isOpen={true}
           onClose={() => setIsModalOpen(false)}>
-          <UserExchangeList />
+          <ToExchangeList />
         </Modal>
       )}
     </>

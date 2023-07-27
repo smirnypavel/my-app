@@ -1,11 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { IPosts } from "../../redux/posts/postsReducer";
-import ItemCard from "../Product/ProductList/ProductCard";
-import styles from "../../styles/components/ItemList.module.css";
-import styles2 from "../../styles/components/Moderator/moderateProduct.module.css";
+import { IPosts } from "../../../redux/posts/postsReducer";
+import styles from "../../../styles/components/ItemList.module.css";
+import styles2 from "../../../styles/components/Moderator/moderateProduct.module.css";
+import CardExchange from "./CardExchange";
 
-const OfferExchangeList = () => {
+const MeExchangeList = () => {
   const [post, setPost] = useState<IPosts[]>([]);
   const [isOfferPost, setIsOfferPost] = useState<IPosts[]>([]); // State to hold the filtered posts
 
@@ -34,8 +34,8 @@ const OfferExchangeList = () => {
         <p>They offer me an exchange</p>
         {isOfferPost.length > 0 ? (
           <div className={styles.itemList}>
-            {isOfferPost.map((item: { _id: React.Key | null | undefined }) => (
-              <ItemCard
+            {isOfferPost.map((item: IPosts) => (
+              <CardExchange
                 key={item._id}
                 item={item}
               />
@@ -49,4 +49,4 @@ const OfferExchangeList = () => {
   );
 };
 
-export default OfferExchangeList;
+export default MeExchangeList;

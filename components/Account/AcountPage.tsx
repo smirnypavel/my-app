@@ -5,17 +5,19 @@ import { useRouter } from "next/router";
 import styles from "../../styles/Page/Account.module.css";
 import Profile from "./Profile";
 
-import UserProduct from "../../components/Account/UserProduct";
-import MyFavorites from "../../components/Account/MyFavorites";
-import OfferExchange from "../../components/Account/OfferExchangeList";
+import UserProduct from "./UserProduct";
+import MyFavorites from "./MyFavorites";
+import MeExchangeList from "./ProductExchange/MeExchangeList";
+import IExchangeList from "./ProductExchange/IExchangeList";
 
 import { HiMiniArrowLeftOnRectangle } from "react-icons/hi2";
 
 enum ActiveComponent {
   PROFILE = "profile",
   FAVORITES = "MyFavorites",
-  MYPRODUCT = "UserProduct",
-  MEOFFER = "OfferExchange",
+  MyPRODUCT = "UserProduct",
+  MeOFFER = "MeExchangeList",
+  MyOFFER = "IExchangeList",
 }
 
 const AccountPage: React.FC = () => {
@@ -41,10 +43,12 @@ const AccountPage: React.FC = () => {
         return <Profile />;
       case ActiveComponent.FAVORITES:
         return <MyFavorites />;
-      case ActiveComponent.MYPRODUCT:
+      case ActiveComponent.MyPRODUCT:
         return <UserProduct />;
-      case ActiveComponent.MEOFFER:
-        return <OfferExchange />;
+      case ActiveComponent.MeOFFER:
+        return <MeExchangeList />;
+      case ActiveComponent.MyOFFER:
+        return <IExchangeList />;
       default:
         return null;
     }
@@ -62,7 +66,7 @@ const AccountPage: React.FC = () => {
           </button>
           <button
             className={styles.button}
-            onClick={() => handleComponentChange(ActiveComponent.MYPRODUCT)}>
+            onClick={() => handleComponentChange(ActiveComponent.MyPRODUCT)}>
             {/* <span className={styles.notification}>2</span> */}
             My Product
           </button>
@@ -74,9 +78,15 @@ const AccountPage: React.FC = () => {
           </button>
           <button
             className={styles.button}
-            onClick={() => handleComponentChange(ActiveComponent.MEOFFER)}>
+            onClick={() => handleComponentChange(ActiveComponent.MeOFFER)}>
             {/* <span className={styles.notification}>2</span> */}
             Me Offer
+          </button>
+          <button
+            className={styles.button}
+            onClick={() => handleComponentChange(ActiveComponent.MyOFFER)}>
+            {/* <span className={styles.notification}>2</span> */}
+            My Offer
           </button>
 
           <button

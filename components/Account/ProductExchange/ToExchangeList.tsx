@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 import { useAppDispatch } from "../../../redux/hooks";
 import { offerPostExchange } from "../../../redux/posts/postsOperations";
 
-const UserExchangeList = () => {
+const ToExchangeList = () => {
   const [posts, setPosts] = useState<IPosts[]>([]);
   const [offerId, setOfferId] = useState("");
   const router = useRouter();
@@ -69,4 +69,4 @@ const UserExchangeList = () => {
     </>
   );
 };
-export default UserExchangeList;
+export default ToExchangeList;
