@@ -4,9 +4,14 @@
   flex-direction: column;
 }
 .productDetail {
-  display: flex;
   width: 100%;
-  justify-content: center;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+    justify-content: center;
+  }
+  @media screen and (min-width: 1280px) {
+  }
 }
 .imageWrapper {
   width: 288px;
@@ -18,10 +23,19 @@
   justify-content: center;
   align-items: center;
 }
+.image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .productInfo {
-  margin-left: 50px;
   display: flex;
   gap: 30px;
+  @media screen and (min-width: 768px) {
+    margin-left: 50px;
+  }
+  @media screen and (min-width: 1280px) {
+  }
 }
 .productInfoList {
   display: flex;
@@ -68,7 +82,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 10px;
-  border: 1.5px solid var(--main-color-green, #46c578);
+  border: 1.5px solid #46c578;
   background: #fff;
   color: #46c578;
   text-decoration: none;
@@ -82,5 +96,18 @@
 }
 .commentWrapper {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+}
+
+.hidePostMassage {
+}
+.hidePostMassageButton {
+  display: flex;
+  justify-content: space-between;
+}
+.hidePostMassageTitle {
+  margin-top: 30px;
+  margin-bottom: 30px;
 }

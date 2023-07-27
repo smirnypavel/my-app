@@ -7,6 +7,7 @@
 .comment {
   display: flex;
   align-items: center;
+  /* flex-direction: column; */
   background-color: rgba(148, 147, 147, 0.214);
   padding: 10px;
   border-radius: 10px;
@@ -20,6 +21,9 @@
   position: absolute;
   right: 0;
   top: 5px;
+}
+.deleteButton:hover {
+  color: red;
 }
 .answerButton {
   border: none;

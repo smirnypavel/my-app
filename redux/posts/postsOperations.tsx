@@ -126,6 +126,22 @@ export const getView = createAsyncThunk(
     }
   }
 );
+export const hidePost = createAsyncThunk(
+  "posts/hidePost",
+  async (postId: string, thunkAPI) => {
+    const initialToken = localStorage.getItem("refreshToken");
+    if (initialToken) {
+      setAuthHeader(initialToken);
+    }
+    try {
+      const { data } = await axios.patch(`/posts/active/${postId}`);
+      return data;
+    } catch (error: any) {
+      toast.error("An error occurred while fetching product data");
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
 export const updatePost = createAsyncThunk<
   MyPostResponse,
   { productId: string; credentials: {} },

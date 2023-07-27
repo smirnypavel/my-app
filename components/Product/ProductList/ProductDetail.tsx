@@ -6,6 +6,7 @@ import { useAppDispatch } from "../../../redux/hooks";
 import {
   addPostComment,
   getPostById,
+  hidePost,
   updatePostStatus,
 } from "../../../redux/posts/postsOperations";
 import { getPost } from "../../../redux/posts/postsSelectors";
@@ -18,6 +19,7 @@ import ProductVerifyView from "../ProductVerifyView";
 import styles from "../../../styles/components/Product/ProductDetail.module.css";
 import Modal from "../../Modal/Modal";
 import ToExchangeList from "../../Account/ProductExchange/ToExchangeList";
+import Button from "../../UI/Button";
 
 interface ProductDetailProps {
   productId: string;
@@ -29,6 +31,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
   productData,
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalHidePostOpen, setIsModalHidePostOpen] = useState(false);
   const [comment, setComment] = useState("");
   const product = useSelector(getPost);
   const myPost = useSelector(getUser);
@@ -44,9 +47,16 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
     console.log("click");
     setIsModalOpen(true);
   };
-
   const closeModal = () => {
     setIsModalOpen(false);
+  };
+
+  const openModalHide = () => {
+    console.log("click");
+    setIsModalHidePostOpen(true);
+  };
+  const closeModalHide = () => {
+    setIsModalHidePostOpen(false);
   };
 
   useEffect(() => {
@@ -88,6 +98,15 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
       console.error("An error occurred:", e);
     }
   };
+  const handleHidePost = async () => {
+    try {
+      if (typeof id === "string" && product) {
+        await dispatch(hidePost(product._id));
+      }
+    } catch (e) {
+      console.error("An error occurred:", e);
+    }
+  };
 
   const productPhoto = product.img || productNotFound;
   // const productPhoto = productData.img || productNotFound;
@@ -108,6 +127,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
                   margin: "auto",
                 }}
                 priority
+                className={styles.image}
               />
             </div>
             {product.owner.id === myPost._id ? (
@@ -210,6 +230,22 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
           </Modal>
         )}
       </div>
+      <button onClick={openModalHide}>hide post</button>
+      {isModalHidePostOpen && (
+        <Modal
+          isOpen={true}
+          onClose={() => setIsModalHidePostOpen(false)}>
+          <div>
+            <h3 className={styles.hidePostMassageTitle}>
+              Do you want to hide the post?
+            </h3>
+            <div className={styles.hidePostMassageButton}>
+              <Button>yes</Button>
+              <Button onClick={closeModalHide}>no</Button>
+            </div>
+          </div>
+        </Modal>
+      )}
     </>
   );
 };
