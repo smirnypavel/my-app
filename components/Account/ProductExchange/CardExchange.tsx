@@ -43,42 +43,42 @@ const CardExchange: React.FC<CardExchangeProps> = ({ item }) => {
           priority
         />
         <h3 className={styles.cardTitle}>{item.title}</h3>
+        <Button onClick={() => openModal(0)}>
+          Views offer {item.toExchange?.length}
+        </Button>
+        {isModalOpen && item.toExchange?.length && (
+          <Modal
+            isOpen={true}
+            onClose={closeModal}>
+            <div className={styles2.cardWrapper}>
+              <button
+                className={styles2.arrowButtonLeft}
+                onClick={() =>
+                  setCurrentOfferIndex(
+                    (prevIndex) =>
+                      (prevIndex + item.toExchange!.length - 1) %
+                      item.toExchange!.length
+                  )
+                }>
+                <FiArrowLeftCircle />
+              </button>
+              <MeOfferViewList
+                offer={item.toExchange[currentOfferIndex]}
+                onClose={closeModal} // Pass the onClose handler to MeOfferViewList
+              />
+              <button
+                className={styles2.arrowButtonRight}
+                onClick={() =>
+                  setCurrentOfferIndex(
+                    (prevIndex) => (prevIndex + 1) % item.toExchange!.length
+                  )
+                }>
+                <FiArrowRightCircle />
+              </button>
+            </div>
+          </Modal>
+        )}
       </div>
-      <Button onClick={() => openModal(0)}>
-        Views offer {item.toExchange?.length}
-      </Button>
-      {isModalOpen && item.toExchange?.length && (
-        <Modal
-          isOpen={true}
-          onClose={closeModal}>
-          <div className={styles2.cardWrapper}>
-            <button
-              className={styles2.arrowButtonLeft}
-              onClick={() =>
-                setCurrentOfferIndex(
-                  (prevIndex) =>
-                    (prevIndex + item.toExchange!.length - 1) %
-                    item.toExchange!.length
-                )
-              }>
-              <FiArrowLeftCircle />
-            </button>
-            <MeOfferViewList
-              offer={item.toExchange[currentOfferIndex]}
-              onClose={closeModal} // Pass the onClose handler to MeOfferViewList
-            />
-            <button
-              className={styles2.arrowButtonRight}
-              onClick={() =>
-                setCurrentOfferIndex(
-                  (prevIndex) => (prevIndex + 1) % item.toExchange!.length
-                )
-              }>
-              <FiArrowRightCircle />
-            </button>
-          </div>
-        </Modal>
-      )}
     </>
   );
 };
