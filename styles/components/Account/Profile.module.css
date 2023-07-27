@@ -25,10 +25,12 @@
 }
 
 .profileInfo {
-  margin-left: 50px;
+  margin-left: 10px;
+
   gap: 30px;
   @media screen and (min-width: 768px) {
     display: flex;
+    margin-left: 50px;
   }
   @media screen and (min-width: 1280px) {
   }
