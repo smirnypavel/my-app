@@ -7,6 +7,7 @@ import productNotFound from "../../../public/productNotFound.jpeg";
 import { IPosts } from "../../../redux/posts/postsReducer";
 import MeOfferViewList from "./MeOfferViewList";
 import Modal from "../../Modal/Modal";
+import Button from "../../UI/Button";
 
 interface CardExchangeProps {
   item: IPosts; // Assuming you have an Item type defined
@@ -43,7 +44,9 @@ const CardExchange: React.FC<CardExchangeProps> = ({ item }) => {
         />
         <h3 className={styles.cardTitle}>{item.title}</h3>
       </div>
-      <button onClick={() => openModal(0)}>Views offer</button>
+      <Button onClick={() => openModal(0)}>
+        Views offer {item.toExchange?.length}
+      </Button>
       {isModalOpen && item.toExchange?.length && (
         <Modal
           isOpen={true}
