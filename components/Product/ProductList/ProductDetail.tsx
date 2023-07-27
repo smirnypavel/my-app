@@ -167,7 +167,6 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
               </div>
             </div>
           </div>
-          <div></div>
         </div>
 
         {role === "admin" || role === "moderator" ? (
@@ -180,34 +179,37 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
             />
           </>
         ) : null}
-
-        <ul>
-          {product.comments?.map((item) => (
-            <Comment
-              key={item.id}
-              comment={item}
-            />
-          ))}
-        </ul>
-        <textarea
-          value={comment}
-          placeholder="leave your comment"
-          onChange={(e) => setComment(e.target.value)}
-        />
-        <button
-          type="button"
-          onClick={() => handleCommentAdd()}>
-          Submit
-        </button>
+        <div className={styles.productDetailContainer}>
+          <ul className={styles.commentWrapper}>
+            {product.comments?.map((item) => (
+              <Comment
+                key={item.id}
+                comment={item}
+              />
+            ))}
+          </ul>
+          <textarea
+            value={comment}
+            placeholder="leave your comment"
+            onChange={(e) => setComment(e.target.value)}
+          />
+          <button
+            type="button"
+            onClick={() => handleCommentAdd()}>
+            Submit
+          </button>
+        </div>
+        {product.owner.id === myPost._id && (
+          <ProductVerifyView post={product} />
+        )}
+        {isModalOpen && (
+          <Modal
+            isOpen={true}
+            onClose={() => setIsModalOpen(false)}>
+            <ToExchangeList />
+          </Modal>
+        )}
       </div>
-      {product.owner.id === myPost._id && <ProductVerifyView post={product} />}
-      {isModalOpen && (
-        <Modal
-          isOpen={true}
-          onClose={() => setIsModalOpen(false)}>
-          <ToExchangeList />
-        </Modal>
-      )}
     </>
   );
 };

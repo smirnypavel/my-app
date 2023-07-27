@@ -3,8 +3,15 @@
 .layout {
   display: flex;
   flex-direction: column;
-  min-width: 1176px;
+  width: 360px;
   min-height: 100vh;
+
+  @media screen and (min-width: 768px) {
+    width: 680px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 1176px;
+  }
 }
 
 .content {

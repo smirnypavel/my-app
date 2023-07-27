@@ -10,12 +10,46 @@
   background-color: rgba(148, 147, 147, 0.214);
   padding: 10px;
   border-radius: 10px;
+  width: 400px;
+  position: relative;
+}
+.deleteButton {
+  border: none;
+  background-color: transparent;
+  font-size: 25px;
+  position: absolute;
+  right: 0;
+  top: 5px;
+}
+.answerButton {
+  border: none;
+  background-color: white;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+}
+.inputReplyWrapper {
+  display: flex;
+}
+.inputReply {
+  margin-left: 50px;
+  border: 1px, solid rgba(148, 147, 147, 0.214);
+  border-radius: 10px;
+  width: 300px;
+}
+.replyButton {
+  border: 1px, solid rgba(148, 147, 147, 0.214);
+  border-radius: 10px;
+  background-color: #46c578;
+  color: #fff;
 }
 
 .answerList {
   list-style: none;
 }
 .answer {
+  width: 400px;
+  margin-left: 20px;
   display: flex;
   align-items: center;
   background-color: rgba(148, 147, 147, 0.214);

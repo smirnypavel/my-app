@@ -1,16 +1,25 @@
 import React, { useState } from "react";
 import { IComment } from "../../redux/posts/postsReducer";
+import { MdDeleteForever } from "react-icons/md";
 import Image from "next/image";
 import styles from "../../styles/components/Comments/Comments.module.css";
 import { useAppDispatch } from "../../redux/hooks";
-import { replyPostComment } from "../../redux/posts/postsOperations";
+import {
+  deletePostComment,
+  replyPostComment,
+} from "../../redux/posts/postsOperations";
 import { useRouter } from "next/router";
 
 const Comment = ({ comment }: { comment: IComment }) => {
+  const [isShowInput, setIsShowInput] = useState(false);
   const router = useRouter();
   const { id } = router.query;
   const dispatch = useAppDispatch();
   const [commentReply, setCommentReply] = useState("");
+
+  const handleOpenAnswer = () => {
+    setIsShowInput((prevState) => !prevState);
+  };
 
   const handleCommentAdd = async () => {
     try {
@@ -23,9 +32,15 @@ const Comment = ({ comment }: { comment: IComment }) => {
           })
         );
         setCommentReply("");
+        setIsShowInput(false);
       }
     } catch (e) {
       console.error("An error occurred:", e);
+    }
+  };
+  const handleDeleteComment = () => {
+    if (typeof id === "string") {
+      dispatch(deletePostComment({ postId: id, commentId: comment.id }));
     }
   };
   return (
@@ -47,17 +62,36 @@ const Comment = ({ comment }: { comment: IComment }) => {
             <h6>{comment.user.firstName}</h6>
           </div>
           <p>{comment.text}</p>
-          <textarea
-            value={commentReply}
-            placeholder="leave your comment"
-            onChange={(e) => setCommentReply(e.target.value)}
-          />
           <button
-            type="button"
-            onClick={() => handleCommentAdd()}>
-            Submit
+            onClick={handleOpenAnswer}
+            className={styles.answerButton}>
+            {isShowInput ? "close answer" : "add answer"}
+          </button>
+
+          <button
+            onClick={handleDeleteComment}
+            className={styles.deleteButton}>
+            <MdDeleteForever />
           </button>
         </div>
+        {isShowInput && (
+          <>
+            <div className={styles.inputReplyWrapper}>
+              <textarea
+                value={commentReply}
+                placeholder="leave your answer"
+                onChange={(e) => setCommentReply(e.target.value)}
+                className={styles.inputReply}
+              />
+              <button
+                className={styles.replyButton}
+                type="button"
+                onClick={() => handleCommentAdd()}>
+                Submit
+              </button>
+            </div>
+          </>
+        )}
         <ul>
           {comment.answer.map((answer) => (
             <li

@@ -199,6 +199,24 @@ export const replyPostComment = createAsyncThunk<
     }
   }
 );
+export const deletePostComment = createAsyncThunk<
+  MyPostResponse,
+  { postId: string; commentId: string },
+  { rejectValue: string }
+>("posts/deletePostComment", async ({ postId, commentId }, thunkAPI) => {
+  const initialToken = localStorage.getItem("refreshToken");
+  if (initialToken) {
+    setAuthHeader(initialToken);
+  }
+  try {
+    const { data } = await axios.delete(
+      `/posts/comments/${postId}/${commentId}`
+    );
+    return data;
+  } catch (error: any) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});
 
 ///////////////////// EXCHANGE////////////////////////////////
 export const offerPostExchange = createAsyncThunk<
