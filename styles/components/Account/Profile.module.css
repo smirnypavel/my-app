@@ -11,6 +11,8 @@
     display: flex;
   }
   @media screen and (min-width: 1280px) {
+    display: flex;
+    flex-direction: row;
   }
 }
 .imageWrapper {
@@ -22,6 +24,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  @media screen and (min-width: 768px) {
+    width: 150px;
+    height: 250px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 250px;
+    height: 300px;
+  }
 }
 
 .profileInfo {
@@ -30,9 +40,11 @@
   gap: 30px;
   @media screen and (min-width: 768px) {
     display: flex;
-    margin-left: 50px;
+    margin-left: 10px;
+    gap: 20px;
   }
   @media screen and (min-width: 1280px) {
+    margin-left: 50px;
   }
 }
 .profileInfoList {
@@ -55,9 +67,10 @@
   line-height: 100%; /* 16px */
   margin-bottom: 20px;
   @media screen and (min-width: 768px) {
-    width: 288px;
+    width: 188px;
   }
   @media screen and (min-width: 1280px) {
+    width: 288px;
   }
 }
 .profileInfoItemText {
@@ -65,7 +78,7 @@
 }
 .buttonUpdateProfile {
   margin-top: 23px;
-  width: 288px;
+  width: 188px;
   height: 50px;
   display: inline-flex;
   align-items: center;
@@ -76,6 +89,12 @@
   color: #46c578;
   text-decoration: none;
   transition: background-color 0.3s, color 0.3s;
+  @media screen and (min-width: 768px) {
+    width: 188px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 288px;
+  }
 }
 
 .buttonUpdateProfile:hover {
