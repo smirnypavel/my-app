@@ -3,6 +3,7 @@
   background-color: #fff;
   padding: 10px;
   border-radius: 10px;
+  width: 100%;
 }
 .comment {
   display: flex;
@@ -11,7 +12,6 @@
   background-color: rgba(148, 147, 147, 0.214);
   padding: 10px;
   border-radius: 10px;
-  width: 600px;
   position: relative;
 }
 .deleteButton {
@@ -52,7 +52,7 @@
   list-style: none;
 }
 .answer {
-  width: 575px;
+  max-width: 575px;
   margin-left: 30px;
   display: flex;
   align-items: center;
