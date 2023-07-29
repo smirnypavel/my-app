@@ -22,7 +22,7 @@ const Profile: React.FC = () => {
 
   return (
     <div className={styles.profileContainer}>
-      <h1>Ваш профиль</h1>
+      <h1>Your Profile</h1>
       <div className={styles.profile}>
         <div className={styles.imageWrapper}>
           <Image

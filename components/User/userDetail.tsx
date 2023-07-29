@@ -69,27 +69,59 @@ const UserDetail: React.FC<UserDetailProps> = () => {
 
   return (
     <div>
-      <div className={styles.imageWrapper}>
-        <Image
-          src={avatarURL}
-          alt="avatar"
-          width={150}
-          height={200}
-          style={{
-            objectFit: "cover",
-            margin: "auto",
-          }}
-          priority
-        />
+      <div className={styles.userProfileContainer}>
+        <div className={styles.profile}>
+          <div className={styles.imageWrapper}>
+            <Image
+              src={avatarURL}
+              alt="avatar"
+              width={250}
+              height={300}
+              style={{
+                objectFit: "cover",
+                margin: "auto",
+              }}
+              priority
+            />
+          </div>
+          <div className={styles.profileInfo}>
+            <ul className={styles.profileInfoList}>
+              <label>First Name</label>
+              <li className={styles.profileInfoItem}>
+                <h3 className={styles.profileInfoItemText}>{user.firstName}</h3>
+              </li>
+              <label>Phone</label>
+              <li className={styles.profileInfoItem}>
+                <p className={styles.profileInfoItemText}> {user.phone}</p>
+              </li>
+
+              <label>Email</label>
+              <li className={styles.profileInfoItem}>
+                {" "}
+                <p className={styles.profileInfoItemText}> {user.email}</p>
+              </li>
+            </ul>
+            <ul>
+              <label>Last Name</label>
+              <li className={styles.profileInfoItem}>
+                {" "}
+                <h3 className={styles.profileInfoItemText}>{user.lastName}</h3>
+              </li>
+
+              <label>Location</label>
+              <li className={styles.profileInfoItem}>
+                {" "}
+                <p className={styles.profileInfoItemText}> {user.location}</p>
+              </li>
+              <label>Registration</label>
+              <li className={styles.profileInfoItem}>
+                {" "}
+                <p className={styles.profileInfoItemText}> {user.createdAt}</p>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <p>{user.firstName}</p>
-      <p>{user.lastName}</p>
-      <p>{user.email}</p>
-      <p>{user.isOnline}</p>
-      <p>{user.location}</p>
-      <p>{user.phone}</p>
-      <p>{user.role}</p>
-      <p>{user.createdAt}</p>
       {user.ban ? <p>забанин</p> : <p>разрешенный</p>}
       {role === "admin" && (
         <div className={styles.moderatorContent}>

@@ -15,6 +15,7 @@
     "@types/i18next": "^13.0.0",
     "axios": "^1.4.0",
     "babel-preset-next": "^1.4.0",
+    "date-fns": "^2.30.0",
     "dotenv": "^16.3.1",
     "i18next": "^23.2.8",
     "i18next-browser-languagedetector": "^7.1.0",
