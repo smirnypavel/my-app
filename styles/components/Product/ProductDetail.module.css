@@ -2,6 +2,7 @@
   margin-top: 36px;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 .productDetail {
   width: 100%;
@@ -94,6 +95,7 @@
   background: #46c578;
   color: #fff;
 }
+
 .commentWrapper {
   display: flex;
   flex-direction: column;
@@ -101,8 +103,6 @@
   align-items: center;
 }
 
-.hidePostMassage {
-}
 .hidePostMassageButton {
   display: flex;
   justify-content: space-between;
@@ -110,4 +110,41 @@
 .hidePostMassageTitle {
   margin-top: 30px;
   margin-bottom: 30px;
+}
+.hidePostButton {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  width: 120px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  border: 1.5px solid #46c578;
+  background: #fff;
+  color: #46c578;
+  text-decoration: none;
+  font-size: 16px;
+  transition: background-color 0.3s, color 0.3s;
+}
+.hidePostButton:hover {
+  background: #46c578;
+  color: #fff;
+}
+.inputCommentWrapper {
+  display: flex;
+  justify-content: center;
+}
+.inputComment {
+  width: 550px;
+  height: 50px;
+  border: 1px, solid rgba(148, 147, 147, 0.214);
+  border-radius: 10px;
+}
+.inputCommentButton {
+  border: 1px, solid rgba(148, 147, 147, 0.214);
+  border-radius: 10px;
+  background-color: #46c578;
+  color: #fff;
 }

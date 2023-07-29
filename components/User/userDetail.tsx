@@ -14,7 +14,7 @@ import styles from "../../styles/components/User/UserDetail.module.css";
 import { getRole } from "../../redux/auth/authSelectors";
 import photoNotFound from "../../public/photoNotFound.png";
 import CustomDropdown from "../UI/CustomDropdown";
-import UserProduct from "../Account/UserProduct";
+import UserProduct from "./UserProduct";
 
 interface UserDetailProps {
   userId: string;
@@ -105,8 +105,8 @@ const UserDetail: React.FC<UserDetailProps> = () => {
           />
         </div>
       )}
-      <p>список обьявлений</p>
-      <UserProduct />
+      <p>user product list</p>
+      {typeof id === "string" && <UserProduct userId={id} />}
     </div>
   );
 };

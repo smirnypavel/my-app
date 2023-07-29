@@ -7,6 +7,7 @@ import Button from "../../UI/Button";
 import { useRouter } from "next/router";
 import { useAppDispatch } from "../../../redux/hooks";
 import { offerPostExchange } from "../../../redux/posts/postsOperations";
+import toast from "react-hot-toast";
 
 const ToExchangeList = () => {
   const [posts, setPosts] = useState<IPosts[]>([]);
@@ -32,6 +33,7 @@ const ToExchangeList = () => {
       if (typeof id === "string") {
         await dispatch(offerPostExchange({ postId: id, offerId }));
       }
+      toast.success("You have successfully made an offer");
     } catch (e) {
       console.error("An error occurred:", e);
     }

@@ -9,6 +9,7 @@ import {
   hidePost,
   updatePostStatus,
 } from "../../../redux/posts/postsOperations";
+import toast from "react-hot-toast";
 import { getPost } from "../../../redux/posts/postsSelectors";
 import productNotFound from "../../../public/productNotFound.jpeg";
 import { getRole, getUser } from "../../../redux/auth/authSelectors";
@@ -42,6 +43,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
 
   const isAccountPage = router.pathname === "/admin";
   const updateProductLink = `/product/${productId}/update`;
+  const active = product.isActive;
 
   const openModal = () => {
     console.log("click");
@@ -102,6 +104,8 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
     try {
       if (typeof id === "string" && product) {
         await dispatch(hidePost(product._id));
+        toast.success("You have successfully hide post");
+        setIsModalHidePostOpen(false);
       }
     } catch (e) {
       console.error("An error occurred:", e);
@@ -208,19 +212,30 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
               />
             ))}
           </ul>
-          <textarea
-            value={comment}
-            placeholder="leave your comment"
-            onChange={(e) => setComment(e.target.value)}
-          />
-          <button
-            type="button"
-            onClick={() => handleCommentAdd()}>
-            Submit
-          </button>
+          <div className={styles.inputCommentWrapper}>
+            <textarea
+              value={comment}
+              placeholder="leave your comment"
+              onChange={(e) => setComment(e.target.value)}
+              className={styles.inputComment}
+            />
+            <button
+              className={styles.inputCommentButton}
+              type="button"
+              onClick={() => handleCommentAdd()}>
+              Submit
+            </button>
+          </div>
         </div>
         {product.owner.id === myPost._id && (
-          <ProductVerifyView post={product} />
+          <>
+            <ProductVerifyView post={product} />
+            <button
+              onClick={openModalHide}
+              className={styles.hidePostButton}>
+              {active ? "hide post" : "publish post"}
+            </button>
+          </>
         )}
         {isModalOpen && (
           <Modal
@@ -230,7 +245,6 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
           </Modal>
         )}
       </div>
-      <button onClick={openModalHide}>hide post</button>
       {isModalHidePostOpen && (
         <Modal
           isOpen={true}
@@ -240,7 +254,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
               Do you want to hide the post?
             </h3>
             <div className={styles.hidePostMassageButton}>
-              <Button>yes</Button>
+              <Button onClick={handleHidePost}>yes</Button>
               <Button onClick={closeModalHide}>no</Button>
             </div>
           </div>
