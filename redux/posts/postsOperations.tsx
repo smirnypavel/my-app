@@ -137,7 +137,23 @@ export const hidePost = createAsyncThunk(
       const { data } = await axios.patch(`/posts/active/${postId}`);
       return data;
     } catch (error: any) {
-      toast.error("An error occurred while fetching product data");
+      toast.error("failed to Hide post");
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+export const deletePost = createAsyncThunk(
+  "posts/deletePost",
+  async (postId: string, thunkAPI) => {
+    const initialToken = localStorage.getItem("refreshToken");
+    if (initialToken) {
+      setAuthHeader(initialToken);
+    }
+    try {
+      const { data } = await axios.delete(`/posts/${postId}`);
+      return data;
+    } catch (error: any) {
+      toast.error("failed to delete post");
       return thunkAPI.rejectWithValue(error.message);
     }
   }

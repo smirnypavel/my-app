@@ -8,6 +8,7 @@ import {
   offerPostExchange,
   deletePostComment,
   hidePost,
+  deletePost,
 } from "./postsOperations";
 
 export interface IOwner {
@@ -20,7 +21,7 @@ export interface IOwner {
 }
 export interface IComment {
   text: string;
-  id: string;
+  _id: string;
   user: User;
   answer: Answer[];
 }
@@ -131,6 +132,17 @@ export const postsSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(hidePost.fulfilled, (state, action) => {
+        state.post = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(deletePost.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(deletePost.rejected, (state, action) => {
+        state.error = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(deletePost.fulfilled, (state, action) => {
         state.post = action.payload;
         state.isLoading = false;
       })

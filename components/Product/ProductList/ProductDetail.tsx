@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { useAppDispatch } from "../../../redux/hooks";
 import {
   addPostComment,
+  deletePost,
   getPostById,
   hidePost,
   updatePostStatus,
@@ -33,6 +34,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalHidePostOpen, setIsModalHidePostOpen] = useState(false);
+  const [isModalDeletePostOpen, setIsModalDeletePostOpen] = useState(false);
   const [comment, setComment] = useState("");
   const product = useSelector(getPost);
   const myPost = useSelector(getUser);
@@ -46,7 +48,6 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
   const active = product.isActive;
 
   const openModal = () => {
-    console.log("click");
     setIsModalOpen(true);
   };
   const closeModal = () => {
@@ -54,11 +55,17 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
   };
 
   const openModalHide = () => {
-    console.log("click");
     setIsModalHidePostOpen(true);
   };
   const closeModalHide = () => {
     setIsModalHidePostOpen(false);
+  };
+
+  const openModalDelete = () => {
+    setIsModalDeletePostOpen(true);
+  };
+  const closeModalDelete = () => {
+    setIsModalDeletePostOpen(false);
   };
 
   useEffect(() => {
@@ -110,6 +117,22 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
     } catch (e) {
       console.error("An error occurred:", e);
     }
+  };
+  const handleDeletePost = async () => {
+    try {
+      if (typeof id === "string" && product) {
+        await dispatch(deletePost(product._id));
+        setIsModalHidePostOpen(false);
+        router.back();
+        toast.success("You have successfully delete post");
+        // Вернуться назад после успешного удаления
+      }
+    } catch (e) {
+      console.error("An error occurred:", e);
+    }
+  };
+  const handleBack = () => {
+    router.back();
   };
 
   const productPhoto = product.img || productNotFound;
@@ -207,7 +230,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
           <ul className={styles.commentWrapper}>
             {product.comments?.map((item) => (
               <Comment
-                key={item.id}
+                key={item._id}
                 comment={item}
               />
             ))}
@@ -235,8 +258,18 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
               className={styles.hidePostButton}>
               {active ? "hide post" : "publish post"}
             </button>
+            <button
+              onClick={openModalDelete}
+              className={styles.deletePostButton}>
+              Delete Post
+            </button>
           </>
         )}
+        <button
+          onClick={handleBack}
+          className={styles.backButton}>
+          {" <<< "} Back
+        </button>
         {isModalOpen && (
           <Modal
             isOpen={true}
@@ -256,6 +289,21 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
             <div className={styles.hidePostMassageButton}>
               <Button onClick={handleHidePost}>yes</Button>
               <Button onClick={closeModalHide}>no</Button>
+            </div>
+          </div>
+        </Modal>
+      )}
+      {isModalDeletePostOpen && (
+        <Modal
+          isOpen={true}
+          onClose={() => setIsModalDeletePostOpen(false)}>
+          <div>
+            <h3 className={styles.hidePostMassageTitle}>
+              Do you want to Delete the post?
+            </h3>
+            <div className={styles.hidePostMassageButton}>
+              <Button onClick={handleDeletePost}>yes</Button>
+              <Button onClick={closeModalDelete}>no</Button>
             </div>
           </div>
         </Modal>

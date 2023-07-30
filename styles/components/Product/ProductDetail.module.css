@@ -9,7 +9,7 @@
 
   @media screen and (min-width: 768px) {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
   }
   @media screen and (min-width: 1280px) {
   }
@@ -131,6 +131,48 @@
 .hidePostButton:hover {
   background: #46c578;
   color: #fff;
+}
+.deletePostButton {
+  position: absolute;
+  right: 0px;
+  top: 40px;
+  width: 120px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  border: 1.5px solid #46c578;
+  background: #fff;
+  color: #46c578;
+  text-decoration: none;
+  font-size: 16px;
+  transition: background-color 0.3s, color 0.3s;
+}
+.deletePostButton:hover {
+  background: #c54646;
+  color: rgb(1, 1, 1);
+  border: 1.5px solid #000000;
+}
+.backButton {
+  position: absolute;
+  top: -30px;
+  left: -20px;
+  width: 120px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  border: none;
+  background: #fff;
+  color: #46c578;
+  text-decoration: none;
+  font-size: 16px;
+  transition: background-color 0.3s, color 0.3s;
+}
+.backButton:hover {
+  color: rgb(1, 1, 1);
 }
 .inputCommentWrapper {
   display: flex;

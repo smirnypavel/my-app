@@ -21,17 +21,17 @@ const UserProduct = () => {
 
   return (
     <>
-      <div className={styles2.statContainer}>
-        <p>Список моих товаров</p>
-        <div className={styles.itemList}>
-          {post.map((item: { _id: React.Key | null | undefined }) => (
-            <ItemCard
-              key={item._id}
-              item={item}
-            />
-          ))}
-        </div>
+      {/* <div className={styles2.statContainer}> */}
+      {/* <p>Список моих товаров</p> */}
+      <div className={styles.itemList}>
+        {post.map((item: { _id: React.Key | null | undefined }) => (
+          <ItemCard
+            key={item._id}
+            item={item}
+          />
+        ))}
       </div>
+      {/* </div> */}
     </>
   );
 };
