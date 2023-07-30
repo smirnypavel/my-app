@@ -21,7 +21,7 @@ export interface IOwner {
 }
 export interface IComment {
   text: string;
-  _id: string;
+  id: string;
   user: User;
   answer: Answer[];
 }

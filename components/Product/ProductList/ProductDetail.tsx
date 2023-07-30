@@ -230,7 +230,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
           <ul className={styles.commentWrapper}>
             {product.comments?.map((item) => (
               <Comment
-                key={item._id}
+                key={item.id}
                 comment={item}
               />
             ))}
