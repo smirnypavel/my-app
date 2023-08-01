@@ -1,21 +1,38 @@
+import React, { useState } from "react";
+// import { useRouter } from "next/router";
 import Link from "next/link";
-import React from "react";
 import styles from "../../styles/Page/ItemPage.module.css";
 
-export default function SearchBar() {
+export default function SearchBar({
+  onSearch,
+}: {
+  onSearch: (term: string) => void;
+}) {
+  const [searchTerm, setSearchTerm] = useState("");
+
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    onSearch(searchTerm);
   };
+
+  const clearSearch = () => {
+    setSearchTerm("");
+    onSearch(""); // Отправляем пустую строку вместо поискового запроса
+  };
+
   return (
     <>
       <div className={styles.searchContainer}>
         <form
           action=""
-          className={styles.searchForm}>
+          className={styles.searchForm}
+          onSubmit={onSubmit}>
           <input
-            type="search"
-            placeholder="Search...."
+            type="text"
+            placeholder="Поиск...."
             className={styles.search}
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
           />
           <button
             type="submit"
@@ -52,6 +69,7 @@ export default function SearchBar() {
               </defs>
             </svg>
           </button>
+          {searchTerm.length > 0 && <button onClick={clearSearch}>X</button>}
         </form>
         <div className={styles.container}>
           <Link
@@ -59,42 +77,6 @@ export default function SearchBar() {
             className={styles.linkAdd}>
             Add your product
           </Link>
-
-          <div className={styles.tabs}>
-            <input
-              type="radio"
-              id="radio-1"
-              name="tabs"
-              // checked={true}
-            />
-            <label
-              htmlFor="radio-1"
-              className={styles.tab}>
-              Hello
-              <span className={styles.notification}>2</span>
-            </label>
-            <input
-              type="radio"
-              id="radio-2"
-              name="tabs"
-            />
-            <label
-              htmlFor="radio-2"
-              className={styles.tab}>
-              UI
-            </label>
-            <input
-              type="radio"
-              id="radio-3"
-              name="tabs"
-            />
-            <label
-              htmlFor="radio-3"
-              className={styles.tab}>
-              World
-            </label>
-            <span className={styles.glider}></span>
-          </div>
         </div>
       </div>
     </>

@@ -112,13 +112,13 @@ export const getPostById = createAsyncThunk(
 );
 export const getView = createAsyncThunk(
   "posts/getView",
-  async (postId: string, thunkAPI) => {
+  async (id: string, thunkAPI) => {
     const initialToken = localStorage.getItem("refreshToken");
     if (initialToken) {
       setAuthHeader(initialToken);
     }
     try {
-      const { data } = await axios.patch(`/posts/view/${postId}`);
+      const { data } = await axios.patch(`/posts/view/${id}`);
       return data;
     } catch (error: any) {
       toast.error("An error occurred while fetching product data");

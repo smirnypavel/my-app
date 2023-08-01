@@ -15,7 +15,6 @@
 }
 .itemCard:hover {
   box-shadow: 0px 0px 10px 2px rgba(2, 3, 4, 0.17);
-  cursor: pointer;
 }
 .favoritesIcon {
   position: absolute;
@@ -28,9 +27,11 @@
   align-items: center;
   right: 10px;
   top: 10px;
+  cursor: pointer;
 }
 .favoritesIcon svg {
   fill: #070721; /* Задайте желаемый цвет иконки здесь */
+  cursor: pointer;
 }
 .favoritesIconActive {
   fill: rgb(255, 0, 0);
@@ -44,9 +45,11 @@
   align-items: center;
   right: 10px;
   top: 10px;
+  cursor: pointer;
 }
 .favoritesIconActive svg {
   fill: rgb(255, 0, 0);
+  cursor: pointer;
 }
 
 .favoritesIcon:hover,
@@ -57,6 +60,10 @@
   white-space: nowrap; /* Запретить перенос слов на новую строку */
   overflow: hidden;
   text-overflow: ellipsis;
+  cursor: pointer;
+}
+.imageWrapper {
+  cursor: pointer;
 }
 .ownerInfo {
   display: flex;

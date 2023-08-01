@@ -7,6 +7,7 @@ import {
   addPostComment,
   deletePost,
   getPostById,
+  getView,
   hidePost,
   updatePostStatus,
 } from "../../../redux/posts/postsOperations";
@@ -72,6 +73,16 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
     try {
       if (typeof id === "string") {
         dispatch(getPostById(id));
+      }
+    } catch (e) {
+      return;
+    }
+  }, [id]);
+
+  useEffect(() => {
+    try {
+      if (typeof id === "string") {
+        dispatch(getView(id));
       }
     } catch (e) {
       return;

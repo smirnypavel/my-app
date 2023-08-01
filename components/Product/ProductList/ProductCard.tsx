@@ -82,9 +82,14 @@ const ItemCard: React.FC<ItemCardProps> = ({ item }) => {
           objectFit: "cover",
           margin: "auto",
         }}
+        className={styles.imageWrapper}
         priority
       />
-      <h3 className={styles.cardTitle}>{item.title}</h3>
+      <h3
+        className={styles.cardTitle}
+        onClick={handleLinkClick}>
+        {item.title}
+      </h3>
       <div className={styles.ownerInfo}>
         <Link
           href="/user/[id]"
