@@ -79,6 +79,8 @@
 /* Webkit-based browsers */
 .productInfoItemDescription::-webkit-scrollbar {
   width: 10px; /* Width of the scrollbar */
+  height: 30px;
+  margin: 10px;
 }
 
 .productInfoItemDescription::-webkit-scrollbar-thumb {
@@ -94,7 +96,7 @@
 }
 
 .productInfoItemDescription::-webkit-scrollbar-track {
-  background-color: #a7aed2; /* Color of the scrollbar track */
+  background-color: transparent; /* Color of the scrollbar track */
   border-radius: 10px; /* Border radius of the scrollbar thumb */
 }
 
