@@ -75,6 +75,28 @@
   /* overflow-y: scroll; */
   padding: 10px;
 }
+
+/* Скрыть стандартные полосы прокрутки */
+.productInfoItemDescription::-webkit-scrollbar {
+  display: none;
+}
+
+/* Стилизация полосы прокрутки */
+.productInfoItemDescription {
+  scrollbar-width: thin; /* Толщина полосы прокрутки */
+  scrollbar-color: #f2f2f2 #999; /* Цвет полосы прокрутки и ее трека */
+}
+
+/* При наведении на полосу прокрутки */
+.productInfoItemDescription::-webkit-scrollbar-thumb:hover {
+  background-color: #666; /* Изменение цвета полосы прокрутки при наведении */
+}
+
+/* При активации полосы прокрутки (нажатие) */
+.productInfoItemDescription::-webkit-scrollbar-thumb:active {
+  background-color: #444; /* Изменение цвета полосы прокрутки при активации (нажатии) */
+}
+
 .buttonUpdateProduct {
   margin-top: 15px;
   width: 288px;
