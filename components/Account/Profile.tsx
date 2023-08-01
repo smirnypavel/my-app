@@ -6,18 +6,28 @@ import { useSelector } from "react-redux";
 import { IUserAuth } from "../../redux/auth/authReducer";
 import { getUser } from "../../redux/auth/authSelectors";
 import photoNotFound from "../../public/photoNotFound.png";
+import { differenceInDays, parseISO } from "date-fns";
 
 const Profile: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [day, setDay] = useState<number>(0);
+
   const user: IUserAuth = useSelector(getUser);
 
   const openModal = () => {
     setIsModalOpen(true);
   };
-
   const closeModal = () => {
     setIsModalOpen(false);
   };
+  console.log(user.createdAt);
+
+  // const dateRegistration = parseISO(user.createdAt); // Assuming user.createdAt is in ISO 8601 format
+  // const today = new Date(); // Current date
+
+  // // Calculate the difference in days between the current date and registration date
+  // const quantityDayRegistry = differenceInDays(today, dateRegistration);
+  // setDay(quantityDayRegistry);
   const avatarURL = user.avatarURL || photoNotFound; // Используйте photoNotFound, если avatarURL не определен
 
   return (
@@ -64,6 +74,11 @@ const Profile: React.FC = () => {
             <li className={styles.profileInfoItem}>
               {" "}
               <p className={styles.profileInfoItemText}> {user.location}</p>
+            </li>
+            <label>Registration</label>
+            <li className={styles.profileInfoItem}>
+              {" "}
+              <p className={styles.profileInfoItemText}> Day</p>
             </li>
             <li>
               <Link

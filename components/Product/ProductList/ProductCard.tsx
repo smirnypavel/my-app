@@ -10,9 +10,10 @@ import { getUser } from "../../../redux/auth/authSelectors";
 import axios from "axios";
 import ProductVerifyView from "../ProductVerifyView";
 import { useRouter } from "next/router";
+import { IPosts } from "../../../redux/posts/postsReducer";
 
 interface ItemCardProps {
-  item: any; // Assuming you have an Item type defined
+  item: IPosts; // Assuming you have an Item type defined
 }
 
 const ItemCard: React.FC<ItemCardProps> = ({ item }) => {
@@ -72,24 +73,22 @@ const ItemCard: React.FC<ItemCardProps> = ({ item }) => {
           </svg>
         </div>
       )}
-      <Image
-        src={productPhoto}
-        alt=""
-        width={150}
-        height={150}
-        onClick={handleLinkClick}
-        style={{
-          objectFit: "cover",
-          margin: "auto",
-        }}
-        className={styles.imageWrapper}
-        priority
-      />
-      <h3
-        className={styles.cardTitle}
-        onClick={handleLinkClick}>
-        {item.title}
-      </h3>
+
+      <div onClick={handleLinkClick}>
+        <Image
+          src={productPhoto}
+          alt=""
+          width={150}
+          height={150}
+          style={{
+            objectFit: "cover",
+            margin: "auto",
+          }}
+          className={styles.imageWrapper}
+          priority
+        />
+        <h3 className={styles.cardTitle}>{item.title}</h3>
+      </div>
       <div className={styles.ownerInfo}>
         <Link
           href="/user/[id]"
@@ -112,12 +111,13 @@ const ItemCard: React.FC<ItemCardProps> = ({ item }) => {
         <p className={styles.views}>
           <MdVisibility className={styles.viewsIcon} /> {item.views}
         </p>
-        <Link
+        <p>{item.createdAt}</p>
+        {/* <Link
           href="/product/[id]"
           as={`/product/${item._id}`}
           className={styles.button}>
           View
-        </Link>
+        </Link> */}
       </div>
     </div>
   );

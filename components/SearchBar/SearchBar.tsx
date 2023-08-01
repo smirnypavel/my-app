@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-// import { useRouter } from "next/router";
+import { MdClose } from "react-icons/md";
+
 import Link from "next/link";
 import styles from "../../styles/Page/ItemPage.module.css";
 
@@ -69,13 +70,19 @@ export default function SearchBar({
               </defs>
             </svg>
           </button>
-          {searchTerm.length > 0 && <button onClick={clearSearch}>X</button>}
+          {searchTerm.length > 0 && (
+            <button
+              className={styles.clearSearchButton}
+              onClick={clearSearch}>
+              <MdClose />
+            </button>
+          )}
         </form>
         <div className={styles.container}>
           <Link
             href={"./product/create"}
             className={styles.linkAdd}>
-            Add your product
+            Add product
           </Link>
         </div>
       </div>
