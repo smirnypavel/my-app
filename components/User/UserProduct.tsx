@@ -27,7 +27,7 @@ const UserProduct: React.FC<IUserProduct> = ({ userId }) => {
     <>
       <div className={styles2.statContainer}>
         <div className={styles.itemList}>
-          {post.map((item: { _id: React.Key | null | undefined }) => (
+          {post.map((item: IPosts) => (
             <ItemCard
               key={item._id}
               item={item}
