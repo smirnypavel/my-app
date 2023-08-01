@@ -23,7 +23,7 @@ const ModerateProduct = () => {
       <div className={styles2.statContainer}>
         <p>Список товаров на проверку</p>
         <div className={styles.itemList}>
-          {post.map((item: { _id: React.Key | null | undefined }) => (
+          {post.map((item: IPosts) => (
             <ItemCard
               key={item._id}
               item={item}
