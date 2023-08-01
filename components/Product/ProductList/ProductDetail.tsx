@@ -216,11 +216,6 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
                   placeat! At odio accusamus libero dolorem voluptatibus
                   aspernatur, beatae doloribus tempora magnam unde illum,
                   voluptate dignissimos officia perspiciatis quaerat nesciunt.
-                  Porro explicabo ducimus commodi provident reprehenderit ut
-                  laboriosam tempora, suscipit iusto. Saepe nesciunt, sunt
-                  dolorum minima eligendi doloribus corrupti maiores iste
-                  expedita quidem, animi incidunt ratione fugiat fuga. Ipsam
-                  voluptas ab quae repudiandae, quod dolorum cum nulla omnis
                 </p>
               </div>
             </div>
