@@ -54,25 +54,31 @@ const CardExchange: React.FC<CardExchangeProps> = ({ item }) => {
               <button
                 className={styles2.arrowButtonLeft}
                 onClick={() =>
-                  setCurrentOfferIndex(
-                    (prevIndex) =>
-                      (prevIndex + item.toExchange!.length - 1) %
-                      item.toExchange!.length
+                  setCurrentOfferIndex((prevIndex) =>
+                    prevIndex === 0
+                      ? item.toExchange!.length - 1
+                      : prevIndex - 1
                   )
-                }>
+                }
+                disabled={currentOfferIndex === 0} // Отключаем левую кнопку, если текущий индекс равен 0
+              >
                 <FiArrowLeftCircle />
               </button>
               <MeOfferViewList
                 offer={item.toExchange[currentOfferIndex]}
-                onClose={closeModal} // Pass the onClose handler to MeOfferViewList
+                onClose={closeModal}
               />
               <button
                 className={styles2.arrowButtonRight}
                 onClick={() =>
-                  setCurrentOfferIndex(
-                    (prevIndex) => (prevIndex + 1) % item.toExchange!.length
+                  setCurrentOfferIndex((prevIndex) =>
+                    prevIndex === item.toExchange!.length - 1
+                      ? 0
+                      : prevIndex + 1
                   )
-                }>
+                }
+                disabled={currentOfferIndex === item.toExchange!.length - 1} // Отключаем правую кнопку, если текущий индекс равен последнему элементу
+              >
                 <FiArrowRightCircle />
               </button>
             </div>

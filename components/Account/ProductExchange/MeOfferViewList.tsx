@@ -11,7 +11,7 @@ interface MeOfferViewListProps {
 
 const MeOfferViewList: React.FC<MeOfferViewListProps> = ({ offer }) => {
   return (
-    <div>
+    <div className={styles.MeOfferViewListWrapper}>
       <h4 className={styles.offerDataTitle}>{offer.data.title}</h4>
       <Image
         src={offer.data.img}
@@ -36,8 +36,10 @@ const MeOfferViewList: React.FC<MeOfferViewListProps> = ({ offer }) => {
         ipsum ad et, maiores nostrum provident! Eaque dolores nemo atque
         cupiditate.
       </p>
-      <Button>Rejected</Button>
-      <Button>Agree</Button>
+      <div className={styles.MeOfferViewListButton}>
+        <Button>Rejected</Button>
+        <Button>Agree</Button>
+      </div>
     </div>
   );
 };

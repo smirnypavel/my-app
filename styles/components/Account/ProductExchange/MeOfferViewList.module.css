@@ -1,6 +1,19 @@
+.MeOfferViewListWrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
 .offerDataTitle {
   text-align: center;
 }
 .offerDataText {
   width: 300px;
+}
+
+.MeOfferViewListButton {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
 }
