@@ -77,9 +77,9 @@
 }
 
 /* Скрыть стандартные полосы прокрутки */
-.productInfoItemDescription::-webkit-scrollbar {
+/* .productInfoItemDescription::-webkit-scrollbar {
   display: none;
-}
+} */
 
 /* Стилизация полосы прокрутки */
 .productInfoItemDescription {
