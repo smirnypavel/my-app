@@ -24,8 +24,8 @@ const MeOfferViewList: React.FC<MeOfferViewListProps> = ({ offer }) => {
         }}
         priority
       />
-      <p>{offer.data.owner.firstName}</p>
-      <p>{offer.data.owner.location}</p>
+      <p>{offer.user.firstName}</p>
+      <p>{offer.user.location}</p>
       <p className={styles.offerDataText}>
         {offer.data.description} Lorem ipsum, dolor sit amet consectetur
         adipisicing elit. Id recusandae quos officia architecto tempora porro
