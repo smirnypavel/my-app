@@ -133,7 +133,7 @@ const SettingsForm: React.FC = () => {
           onSubmit={handleSubmit}>
           <Input
             name="firstName"
-            type="text"
+            type="string"
             placeholder={firstName ? firstName : "First Name"}
             value={firstName}
             onChange={(event) => {
@@ -143,7 +143,7 @@ const SettingsForm: React.FC = () => {
 
           <Input
             name="lastName"
-            type="text"
+            type="string"
             placeholder={lastName ? lastName : "Last Name"}
             value={lastName}
             onChange={(event) => {
@@ -153,7 +153,7 @@ const SettingsForm: React.FC = () => {
 
           <Input
             name="phone"
-            type="text"
+            type="string"
             placeholder={phone ? phone : "Phone"}
             value={phone}
             onChange={(event) => {
@@ -163,7 +163,7 @@ const SettingsForm: React.FC = () => {
 
           <Input
             name="location"
-            type="text"
+            type="string"
             placeholder={location ? location : "Location"}
             value={location}
             onChange={(event) => {

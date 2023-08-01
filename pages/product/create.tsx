@@ -5,7 +5,6 @@ import ItemForm from "../../components/Product/ProductForm/CreateProductForm";
 const CreateItemPage: React.FC = () => {
   return (
     <Layout>
-      <h1>Create a New Product</h1>
       <ItemForm />
     </Layout>
   );

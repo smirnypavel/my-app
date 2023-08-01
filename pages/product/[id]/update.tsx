@@ -9,10 +9,7 @@ const UpdateProductPage = () => {
 
   // Рендер компонента UpdateProductForm с передачей идентификатора продукта (productId)
   return (
-    <Layout>
-      <h1>Update Product</h1>
-      {productId && <UpdateProductForm productId={productId} />}
-    </Layout>
+    <Layout>{productId && <UpdateProductForm productId={productId} />}</Layout>
   );
 };
 

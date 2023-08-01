@@ -2,11 +2,13 @@ import React, { ChangeEvent, useState } from "react";
 import Image from "next/image";
 import { useAppDispatch } from "../../../redux/hooks";
 import { updatePost } from "../../../redux/posts/postsOperations";
-import styles from "../../../styles/components/ItemForm.module.css";
+import styles from "../../../styles/components/Product/UpdateProductForm.module.css";
 import productNotFound from "../../../public/productNotFound.jpeg";
 import { useSelector } from "react-redux";
 import { getPost } from "../../../redux/posts/postsSelectors";
 import { useRouter } from "next/router";
+import Input from "../../UI/Input";
+import Button from "../../UI/Button";
 
 const cloudName = "dvt0czglz";
 const uploadPreset = "eqykdqjy";
@@ -86,58 +88,66 @@ const UpdateItemForm: React.FC<{ productId: string }> = ({ productId }) => {
 
   return (
     <>
-      <div className={styles.imageContainer}>
-        <div className={styles.imageWrapper}>
-          <Image
-            src={productImg}
-            alt="product image"
-            width={150}
-            height={200}
-            style={
-              {
-                // objectFit: "cover"
-                // margin: "auto",
-              }
-            }
+      <h1 className={styles.settingsFormTitle}>Update Product</h1>
+      <div className={styles.settingsFormContainer}>
+        <div className={styles.imageContainer}>
+          <div className={styles.imageWrapper}>
+            <Image
+              src={productImg}
+              alt="product image"
+              width={200}
+              height={250}
+              style={{
+                objectFit: "cover",
+                margin: "auto",
+              }}
+            />
+          </div>
+          <label
+            htmlFor="fileInput"
+            className={styles.imageButton}>
+            Upload photo
+          </label>
+          <input
+            id="fileInput"
+            name="photo"
+            type="file"
+            accept="image/*"
+            onChange={handleFileInputChange}
+            className={styles.hiddenInput}
           />
         </div>
-        <input
-          id="fileInput"
-          name="photo"
-          type="file"
-          placeholder="First Name"
-          onChange={handleFileInputChange}
-        />
+        <form
+          className={styles.settingsForm}
+          onSubmit={handleSubmit}>
+          <Input
+            type="string"
+            placeholder="Title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <Input
+            type="string"
+            placeholder="Location"
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
+          />
+          <Input
+            type="number"
+            placeholder="Price"
+            value={price}
+            onChange={handlePriceChange}
+          />
+          <textarea
+            className={styles.productDescription}
+            placeholder="Description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+
+          <Button type="submit">Submit</Button>
+        </form>
       </div>
-      <form
-        className={styles.itemForm}
-        onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Location"
-          value={location}
-          onChange={(e) => setLocation(e.target.value)}
-        />
-        <input
-          type="number"
-          placeholder="Price"
-          value={price}
-          onChange={handlePriceChange}
-        />
-        <textarea
-          placeholder="Description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-        {/* Additional item form fields */}
-        <button type="submit">Submit</button>
-      </form>
     </>
   );
 };

@@ -2,11 +2,11 @@ import React from "react";
 import styles from "../../styles/components/UI/Input.module.css";
 
 interface InputProps {
-  type: string;
+  type: "string" | "number"; // Тип значения может быть только "string" или "number"
   placeholder: string;
-  value?: string;
+  value?: string | number; // Значение может быть типа "string" или "number"
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  name?: string; // Добавление пропа name
+  name?: string;
 }
 
 const Input: React.FC<InputProps> = ({
