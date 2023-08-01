@@ -27,7 +27,7 @@ const IExchangeList = () => {
         <p>They offer me an exchange</p>
         {post.length > 0 ? (
           <div className={styles.itemList}>
-            {post.map((item: { _id: React.Key | null | undefined }) => (
+            {post.map((item: IPosts) => (
               <ItemCard
                 key={item._id}
                 item={item}
