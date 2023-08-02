@@ -153,13 +153,15 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
     <>
       <div className={styles.productDetailContainer}>
         <div className={styles.productDetail}>
-          <div>
+          <div className={styles.containerImg}>
             <div className={styles.imageWrapper}>
               <Image
                 src={productPhoto}
                 alt="product photo"
-                width={288}
-                height={300}
+                // width={288}
+                // height={300}
+                fill
+                sizes="(min-width: 768px) 50vw, 100vw"
                 style={{
                   objectFit: "cover",
                   margin: "auto",

@@ -164,16 +164,14 @@ const Header: React.FC = () => {
               <p>notification</p>
             </li>
             <li className={styles.mobileHeaderLinkItem}>
-              {isLoggedIn && (
-                <Link
-                  href="/account"
-                  className={`${styles.linkMobile} ${
-                    isActiveLink("/account") ? styles.activeLinkMobile : ""
-                  }`}>
-                  <GoPerson />
-                  <p>profile</p>
-                </Link>
-              )}
+              <Link
+                href="/account"
+                className={`${styles.linkMobile} ${
+                  isActiveLink("/account") ? styles.activeLinkMobile : ""
+                }`}>
+                <GoPerson />
+                <p>profile</p>
+              </Link>
             </li>
           </ul>
         </nav>
