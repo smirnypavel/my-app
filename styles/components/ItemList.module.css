@@ -1,29 +1,30 @@
 .itemList {
-  margin-left: 20px;
+  /* margin-left: 20px; */
   /* width: 950px; */
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1rem;
   padding-bottom: 1rem;
   @media screen and (min-width: 768px) {
-    margin-left: 30px;
-    width: 600px;
+    /* margin-left: 30px; */
   }
   @media screen and (min-width: 1280px) {
-    margin-left: 30px;
-    width: 950px;
   }
 }
 
 .itemCard {
-  max-width: 185px;
-  max-height: 290px;
   border-radius: 10px;
   padding: 1rem;
   box-shadow: 0px 0px 10px 2px rgba(49, 97, 255, 0.104);
   text-align: center;
   position: relative;
   transition: box-shadow 0.3s, color 0.3s;
+  @media screen and (min-width: 768px) {
+    max-width: 185px;
+    max-height: 290px;
+  }
+  @media screen and (min-width: 1280px) {
+  }
 }
 .itemCard:hover {
   box-shadow: 0px 0px 10px 2px rgba(2, 3, 4, 0.17);
