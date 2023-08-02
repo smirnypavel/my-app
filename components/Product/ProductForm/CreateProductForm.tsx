@@ -70,15 +70,15 @@ const ItemForm: React.FC = () => {
 
   return (
     <>
-      <h1 className={styles.settingsFormTitle}>Update Product</h1>
+      <h1 className={styles.settingsFormTitle}>Create Product</h1>
       <div className={styles.settingsFormContainer}>
         <div className={styles.imageContainer}>
           <div className={styles.imageWrapper}>
             <Image
               src={productImg}
               alt="product image"
-              width={200}
-              height={250}
+              width={250}
+              height={300}
               style={{
                 objectFit: "cover",
                 margin: "auto",

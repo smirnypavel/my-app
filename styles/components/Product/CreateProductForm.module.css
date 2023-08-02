@@ -1,18 +1,29 @@
 .settingsFormContainer {
   display: flex;
-  justify-content: center;
-  margin-top: 36px;
+  flex-direction: column;
+  align-items: center;
+  @media screen and (min-width: 768px) {
+    justify-content: center;
+    margin-top: 36px;
+  }
+  @media screen and (min-width: 1280px) {
+  }
 }
 .settingsFormTitle {
   text-align: center;
 }
 
 .settingsForm {
-  margin-left: 30px;
+  margin-top: 30px;
   display: flex;
   flex-direction: column;
   gap: 0.7rem;
   align-items: flex-end;
+  @media screen and (min-width: 768px) {
+    margin-left: 30px;
+  }
+  @media screen and (min-width: 1280px) {
+  }
 }
 
 .imageButton {
@@ -51,8 +62,8 @@
 }
 
 .imageWrapper {
-  width: 200px;
-  height: 250px;
+  width: 250px;
+  height: 300px;
   position: relative;
   border-radius: 10px;
   overflow: hidden;
