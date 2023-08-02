@@ -140,20 +140,40 @@ const Header: React.FC = () => {
         <nav>
           <ul className={styles.mobileHeaderLinkList}>
             <li className={styles.mobileHeaderLinkItem}>
-              <GoHome />
-              <p>home</p>
+              <Link
+                href="/product"
+                className={`${styles.linkMobile} ${
+                  isActiveLink("/product") ? styles.activeLinkMobile : ""
+                }`}>
+                <GoHome />
+                <p>home</p>
+              </Link>
             </li>
             <li className={styles.mobileHeaderLinkItem}>
-              <GoPlusCircle />
-              <p>create</p>
+              <Link
+                href={"./product/create"}
+                className={`${styles.linkMobile} ${
+                  isActiveLink("/product/create") ? styles.activeLinkMobile : ""
+                }`}>
+                <GoPlusCircle />
+                <p>create</p>
+              </Link>
             </li>
             <li className={styles.mobileHeaderLinkItem}>
               <GoUnread />
               <p>notification</p>
             </li>
             <li className={styles.mobileHeaderLinkItem}>
-              <GoPerson />
-              <p>profile</p>
+              {isLoggedIn && (
+                <Link
+                  href="/account"
+                  className={`${styles.linkMobile} ${
+                    isActiveLink("/account") ? styles.activeLinkMobile : ""
+                  }`}>
+                  <GoPerson />
+                  <p>profile</p>
+                </Link>
+              )}
             </li>
           </ul>
         </nav>

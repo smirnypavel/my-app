@@ -124,7 +124,7 @@
   position: fixed;
   bottom: 0;
   z-index: 1;
-  left: 0;
+  left: -7px;
   height: 60px;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
@@ -134,7 +134,7 @@
   --docsearch-key-gradient: linear-gradient(-225deg, #d5dbe4, #f8f8f8);
   border: none;
   background: var(--docsearch-key-gradient);
-  border-radius: 3px;
+  border-radius: 10px;
   box-shadow: var(--docsearch-key-shadow);
   color: var(--key-text-color);
   height: 2.5em;
@@ -159,4 +159,12 @@
 }
 .mobileHeaderLinkItem {
   font-size: 30px;
+}
+.linkMobile {
+  text-decoration: none;
+  color: #969faf;
+}
+.activeLinkMobile {
+  color: #46c578;
+  position: relative;
 }
