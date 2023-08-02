@@ -17,6 +17,10 @@
   padding: 1rem;
   box-shadow: 0px 0px 10px 2px rgba(49, 97, 255, 0.104);
   text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   position: relative;
   transition: box-shadow 0.3s, color 0.3s;
   @media screen and (min-width: 768px) {
@@ -41,6 +45,7 @@
   right: 10px;
   top: 10px;
   cursor: pointer;
+  z-index: 1;
 }
 .favoritesIcon svg {
   fill: #070721; /* Задайте желаемый цвет иконки здесь */
@@ -59,6 +64,7 @@
   right: 10px;
   top: 10px;
   cursor: pointer;
+  z-index: 1;
 }
 .favoritesIconActive svg {
   fill: rgb(255, 0, 0);
@@ -77,14 +83,25 @@
 }
 .imageWrapper {
   cursor: pointer;
+  position: relative;
+  width: 100%; /* Ширина изображения будет занимать 100% от своего контейнера */
+  height: 200px; /* Высота изображения фиксирована */
+  margin-bottom: 10px;
+  @media screen and (min-width: 768px) {
+    /* Дополнительные стили для экранов с шириной больше 768px */
+    height: 150px; /* На больших экранах высота изображения может быть 250px */
+  }
 }
+
 .ownerInfo {
   display: flex;
   align-items: center;
   border-top: 1px solid #8e8c9938;
-  padding-top: 5px;
-  border-radius: 5px;
-  margin-bottom: 5px;
+  padding-top: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-bottom: 10px;
+  width: 100%;
 }
 .linkWrapper {
   display: flex;
@@ -121,6 +138,12 @@
   color: #a7aed2;
   margin-right: 5px;
 }
+.date {
+  font-size: 12px;
+  line-height: 20px;
+  color: #a7aed2;
+  margin-right: 5px;
+}
 .views {
   display: flex;
   font-size: 18px;
@@ -133,6 +156,7 @@
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
+  width: 100%;
 }
 .button {
   width: 60px;

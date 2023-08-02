@@ -46,7 +46,7 @@ export interface IPosts {
   verify: string;
   views?: number;
   favorite?: any[];
-  createdAt?: string;
+  createdAt: string; // Add the createdAt property here
   updatedAt?: string;
   owner: IOwner;
   comments?: IComment[];
@@ -69,6 +69,7 @@ const initialState: IPostState = {
     img: "",
     location: "",
     favorite: [],
+    createdAt: "",
     owner: {
       id: "",
       firstName: "",

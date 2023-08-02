@@ -2,5 +2,6 @@
   "home": "Головна",
   "products": "Товари",
   "login": "Увійти",
-  "language": "Мова"
+  "language": "Мова",
+  "createdXDaysAgo": "{{count}} днів тому"
 }

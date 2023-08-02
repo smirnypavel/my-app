@@ -3,5 +3,6 @@
   "products": "Товары",
   "login": "Войти",
   "language": "Язык",
-  "mail": "Почта"
+  "mail": "Почта",
+  "createdXDaysAgo": "{{count}} дней назад"
 }

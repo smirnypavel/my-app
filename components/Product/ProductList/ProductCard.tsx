@@ -11,12 +11,15 @@ import axios from "axios";
 import ProductVerifyView from "../ProductVerifyView";
 import { useRouter } from "next/router";
 import { IPosts } from "../../../redux/posts/postsReducer";
+import { differenceInDays } from "date-fns";
+import { useTranslation } from "react-i18next";
 
 interface ItemCardProps {
   item: IPosts; // Assuming you have an Item type defined
 }
 
 const ItemCard: React.FC<ItemCardProps> = ({ item }) => {
+  const { t } = useTranslation();
   const myPost = useSelector(getUser);
   const owner = item.owner;
   const router = useRouter();
@@ -40,6 +43,10 @@ const ItemCard: React.FC<ItemCardProps> = ({ item }) => {
 
   const productPhoto = item.img || productNotFound; // Используйте photoNotFound, если productPhoto не определен
   const avatarURL = owner?.avatarURL || photoNotFound; // Используйте photoNotFound, если avatarURL не определен
+
+  const createdAtDate = new Date(item.createdAt);
+  const currentDate = new Date();
+  const daysAgo = differenceInDays(currentDate, createdAtDate);
 
   return (
     <div className={styles.itemCard}>
@@ -74,16 +81,20 @@ const ItemCard: React.FC<ItemCardProps> = ({ item }) => {
         </div>
       )}
 
-      <div onClick={handleLinkClick}>
+      <div
+        onClick={handleLinkClick}
+        className={styles.imageWrapper}>
         <Image
           src={productPhoto}
           alt=""
-          width={150}
-          height={150}
+          // width={300}
+          // height={250}
           style={{
             objectFit: "cover",
             margin: "auto",
           }}
+          fill
+          sizes="(min-width: 808px) 50vw, 100vw"
           className={styles.imageWrapper}
           priority
         />
@@ -111,7 +122,9 @@ const ItemCard: React.FC<ItemCardProps> = ({ item }) => {
         <p className={styles.views}>
           <MdVisibility className={styles.viewsIcon} /> {item.views}
         </p>
-        <p>{item.createdAt}</p>
+        <p className={styles.date}>
+          {t("header.createdXDaysAgo", { count: daysAgo })}
+        </p>
         {/* <Link
           href="/product/[id]"
           as={`/product/${item._id}`}
