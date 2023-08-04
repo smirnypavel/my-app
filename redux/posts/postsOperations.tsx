@@ -2,23 +2,6 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 
-// interface MyPostResponse {
-//   // Структура ответа от сервера
-//   // Возможно, вам придется добавить другие поля, если они есть в ответе сервера
-//   title: string;
-//   description: string;
-//   category: string;
-//   img: string;
-//   favorite: string;
-//   owner: {
-//     id: string;
-//     email: string;
-//     phone: string;
-//   };
-//   price: number;
-//   verify: boolean;
-//   views: number;
-// }
 export interface MyPostResponse {
   _id: string;
   title: string;
@@ -32,6 +15,7 @@ export interface MyPostResponse {
   createdAt: string;
   updatedAt: string;
   location: string;
+  toExchange: [];
 
   comments?: [];
   owner: {
@@ -63,10 +47,6 @@ export const restoreToken = () => {
 export const createPost = createAsyncThunk(
   "posts/createPost",
   async (credentials: {}, thunkAPI) => {
-    const initialToken = localStorage.getItem("refreshToken");
-    if (initialToken) {
-      setAuthHeader(initialToken);
-    }
     try {
       const { data } = await axios.post("/posts", credentials);
       toast.success("Post updated successfully");

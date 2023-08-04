@@ -1,7 +1,7 @@
 import React from "react";
 import ProductCard from "./ProductCard";
 import styles from "../../../styles/components/ItemList.module.css";
-import { IPosts } from "../../../redux/posts/postsReducer";
+import { IPosts } from "../../../types/IPost";
 
 interface ItemListProps {
   post: IPosts[];

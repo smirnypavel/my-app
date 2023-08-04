@@ -10,56 +10,7 @@ import {
   hidePost,
   deletePost,
 } from "./postsOperations";
-
-export interface IOwner {
-  id: string;
-  firstName: string;
-  lastName: string;
-  phone: string;
-  avatarURL: string;
-  location: string;
-}
-export interface IComment {
-  text: string;
-  id: string;
-  user: User;
-  answer: Answer[];
-}
-export interface Answer {
-  text: string;
-  id: string;
-  user: User;
-}
-export interface User {
-  firstName: string;
-  lastName: string;
-  avatarURL: string;
-  isOnline: boolean;
-}
-
-export interface IPosts {
-  _id: string;
-  title: string;
-  description: string;
-  img: string;
-  price: number;
-  verify: string;
-  views?: number;
-  favorite?: any[];
-  createdAt: string; // Add the createdAt property here
-  updatedAt?: string;
-  owner: IOwner;
-  comments?: IComment[];
-  toExchange?: any[];
-  isActive?: boolean;
-  location: string;
-}
-
-export interface IPostState {
-  post: IPosts;
-  isLoading: boolean;
-  error: string | any;
-}
+import { IPostState } from "../../types/IPost";
 
 const initialState: IPostState = {
   post: {

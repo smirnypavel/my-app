@@ -5,7 +5,7 @@ import Layout from "../../components/Layout/Layout";
 import { ItemList } from "../../components/Product/ProductList/ProductList";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import axios from "axios";
-import { IPosts } from "../../redux/posts/postsReducer";
+import { IPosts } from "../../types/IPost";
 
 interface ItemsPageProps {
   post: IPosts[];

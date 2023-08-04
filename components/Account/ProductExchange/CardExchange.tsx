@@ -4,7 +4,7 @@ import { FiArrowLeftCircle, FiArrowRightCircle } from "react-icons/fi";
 import styles from "../../../styles/components/ItemList.module.css";
 import styles2 from "../../../styles/components/Account/ProductExchange/CardExchange.module.css";
 import productNotFound from "../../../public/productNotFound.jpeg";
-import { IPosts } from "../../../redux/posts/postsReducer";
+import { IPosts } from "../../../types/IPost";
 import MeOfferViewList from "./MeOfferViewList";
 import Modal from "../../Modal/Modal";
 import Button from "../../UI/Button";

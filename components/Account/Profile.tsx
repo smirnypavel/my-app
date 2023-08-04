@@ -6,11 +6,10 @@ import { useSelector } from "react-redux";
 import { IUserAuth } from "../../redux/auth/authReducer";
 import { getUser } from "../../redux/auth/authSelectors";
 import photoNotFound from "../../public/photoNotFound.png";
-import { differenceInDays, parseISO } from "date-fns";
+import { differenceInDays } from "date-fns";
 
 const Profile: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [day, setDay] = useState<number>(0);
 
   const user: IUserAuth = useSelector(getUser);
 
@@ -22,12 +21,9 @@ const Profile: React.FC = () => {
   };
   console.log(user.createdAt);
 
-  // const dateRegistration = parseISO(user.createdAt); // Assuming user.createdAt is in ISO 8601 format
-  // const today = new Date(); // Current date
-
-  // // Calculate the difference in days between the current date and registration date
-  // const quantityDayRegistry = differenceInDays(today, dateRegistration);
-  // setDay(quantityDayRegistry);
+  const createdAtDate = new Date(user.createdAt);
+  const currentDate = new Date();
+  const daysAgo = differenceInDays(currentDate, createdAtDate);
   const avatarURL = user.avatarURL || photoNotFound; // Используйте photoNotFound, если avatarURL не определен
 
   return (
@@ -78,7 +74,7 @@ const Profile: React.FC = () => {
             <label>Registration</label>
             <li className={styles.profileInfoItem}>
               {" "}
-              <p className={styles.profileInfoItemText}> Day</p>
+              <p className={styles.profileInfoItemText}> {daysAgo} days</p>
             </li>
             <li>
               <Link

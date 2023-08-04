@@ -21,16 +21,23 @@ export const restoreToken = () => {
 axios.interceptors.response.use(
   (res) => res,
   async (error) => {
-    if (error.response.status === 401) {
+    const originalRequest = error.config;
+
+    if (error.response.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true; // Помечаем запрос, чтобы избежать бесконечного цикла повторов
+
       const refreshToken = localStorage.getItem("refreshToken");
-      // if (!refreshToken) {
-      //   return Promise.reject(error);
-      // }
+      if (!refreshToken) {
+        // Если отсутствует refresh-токен, делаем выход пользователя
+        return Promise.reject(error);
+      }
+
       try {
         const { data } = await axios.patch("/auth/refresh");
         setAuthHeader(data.token);
         localStorage.setItem("refreshToken", data.token);
-        return;
+        originalRequest.headers["Authorization"] = `Bearer ${data.token}`;
+        return axios(originalRequest); // Повторяем исходный запрос с обновленным токеном
       } catch (error) {
         // toast.error("An error occurred during authentication");
         return Promise.reject(error);

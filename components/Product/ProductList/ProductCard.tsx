@@ -10,7 +10,7 @@ import { getUser } from "../../../redux/auth/authSelectors";
 import axios from "axios";
 import ProductVerifyView from "../ProductVerifyView";
 import { useRouter } from "next/router";
-import { IPosts } from "../../../redux/posts/postsReducer";
+import { IPosts } from "../../../types/IPost";
 import { differenceInDays } from "date-fns";
 import { useTranslation } from "react-i18next";
 
@@ -30,7 +30,7 @@ const ItemCard: React.FC<ItemCardProps> = ({ item }) => {
   const handleAddFavorite: React.MouseEventHandler<HTMLDivElement> = (
     event
   ) => {
-    const fetchUsers = async () => {
+    const addFavorite = async () => {
       try {
         const response = await axios.patch(`/posts/fav/${item._id}`);
         // Добавьте необходимую логику обработки ответа
@@ -38,7 +38,7 @@ const ItemCard: React.FC<ItemCardProps> = ({ item }) => {
         console.log("Error:", error);
       }
     };
-    fetchUsers();
+    addFavorite();
   };
 
   const productPhoto = item.img || productNotFound; // Используйте photoNotFound, если productPhoto не определен
