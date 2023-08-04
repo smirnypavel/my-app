@@ -1,12 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { IUserAuth } from "../../redux/auth/authReducer";
+import { IUserAuth } from "../../types/IAuth";
+import { IPosts } from "../../types/IPost";
 import UsersList from "../../components/Moderator/moderateProfile";
-
 import styles from "../../styles/components/Moderator/Statistic.module.css";
 import { useSelector } from "react-redux";
 import { selectIsLoggedIn } from "../../redux/auth/authSelectors";
-import { IPosts } from "../../redux/posts/postsReducer";
 import ModerateProduct from "./moderateProductStat";
 
 const Statistic: React.FC = () => {

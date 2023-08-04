@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { IPosts } from "../../redux/posts/postsReducer";
+import { IPosts } from "../../types/IPost";
 import ItemCard from "../Product/ProductList/ProductCard";
 import styles from "../../styles/components/ItemList.module.css";
 import styles2 from "../../styles/components/Moderator/moderateProduct.module.css";

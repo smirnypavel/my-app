@@ -23,10 +23,11 @@ import styles from "../../../styles/components/Product/ProductDetail.module.css"
 import Modal from "../../Modal/Modal";
 import ToExchangeList from "../../Account/ProductExchange/ToExchangeList";
 import Button from "../../UI/Button";
+import { IPosts } from "../../../types/IPost";
 
 interface ProductDetailProps {
   productId: string;
-  productData: any; // Assuming you have a type for product data, adjust this type accordingly
+  productData: IPosts; // Assuming you have a type for product data, adjust this type accordingly
 }
 
 export const ProductDetail: React.FC<ProductDetailProps> = ({

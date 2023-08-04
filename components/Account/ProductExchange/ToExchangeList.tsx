@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { IPosts } from "../../../redux/posts/postsReducer";
+import { IPosts } from "../../../types/IPost";
 import styles from "../../../styles/components/Account/UserExchangeList.module.css";
 import Image from "next/image";
 import Button from "../../UI/Button";

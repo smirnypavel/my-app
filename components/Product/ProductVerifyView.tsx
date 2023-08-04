@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { getPost } from "../../redux/posts/postsSelectors";
 import styles from "../../styles/components/Product/ProductVerifyView.module.css";
-import { IPosts } from "../../redux/posts/postsReducer";
+import { IPosts } from "../../types/IPost";
 
 interface ProductVerifyViewProps {
   post: IPosts;

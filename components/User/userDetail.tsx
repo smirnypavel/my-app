@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import { useSelector } from "react-redux";
-import { IUserAuth } from "../../redux/auth/authReducer";
+import { IUserAuth } from "../../types/IAuth";
 import { useAppDispatch } from "../../redux/hooks";
 import {
   banSelect,

@@ -4,7 +4,7 @@ import { useAppDispatch } from "../../redux/hooks";
 import { useRouter } from "next/router";
 import styles from "../../styles/components/Account/SettingsForm.module.css";
 import { updateUser } from "../../redux/auth/authOperations";
-import { IUserAuth } from "../../redux/auth/authReducer";
+import { IUserAuth } from "../../types/IAuth";
 import { useSelector } from "react-redux";
 import { getUser } from "../../redux/auth/authSelectors";
 import Button from "../UI/Button";

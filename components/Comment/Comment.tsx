@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { IComment } from "../../redux/posts/postsReducer";
+import { IComment } from "../../types/IPost";
 import { MdDeleteForever } from "react-icons/md";
 import Image from "next/image";
 import styles from "../../styles/components/Comments/Comments.module.css";

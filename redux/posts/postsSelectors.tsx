@@ -1,5 +1,5 @@
 // import { IUserAuth } from "../auth/authReducer";
-import { IPosts, IPostState } from "./postsReducer";
+import { IPosts, IPostState } from "../../types/IPost";
 
 export const getAllPost = (state: { post: { post: IPosts } }) => state.post;
 export const getPost = (state: { post: { post: IPosts } }) => state.post.post;

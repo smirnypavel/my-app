@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { UserListItem } from "./userListItem";
-import { IUserAuth } from "../../redux/auth/authReducer";
+import { IUserAuth } from "../../types/IAuth";
 import styles from "../../styles/components/Moderator/moderateProfile.module.css";
 interface Props {
   filterRole: string; // Типизация параметра filterRole

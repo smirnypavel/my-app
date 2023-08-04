@@ -3,7 +3,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 import styles from "../../styles/components/Account/Profile.module.css";
 import { useSelector } from "react-redux";
-import { IUserAuth } from "../../redux/auth/authReducer";
+import { IUserAuth } from "../../types/IAuth";
 import { getUser } from "../../redux/auth/authSelectors";
 import photoNotFound from "../../public/photoNotFound.png";
 import { differenceInDays } from "date-fns";

@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { IUserAuth } from "../../redux/auth/authReducer";
+import { IUserAuth } from "../../types/IAuth";
 import styles from "../../styles/components/Moderator/userListItem.module.css";
 import Link from "next/link";
 
