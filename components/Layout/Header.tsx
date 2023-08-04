@@ -9,7 +9,7 @@ import {
   getUser,
   selectIsLoggedIn,
 } from "../../redux/auth/authSelectors";
-import { IUserAuth } from "../../redux/auth/authReducer";
+import { IUserAuth } from "../../types/IAuth";
 import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher";
 import { useTranslation } from "react-i18next";
 import { GoHome, GoPlusCircle, GoPerson, GoUnread } from "react-icons/go";
@@ -170,7 +170,7 @@ const Header: React.FC = () => {
                   isActiveLink("/account") ? styles.activeLinkMobile : ""
                 }`}>
                 <GoPerson />
-                <p>profile</p>
+                <p>Profile</p>
               </Link>
             </li>
           </ul>
