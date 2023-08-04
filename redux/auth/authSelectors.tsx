@@ -1,4 +1,4 @@
-import { IUserAuth } from "./authReducer";
+import { IUserAuth } from "../../types/IAuth";
 
 export const getUser = (state: { auth: { user: IUserAuth } }) =>
   state.auth.user;

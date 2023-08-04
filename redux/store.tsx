@@ -1,7 +1,9 @@
 import { configureStore, Reducer, Action } from "@reduxjs/toolkit";
-import { authSlice, IAuthState } from "./auth/authReducer";
+import { authSlice } from "./auth/authReducer";
+import { IAuthState } from "../types/IAuth";
 import moderateReducer, { IModerateState } from "./moderator/moderateReducer";
-import postsReducer, { IPostState } from "./posts/postsReducer";
+import postsReducer from "./posts/postsReducer";
+import { IPostState } from "../types/IPost";
 import storage from "redux-persist/lib/storage";
 import {
   persistStore,

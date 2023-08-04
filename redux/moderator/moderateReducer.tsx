@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { IUserAuth } from "../auth/authReducer";
+import { IUserAuth } from "../../types/IAuth";
 import {
   getUser,
   getUserById,
@@ -19,8 +19,9 @@ const initialState: IModerateState = {
     email: "",
     token: "",
     role: "",
+    isOnline: false,
     avatarURL: "",
-    ban: false,
+    createdAt: "",
   },
   isLoading: false,
   error: "",
