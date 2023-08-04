@@ -1,5 +1,17 @@
 .sliderContainer {
   margin: 0 auto;
-  max-width: 800px;
+  max-width: 1000px;
   margin-bottom: 40px;
+}
+.slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border-radius: 10px; */
 }

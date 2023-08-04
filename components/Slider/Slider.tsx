@@ -8,15 +8,18 @@ const SimpleSlider = () => {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    autoplay: true,
+    speed: 2000,
+    autoplaySpeed: 5000,
+    cssEase: "linear",
     responsive: [
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToShow: 1,
+          slidesToScroll: 1,
           infinite: true,
           dots: true,
         },
@@ -24,8 +27,8 @@ const SimpleSlider = () => {
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToShow: 1,
+          slidesToScroll: 1,
           initialSlide: 1,
         },
       },
@@ -42,70 +45,86 @@ const SimpleSlider = () => {
   return (
     <div className={styles.sliderContainer}>
       <Slider {...settings}>
-        <div>
+        <div className={styles.slide}>
           <Image
             src={sliderDefault}
             alt=""
             priority
+            // fill
+            sizes="(min-width: 768px) 70vw, 100vw"
             style={{
-              maxWidth: "100%",
-              height: "auto",
+              // maxWidth: "700px",
+              objectFit: "cover",
+              margin: "auto",
             }}
+            className={styles.image}
           />
         </div>
-        <div>
+        <div className={styles.slide}>
           <Image
             src={sliderDefault}
             alt=""
             priority
+            sizes="(min-width: 768px) 50vw, 100vw"
             style={{
-              maxWidth: "100%",
-              height: "auto",
+              // maxWidth: "700px",
+              objectFit: "cover",
+              margin: "auto",
             }}
+            className={styles.image}
           />
         </div>
-        <div>
+        <div className={styles.slide}>
           <Image
             src={sliderDefault}
             alt=""
             priority
+            sizes="(min-width: 768px) 50vw, 100vw"
             style={{
-              maxWidth: "100%",
-              height: "auto",
+              objectFit: "cover",
+              margin: "auto",
             }}
+            className={styles.image}
           />
         </div>
-        <div>
+        <div className={styles.slide}>
           <Image
             src={sliderDefault}
             alt=""
             priority
+            sizes="(min-width: 768px) 50vw, 100vw"
             style={{
-              maxWidth: "100%",
-              height: "auto",
+              objectFit: "cover",
+              margin: "auto",
             }}
+            className={styles.image}
           />
         </div>
-        <div>
+        <div className={styles.slide}>
           <Image
             src={sliderDefault}
             alt=""
             priority
+            sizes="(min-width: 768px) 50vw, 100vw"
             style={{
-              maxWidth: "100%",
-              height: "auto",
+              // maxWidth: "700px",
+              objectFit: "cover",
+              margin: "auto",
             }}
+            className={styles.image}
           />
         </div>
-        <div>
+        <div className={styles.slide}>
           <Image
             src={sliderDefault}
             alt=""
             priority
+            sizes="(min-width: 768px) 50vw, 100vw"
             style={{
-              maxWidth: "100%",
-              height: "auto",
+              objectFit: "cover",
+              margin: "auto",
             }}
+            className={styles.image}
           />
         </div>
       </Slider>
