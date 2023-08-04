@@ -2,7 +2,7 @@ import type { GetStaticProps, GetStaticPaths } from "next";
 import axios from "axios";
 import Layout from "../../../components/Layout/Layout";
 import { ProductDetail } from "../../../components/Product/ProductList/ProductDetail";
-import { IPosts } from "../../../redux/posts/postsReducer";
+import { IPosts } from "../../../types/IPost";
 
 interface ItemDetailsPageProps {
   productId: string;
