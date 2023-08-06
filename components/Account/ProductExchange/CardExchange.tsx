@@ -66,6 +66,7 @@ const CardExchange: React.FC<CardExchangeProps> = ({ item }) => {
               </button>
               <MeOfferViewList
                 offer={item.toExchange[currentOfferIndex]}
+                id={item._id}
                 onClose={closeModal}
               />
               <button

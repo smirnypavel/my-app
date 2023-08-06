@@ -2,12 +2,10 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { IDeals } from "../../../types/IDeals";
 import MyDealsCard from "./MyDealsCard";
-import styles from "../../../styles/components/ItemList.module.css";
-import styles2 from "../../../styles/components/Moderator/moderateProduct.module.css";
+import styles from "../../../styles/components/Deals/DealsItemList.module.css";
 
 const MyDeals = () => {
   const [post, setPost] = useState<IDeals[]>([]);
-  // const [isOfferPost, setIsOfferPost] = useState<IPosts[]>([]); // State to hold the filtered posts
 
   useEffect(() => {
     const fetchMyDeals = async () => {
@@ -23,7 +21,7 @@ const MyDeals = () => {
 
   return (
     <>
-      <div className={styles2.statContainer}>
+      <div className={styles.statContainer}>
         <p>They MyDeals exchange</p>
         {post.length > 0 ? (
           <div className={styles.itemList}>

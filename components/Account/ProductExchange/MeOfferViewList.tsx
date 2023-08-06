@@ -3,13 +3,31 @@ import React from "react";
 import Image from "next/image";
 import Button from "../../UI/Button";
 import styles from "../../../styles/components/Account/ProductExchange/MeOfferViewList.module.css";
+import { ToExchange } from "../../../types/IPost";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 interface MeOfferViewListProps {
-  offer: any; // Assuming you have an Item type defined
+  offer: ToExchange; // Assuming you have an Item type defined
   onClose: () => void; // Add the onClose prop here
+  id: string;
 }
 
-const MeOfferViewList: React.FC<MeOfferViewListProps> = ({ offer }) => {
+const MeOfferViewList: React.FC<MeOfferViewListProps> = ({ offer, id }) => {
+  const handleAddOffer = () => {
+    const fetchProduct = async () => {
+      try {
+        const response = await axios.post(
+          `/posts/to-exchange-true/${id}/${offer.data.id}`
+        );
+        toast.success("You have successfully Agree to exchange");
+      } catch (error) {
+        console.log("Error:", error);
+      }
+    };
+    fetchProduct();
+  };
+
   return (
     <div className={styles.MeOfferViewListWrapper}>
       <h4 className={styles.offerDataTitle}>{offer.data.title}</h4>
@@ -38,7 +56,7 @@ const MeOfferViewList: React.FC<MeOfferViewListProps> = ({ offer }) => {
       </p>
       <div className={styles.MeOfferViewListButton}>
         <Button>Rejected</Button>
-        <Button>Agree</Button>
+        <Button onClick={handleAddOffer}>Agree</Button>
       </div>
     </div>
   );

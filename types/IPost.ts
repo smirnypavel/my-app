@@ -61,7 +61,7 @@ export interface IPosts {
   updatedAt?: string;
   owner: IOwner;
   comments?: IComment[];
-  toExchange?: ToExchange[];
+  toExchange: ToExchange[];
   isActive?: boolean;
   location: string;
 }
