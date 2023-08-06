@@ -99,7 +99,9 @@ const ItemCard: React.FC<ItemCardProps> = ({ item }) => {
           priority
         />
       </div>
-      <h3 className={styles.cardTitle}>{item.title}</h3>
+      <div className={styles.cardTitleWrapper}>
+        <h3 className={styles.cardTitle}>{item.title}</h3>
+      </div>
 
       <div className={styles.ownerInfo}>
         <Link

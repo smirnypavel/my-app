@@ -75,6 +75,9 @@
 .favoritesIcon svg:hover {
   fill: rgb(255, 0, 0);
 }
+.cardTitleWrapper {
+  width: 100%;
+}
 .cardTitle {
   white-space: nowrap; /* Запретить перенос слов на новую строку */
   overflow: hidden;

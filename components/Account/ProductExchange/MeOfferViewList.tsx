@@ -20,7 +20,7 @@ const MeOfferViewList: React.FC<MeOfferViewListProps> = ({ offer, id }) => {
         const response = await axios.post(
           `/posts/to-exchange-true/${id}/${offer.data.id}`
         );
-        toast.success("You have successfully Agree to exchange");
+        await toast.success("You have successfully Agree to exchange");
       } catch (error) {
         console.log("Error:", error);
       }
