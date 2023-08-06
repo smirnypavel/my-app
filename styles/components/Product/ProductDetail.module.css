@@ -259,6 +259,7 @@
   height: 50px;
   border: 1px, solid rgba(148, 147, 147, 0.214);
   border-radius: 10px;
+  resize: none;
 }
 .inputCommentButton {
   border: 1px, solid rgba(148, 147, 147, 0.214);

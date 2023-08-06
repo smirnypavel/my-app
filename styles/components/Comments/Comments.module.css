@@ -40,6 +40,7 @@
   border: 1px, solid rgba(148, 147, 147, 0.214);
   border-radius: 10px;
   width: 100%;
+  resize: none;
 }
 .replyButton {
   border: 1px, solid rgba(148, 147, 147, 0.214);
