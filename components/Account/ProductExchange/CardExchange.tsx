@@ -16,6 +16,11 @@ interface CardExchangeProps {
 const CardExchange: React.FC<CardExchangeProps> = ({ item }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentOfferIndex, setCurrentOfferIndex] = useState(0);
+  const [post, setPost] = useState(item);
+
+  const updatePost = (updatedPostData: IPosts) => {
+    setPost(updatedPostData);
+  };
 
   const openModal = (index: number) => {
     setIsModalOpen(true);
@@ -26,7 +31,7 @@ const CardExchange: React.FC<CardExchangeProps> = ({ item }) => {
     setIsModalOpen(false);
   };
 
-  const productPhoto = item.img || productNotFound;
+  const productPhoto = post.img || productNotFound;
 
   return (
     <>
@@ -42,11 +47,11 @@ const CardExchange: React.FC<CardExchangeProps> = ({ item }) => {
           }}
           priority
         />
-        <h3 className={styles.cardTitle}>{item.title}</h3>
+        <h3 className={styles.cardTitle}>{post.title}</h3>
         <Button onClick={() => openModal(0)}>
-          Views offer {item.toExchange?.length}
+          Views offer {post.toExchange?.length}
         </Button>
-        {isModalOpen && item.toExchange?.length && (
+        {isModalOpen && post.toExchange?.length && (
           <Modal
             isOpen={true}
             onClose={closeModal}>
@@ -56,7 +61,7 @@ const CardExchange: React.FC<CardExchangeProps> = ({ item }) => {
                 onClick={() =>
                   setCurrentOfferIndex((prevIndex) =>
                     prevIndex === 0
-                      ? item.toExchange!.length - 1
+                      ? post.toExchange!.length - 1
                       : prevIndex - 1
                   )
                 }
@@ -65,20 +70,21 @@ const CardExchange: React.FC<CardExchangeProps> = ({ item }) => {
                 <FiArrowLeftCircle />
               </button>
               <MeOfferViewList
-                offer={item.toExchange[currentOfferIndex]}
-                id={item._id}
+                offer={post.toExchange[currentOfferIndex]}
+                id={post._id}
                 onClose={closeModal}
+                updatePost={updatePost}
               />
               <button
                 className={styles2.arrowButtonRight}
                 onClick={() =>
                   setCurrentOfferIndex((prevIndex) =>
-                    prevIndex === item.toExchange!.length - 1
+                    prevIndex === post.toExchange!.length - 1
                       ? 0
                       : prevIndex + 1
                   )
                 }
-                disabled={currentOfferIndex === item.toExchange!.length - 1} // Отключаем правую кнопку, если текущий индекс равен последнему элементу
+                disabled={currentOfferIndex === post.toExchange!.length - 1} // Отключаем правую кнопку, если текущий индекс равен последнему элементу
               >
                 <FiArrowRightCircle />
               </button>

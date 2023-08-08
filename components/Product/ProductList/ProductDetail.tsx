@@ -283,7 +283,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
           <Modal
             isOpen={true}
             onClose={() => setIsModalOpen(false)}>
-            <ToExchangeList />
+            <ToExchangeList product={product} />
           </Modal>
         )}
       </div>

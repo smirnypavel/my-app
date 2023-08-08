@@ -244,8 +244,11 @@ export const offerPostExchange = createAsyncThunk<
     const { data } = await axios.post(
       `/posts/to-exchange/${postId}/${offerId}`
     );
+    toast.success("You have successfully made an offer");
+
     return data;
   } catch (error: any) {
+    toast.error("Something went wrong. Please try again later.");
     return thunkAPI.rejectWithValue(error.message);
   }
 });

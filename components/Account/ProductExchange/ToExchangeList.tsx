@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { IPosts } from "../../../types/IPost";
+import { IPosts, ToExchange } from "../../../types/IPost";
 import styles from "../../../styles/components/Account/UserExchangeList.module.css";
 import Image from "next/image";
 import Button from "../../UI/Button";
@@ -9,7 +9,11 @@ import { useAppDispatch } from "../../../redux/hooks";
 import { offerPostExchange } from "../../../redux/posts/postsOperations";
 import toast from "react-hot-toast";
 
-const ToExchangeList = () => {
+interface ToExchangeListProps {
+  product: IPosts;
+}
+
+const ToExchangeList: React.FC<ToExchangeListProps> = ({ product }) => {
   const [posts, setPosts] = useState<IPosts[]>([]);
   const [offerId, setOfferId] = useState("");
   const router = useRouter();
@@ -33,7 +37,6 @@ const ToExchangeList = () => {
       if (typeof id === "string") {
         await dispatch(offerPostExchange({ postId: id, offerId }));
       }
-      toast.success("You have successfully made an offer");
     } catch (e) {
       console.error("An error occurred:", e);
     }
@@ -59,11 +62,17 @@ const ToExchangeList = () => {
                 className={styles.imgClass}
               />
               <p>{post.title}</p>
-              <Button
-                type="button"
-                onClick={() => handleToExchange(post._id)}>
-                OFFER
-              </Button>
+              {product.toExchange.some(
+                (exchangeItem: ToExchange) => exchangeItem.data.id === post._id
+              ) ? (
+                <Button type="button">cancel the offer</Button>
+              ) : (
+                <Button
+                  type="button"
+                  onClick={() => handleToExchange(post._id)}>
+                  OFFER
+                </Button>
+              )}
             </div>
           ))}
         </div>
@@ -71,4 +80,5 @@ const ToExchangeList = () => {
     </>
   );
 };
+
 export default ToExchangeList;

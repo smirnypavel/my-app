@@ -31,7 +31,7 @@ const MeExchangeList = () => {
   return (
     <>
       <div className={styles2.statContainer}>
-        <p>They offer me an exchange</p>
+        <p>ME OFFER an EXCHANGE</p>
         {isOfferPost.length > 0 ? (
           <div className={styles.itemList}>
             {isOfferPost.map((item: IPosts) => (

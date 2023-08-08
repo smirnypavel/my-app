@@ -3,7 +3,7 @@ import React from "react";
 import Image from "next/image";
 import Button from "../../UI/Button";
 import styles from "../../../styles/components/Account/ProductExchange/MeOfferViewList.module.css";
-import { ToExchange } from "../../../types/IPost";
+import { IPosts, ToExchange } from "../../../types/IPost";
 import axios from "axios";
 import toast from "react-hot-toast";
 
@@ -11,21 +11,26 @@ interface MeOfferViewListProps {
   offer: ToExchange; // Assuming you have an Item type defined
   onClose: () => void; // Add the onClose prop here
   id: string;
+  updatePost: (updatedPostData: IPosts) => void;
 }
 
-const MeOfferViewList: React.FC<MeOfferViewListProps> = ({ offer, id }) => {
-  const handleAddOffer = () => {
-    const fetchProduct = async () => {
-      try {
-        const response = await axios.post(
-          `/posts/to-exchange-true/${id}/${offer.data.id}`
-        );
-        await toast.success("You have successfully Agree to exchange");
-      } catch (error) {
-        console.log("Error:", error);
-      }
-    };
-    fetchProduct();
+const MeOfferViewList: React.FC<MeOfferViewListProps> = ({
+  offer,
+  id,
+  updatePost, // Получите updatePost из пропсов
+}) => {
+  const handleAddOffer = async () => {
+    try {
+      const response = await axios.post(
+        `/posts/to-exchange-true/${id}/${offer.data.id}`
+      );
+      toast.success("You have successfully Agree to exchange");
+      // Вызываем функцию для обновления поста в компоненте CardExchange
+      updatePost(response.data);
+    } catch (error) {
+      toast.error("Something went wrong. Please try again later.");
+      console.log("Error:", error);
+    }
   };
 
   return (

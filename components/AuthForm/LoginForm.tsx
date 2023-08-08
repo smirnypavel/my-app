@@ -5,6 +5,7 @@ import styles from "../../styles/components/Auth/LoginForm.module.css";
 import { signIn } from "../../redux/auth/authOperations";
 import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
+import GoogleAuthComponent from "../../pages/auth/google";
 
 const LoginForm: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -80,6 +81,7 @@ const LoginForm: React.FC = () => {
             value={password}
             onChange={onChangeInputPassword}
             autoComplete="false"
+            required
           />
         </div>
 
@@ -104,6 +106,11 @@ const LoginForm: React.FC = () => {
           </Link>
         </p>
       </form>
+
+      <Link href="https://test-server-thing.onrender.com/auth/google/login">
+        Google auth
+      </Link>
+      <GoogleAuthComponent />
     </>
   );
 };
