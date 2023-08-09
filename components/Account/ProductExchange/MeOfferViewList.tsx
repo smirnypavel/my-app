@@ -1,11 +1,13 @@
 // MeOfferViewList.tsx
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Button from "../../UI/Button";
 import styles from "../../../styles/components/Account/ProductExchange/MeOfferViewList.module.css";
 import { IPosts, ToExchange } from "../../../types/IPost";
 import axios from "axios";
 import toast from "react-hot-toast";
+import Modal from "../../Modal/Modal";
+import Link from "next/link";
 
 interface MeOfferViewListProps {
   offer: ToExchange; // Assuming you have an Item type defined
@@ -19,6 +21,9 @@ const MeOfferViewList: React.FC<MeOfferViewListProps> = ({
   id,
   updatePost, // Получите updatePost из пропсов
 }) => {
+  const [dealId, setDealId] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const handleAddOffer = async () => {
     try {
       const response = await axios.post(
@@ -26,11 +31,16 @@ const MeOfferViewList: React.FC<MeOfferViewListProps> = ({
       );
       toast.success("You have successfully Agree to exchange");
       // Вызываем функцию для обновления поста в компоненте CardExchange
-      updatePost(response.data);
+      updatePost(response.data.data);
+      setDealId(response.data.orderId);
+      setIsModalOpen(true);
     } catch (error) {
       toast.error("Something went wrong. Please try again later.");
       console.log("Error:", error);
     }
+  };
+  const closeModal = () => {
+    setIsModalOpen(false);
   };
 
   return (
@@ -63,6 +73,21 @@ const MeOfferViewList: React.FC<MeOfferViewListProps> = ({
         <Button>Rejected</Button>
         <Button onClick={handleAddOffer}>Agree</Button>
       </div>
+      {isModalOpen && (
+        <Modal
+          isOpen={true}
+          onClose={closeModal}>
+          <p>want to go to the deal?</p>
+          <div className={styles.modalContainer}>
+            <Link
+              href="/deal/[id]"
+              as={`/deal/${dealId}`}>
+              yes
+            </Link>
+            <button onClick={closeModal}>no</button>
+          </div>
+        </Modal>
+      )}
     </div>
   );
 };

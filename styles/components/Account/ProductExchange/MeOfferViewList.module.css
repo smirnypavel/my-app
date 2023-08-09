@@ -17,3 +17,9 @@
   justify-content: space-between;
   gap: 1rem;
 }
+.modalContainer {
+  width: 300px;
+  height: 200px;
+  display: flex;
+  justify-content: space-around;
+}
