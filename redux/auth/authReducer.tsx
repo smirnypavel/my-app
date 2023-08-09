@@ -1,12 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {
-  signUp,
-  signIn,
-  logOut,
-  updateUser,
-  getUser,
-  googleAuth,
-} from "./authOperations";
+import { signUp, signIn, logOut, updateUser, getUser } from "./authOperations";
 import { IAuthState } from "../../types/IAuth";
 
 const initialState: IAuthState = {
@@ -54,20 +47,6 @@ export const authSlice = createSlice({
         state.error = action.error.message || "";
       })
       .addCase(signIn.fulfilled, (state, action) => {
-        state.user = action.payload;
-        state.isLoggedIn = true;
-        state.isLoading = false;
-      })
-      .addCase(googleAuth.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(googleAuth.rejected, (state, action) => {
-        state.user.token = "";
-        state.isLoggedIn = false;
-        state.isLoading = false;
-        state.error = action.error.message || "";
-      })
-      .addCase(googleAuth.fulfilled, (state, action) => {
         state.user = action.payload;
         state.isLoggedIn = true;
         state.isLoading = false;

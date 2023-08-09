@@ -1,6 +1,5 @@
 import React, { useState, useEffect, ReactNode } from "react";
 import ReactDOM from "react-dom";
-import styles from "../../styles/components/Modal/Modal.module.css";
 import { MdClear } from "react-icons/md";
 
 interface ModalProps {

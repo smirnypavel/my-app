@@ -86,25 +86,6 @@ export const signIn = createAsyncThunk(
   }
 );
 
-export const googleAuth = createAsyncThunk(
-  "auth/googleAuth",
-  async (_, thunkAPI) => {
-    try {
-      const { data } = await axios.get("/auth/google/redirect");
-      setAuthHeader(data.token);
-      toast.success("Welcome!");
-      return data;
-    } catch (error: any) {
-      if (error.response.status === 404) {
-        toast.error("Wrong login or password");
-      } else {
-        toast.error("An error occurred during login");
-      }
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
-
 export const logOut = createAsyncThunk("auth/logOut", async (_, thunkAPI) => {
   try {
     await axios.post("/users/logout");
