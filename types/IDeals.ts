@@ -4,7 +4,7 @@ export interface IDeals {
   _id: string;
   product: IPosts;
   offer: IPosts;
-  status: any;
+  status?: any;
   chat: Chat[];
   createdAt: string;
   updatedAt: string;
@@ -15,4 +15,9 @@ export interface Chat {
   user: IUserAuth;
   id: string;
   time: number;
+}
+export interface IDealsState {
+  deal: IDeals;
+  isLoading: boolean;
+  error: string | any;
 }

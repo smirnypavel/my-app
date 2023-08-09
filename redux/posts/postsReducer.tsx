@@ -22,7 +22,6 @@ const initialState: IPostState = {
     favorite: [],
     createdAt: "",
     toExchange: [],
-
     owner: {
       id: "",
       firstName: "",

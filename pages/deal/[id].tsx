@@ -4,6 +4,7 @@ import Layout from "../../components/Layout/Layout";
 import UserDetail from "../../components/User/userDetail";
 // import ModerateLayout from "../../components/Moderator/ModerateLoyout";
 import PrivateRoute from "../../redux/PrivateRoute";
+import DealsDetail from "../../components/Deals/DealsDetail";
 
 const UserPage: React.FC = () => {
   const router = useRouter();
@@ -12,7 +13,7 @@ const UserPage: React.FC = () => {
   return (
     <PrivateRoute>
       <Layout>
-        <UserDetail userId={id as string} />
+        <DealsDetail dealId={id as string} />
       </Layout>
     </PrivateRoute>
   );

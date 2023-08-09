@@ -5,6 +5,7 @@ import styles from "../../../styles/components/Deals/DealsCard.module.css";
 import productNotFound from "../../../public/productNotFound.jpeg";
 
 import { IDeals } from "../../../types/IDeals";
+import Link from "next/link";
 
 interface MyDealsCardProps {
   item: IDeals; // Assuming you have an Item type defined
@@ -59,6 +60,11 @@ const MyDealsCard: React.FC<MyDealsCardProps> = ({ item }) => {
           <h3 className={styles.cardTitle}>{item.offer.title}</h3>
         </div>
       </div>
+      <Link
+        href="/deal/[id]"
+        as={`/deal/${item._id}`}>
+        go to deal{item._id}
+      </Link>
     </>
   );
 };

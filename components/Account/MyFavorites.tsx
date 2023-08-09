@@ -5,7 +5,7 @@ import ItemCard from "../Product/ProductList/ProductCard";
 import styles from "../../styles/components/ItemList.module.css";
 import styles2 from "../../styles/components/Moderator/moderateProduct.module.css";
 
-const MyFavorites = () => {
+const MyFavorites: React.FC = () => {
   const [post, setPost] = useState<IPosts[]>([]);
   useEffect(() => {
     const fetchFavorite = async () => {
