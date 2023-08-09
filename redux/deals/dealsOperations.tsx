@@ -1,6 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { toast } from "react-hot-toast";
 import axios from "axios";
+import { IDeals } from "../../types/IDeals";
 
 axios.defaults.baseURL = "https://test-server-thing.onrender.com/";
 
@@ -19,7 +20,7 @@ export const restoreToken = () => {
 };
 
 export const getDealById = createAsyncThunk(
-  "posts/getDealById",
+  "deal/getDealById",
   async (dealId: string, thunkAPI) => {
     const initialToken = localStorage.getItem("refreshToken");
     if (initialToken) {
@@ -34,3 +35,19 @@ export const getDealById = createAsyncThunk(
     }
   }
 );
+export const addDealComment = createAsyncThunk<
+  IDeals,
+  { dealId: string; credentials: {} },
+  { rejectValue: string }
+>("deal/addDealComment", async ({ dealId, credentials }, thunkAPI) => {
+  const initialToken = localStorage.getItem("refreshToken");
+  if (initialToken) {
+    setAuthHeader(initialToken);
+  }
+  try {
+    const { data } = await axios.post(`/orders/message/${dealId}`, credentials);
+    return data;
+  } catch (error: any) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});

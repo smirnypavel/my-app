@@ -1,0 +1,27 @@
+.commentsList {
+  list-style: none;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  width: 100%;
+}
+.comment {
+  display: flex;
+  align-items: center;
+  /* flex-direction: column; */
+  background-color: rgba(148, 147, 147, 0.214);
+  padding: 10px;
+  border-radius: 10px;
+  position: relative;
+}
+.deleteButton {
+  border: none;
+  background-color: transparent;
+  font-size: 25px;
+  position: absolute;
+  right: 0;
+  top: 5px;
+}
+.deleteButton:hover {
+  color: red;
+}

@@ -5,12 +5,12 @@ export interface IDeals {
   product: IPosts;
   offer: IPosts;
   status?: any;
-  chat: Chat[];
+  chat: IChat[];
   createdAt: string;
   updatedAt: string;
 }
 
-export interface Chat {
+export interface IChat {
   text: string;
   user: IUserAuth;
   id: string;

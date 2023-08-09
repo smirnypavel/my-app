@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getDealById } from "./dealsOperations";
+import { getDealById, addDealComment } from "./dealsOperations";
 import { IDealsState } from "../../types/IDeals";
 
 const initialState: IDealsState = {
@@ -68,6 +68,17 @@ export const dealsSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(getDealById.fulfilled, (state, action) => {
+        state.deal = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(addDealComment.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(addDealComment.rejected, (state, action) => {
+        state.error = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(addDealComment.fulfilled, (state, action) => {
         state.deal = action.payload;
         state.isLoading = false;
       });

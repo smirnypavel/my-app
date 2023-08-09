@@ -1,0 +1,50 @@
+.dealsTitle {
+  text-align: center;
+}
+.dealsContainer {
+  display: flex;
+  justify-content: space-between;
+  /* align-items: center; */
+}
+.name {
+  display: inline-block;
+  margin: 0;
+  font-size: 1.5em;
+}
+.imageContainer {
+  display: flex;
+  flex-direction: column;
+}
+.ownerInfo {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.dealsProductInfo {
+  width: 150px;
+}
+.MdCompareArrows {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 60px;
+}
+.inputCommentWrapper {
+  display: flex;
+  justify-content: center;
+}
+.inputComment {
+  width: 550px;
+  height: 50px;
+  border: 1px, solid rgba(148, 147, 147, 0.214);
+  border-radius: 10px;
+  resize: none;
+  padding: 5px;
+  padding-left: 10px;
+}
+.inputCommentButton {
+  border: 1px, solid rgba(148, 147, 147, 0.214);
+  border-radius: 10px;
+  background-color: #46c578;
+  color: #fff;
+}
