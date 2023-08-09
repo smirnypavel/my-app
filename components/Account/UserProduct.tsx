@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { IPosts } from "../../types/IPost";
 import ItemCard from "../Product/ProductList/ProductCard";
 import styles from "../../styles/components/ItemList.module.css";
-import styles2 from "../../styles/components/Moderator/moderateProduct.module.css";
 
 const UserProduct = () => {
   const [post, setPost] = useState<IPosts[]>([]);
@@ -21,8 +20,6 @@ const UserProduct = () => {
 
   return (
     <>
-      {/* <div className={styles2.statContainer}> */}
-      {/* <p>Список моих товаров</p> */}
       <div className={styles.itemList}>
         {post.map((item: IPosts) => (
           <ItemCard
@@ -31,7 +28,6 @@ const UserProduct = () => {
           />
         ))}
       </div>
-      {/* </div> */}
     </>
   );
 };

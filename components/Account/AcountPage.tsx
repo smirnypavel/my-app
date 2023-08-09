@@ -12,6 +12,7 @@ import IExchangeList from "./ProductExchange/IExchangeList";
 import MyDeals from "./ProductExchange/MyDeals";
 
 import { HiMiniArrowLeftOnRectangle } from "react-icons/hi2";
+import Link from "next/link";
 
 enum ActiveComponent {
   PROFILE = "profile",
@@ -22,10 +23,10 @@ enum ActiveComponent {
   MyDEALS = "MyDeals",
 }
 
-const AccountPage: React.FC = () => {
-  const [activeComponent, setActiveComponent] = useState<ActiveComponent>(
-    ActiveComponent.PROFILE
-  );
+const AccountPage: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  // const [activeComponent, setActiveComponent] = useState<ActiveComponent>(
+  //   ActiveComponent.PROFILE
+  // );
   // const role = useSelector(getRole);
   const router = useRouter();
   const dispatch = useAppDispatch();
@@ -35,76 +36,52 @@ const AccountPage: React.FC = () => {
     router.push("/");
   };
 
-  const handleComponentChange = (component: ActiveComponent) => {
-    setActiveComponent(component);
-  };
-
-  const renderActiveComponent = () => {
-    switch (activeComponent) {
-      case ActiveComponent.PROFILE:
-        return <Profile />;
-      case ActiveComponent.FAVORITES:
-        return <MyFavorites />;
-      case ActiveComponent.MyPRODUCT:
-        return <UserProduct />;
-      case ActiveComponent.MeOFFER:
-        return <MeExchangeList />;
-      case ActiveComponent.MyOFFER:
-        return <IExchangeList />;
-      case ActiveComponent.MyDEALS:
-        return <MyDeals />;
-      default:
-        return null;
-    }
-  };
+  // const handleComponentChange = (component: ActiveComponent) => {
+  //   setActiveComponent(component);
+  // };
 
   return (
     <>
       <div className={styles.accountContainer}>
         <div className={styles.buttonContainer}>
-          <button
+          <Link
             className={styles.button}
-            onClick={() => handleComponentChange(ActiveComponent.PROFILE)}>
-            {/* <span className={styles.notification}>2</span> */}
+            href="/account">
             Profile
-          </button>
-          <button
+          </Link>
+          <Link
             className={styles.button}
-            onClick={() => handleComponentChange(ActiveComponent.MyPRODUCT)}>
-            {/* <span className={styles.notification}>2</span> */}
-            My Product
-          </button>
-          <button
+            href="/account/favorites">
+            Favorites
+          </Link>
+          <Link
             className={styles.button}
-            onClick={() => handleComponentChange(ActiveComponent.FAVORITES)}>
-            {/* <span className={styles.notification}>2</span> */}
-            My Favorites
-          </button>
-          <button
+            href="/account/my-product">
+            My product
+          </Link>
+          <Link
             className={styles.button}
-            onClick={() => handleComponentChange(ActiveComponent.MeOFFER)}>
-            {/* <span className={styles.notification}>2</span> */}
-            Me Offer
-          </button>
-          <button
+            href="/account/i-offered">
+            I offered
+          </Link>
+          <Link
             className={styles.button}
-            onClick={() => handleComponentChange(ActiveComponent.MyOFFER)}>
-            {/* <span className={styles.notification}>2</span> */}
-            My Offer
-          </button>
-          <button
+            href="/account/me-offer">
+            Me offer
+          </Link>
+          <Link
             className={styles.button}
-            onClick={() => handleComponentChange(ActiveComponent.MyDEALS)}>
-            {/* <span className={styles.notification}>2</span> */}
-            My Deals
-          </button>
+            href="/account/my-deals">
+            My deals
+          </Link>
           <button
             onClick={handleLogOut}
             className={styles.logOutButton}>
             <HiMiniArrowLeftOnRectangle className={styles.icon} /> LogOut
           </button>
         </div>
-        {renderActiveComponent()}
+        {/* {renderActiveComponent()} */}
+        {children}
       </div>
     </>
   );

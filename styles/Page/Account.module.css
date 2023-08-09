@@ -42,6 +42,7 @@
   border-bottom-right-radius: 6.4px;
   border-top-left-radius: 6.4px;
   border-top-right-radius: 6.4px;
+  text-decoration: none;
   @media screen and (min-width: 768px) {
     width: 190px;
     font-size: 14px;
