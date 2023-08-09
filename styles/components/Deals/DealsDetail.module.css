@@ -48,3 +48,28 @@
   background-color: #46c578;
   color: #fff;
 }
+.backButton {
+  position: absolute;
+  top: 70px;
+  left: -10px;
+  width: 120px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  border: none;
+  background: transparent;
+  color: #46c578;
+  text-decoration: none;
+  font-size: 16px;
+  transition: background-color 0.3s, color 0.3s;
+  @media screen and (min-width: 768px) {
+    left: -20px;
+  }
+  @media screen and (min-width: 1280px) {
+  }
+}
+.backButton:hover {
+  color: rgb(1, 1, 1);
+}

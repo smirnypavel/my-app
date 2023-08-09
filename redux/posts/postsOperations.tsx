@@ -252,3 +252,24 @@ export const offerPostExchange = createAsyncThunk<
     return thunkAPI.rejectWithValue(error.message);
   }
 });
+export const deletePostExchange = createAsyncThunk<
+  MyPostResponse,
+  { postId: string; exchangeID: string },
+  { rejectValue: string }
+>("posts/offerPostExchange", async ({ postId, exchangeID }, thunkAPI) => {
+  const initialToken = localStorage.getItem("refreshToken");
+  if (initialToken) {
+    setAuthHeader(initialToken);
+  }
+  try {
+    const { data } = await axios.delete(
+      `/posts/to-exchange/${postId}/${exchangeID}`
+    );
+    toast.success("You have successfully delete offer");
+
+    return data;
+  } catch (error: any) {
+    toast.error("Something went wrong. Please try again later.");
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});

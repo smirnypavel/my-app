@@ -6,7 +6,10 @@ import Image from "next/image";
 import Button from "../../UI/Button";
 import { useRouter } from "next/router";
 import { useAppDispatch } from "../../../redux/hooks";
-import { offerPostExchange } from "../../../redux/posts/postsOperations";
+import {
+  deletePostExchange,
+  offerPostExchange,
+} from "../../../redux/posts/postsOperations";
 import toast from "react-hot-toast";
 
 interface ToExchangeListProps {
@@ -41,6 +44,28 @@ const ToExchangeList: React.FC<ToExchangeListProps> = ({ product }) => {
       console.error("An error occurred:", e);
     }
   };
+  const handleDeleteExchange = async (offerId: string) => {
+    try {
+      if (typeof id === "string") {
+        const foundExchangeId = function findInToExchange(
+          toExchangeArray: any[],
+          ownerId: string
+        ) {
+          const foundItem = toExchangeArray.find(
+            (item) => item.data.id === ownerId
+          );
+          return foundItem;
+        };
+        const exchangeID: string = foundExchangeId(
+          product.toExchange,
+          offerId
+        ).id;
+        await dispatch(deletePostExchange({ postId: id, exchangeID }));
+      }
+    } catch (e) {
+      console.error("An error occurred:", e);
+    }
+  };
 
   return (
     <>
@@ -65,7 +90,11 @@ const ToExchangeList: React.FC<ToExchangeListProps> = ({ product }) => {
               {product.toExchange.some(
                 (exchangeItem: ToExchange) => exchangeItem.data.id === post._id
               ) ? (
-                <Button type="button">cancel the offer</Button>
+                <Button
+                  type="button"
+                  onClick={() => handleDeleteExchange(post._id)}>
+                  cancel the offer
+                </Button>
               ) : (
                 <Button
                   type="button"

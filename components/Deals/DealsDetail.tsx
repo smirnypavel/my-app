@@ -50,6 +50,9 @@ const DealsDetail: React.FC<DealsDetailProps> = () => {
       console.error("An error occurred:", e);
     }
   };
+  const handleBack = () => {
+    router.back();
+  };
   const productPhoto = deal.product.img || productNotFound;
   const ownerProductPhoto = deal.product.owner.avatarURL || photoNotFound;
   const offerPhoto = deal.offer.img || productNotFound;
@@ -63,6 +66,11 @@ const DealsDetail: React.FC<DealsDetailProps> = () => {
         <h2 className={styles.name}>{deal.offer.owner.firstName}</h2>
       </h4>
       <div className={styles.dealsContainer}>
+        <button
+          onClick={handleBack}
+          className={styles.backButton}>
+          {" <<< "} Back
+        </button>
         <div className={styles.dealsProductInfo}>
           <div className={styles.imageContainer}>
             <div className={styles.ownerInfo}>

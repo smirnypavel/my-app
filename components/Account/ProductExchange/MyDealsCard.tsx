@@ -63,7 +63,7 @@ const MyDealsCard: React.FC<MyDealsCardProps> = ({ item }) => {
       <Link
         href="/deal/[id]"
         as={`/deal/${item._id}`}>
-        go to deal{item._id}
+        go to deal
       </Link>
     </>
   );
