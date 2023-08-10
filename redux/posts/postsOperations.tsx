@@ -248,7 +248,7 @@ export const offerPostExchange = createAsyncThunk<
 
     return data;
   } catch (error: any) {
-    toast.error("Something went wrong. Please try again later.");
+    toast.error("You already have such a deal.");
     return thunkAPI.rejectWithValue(error.message);
   }
 });

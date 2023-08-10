@@ -35,7 +35,7 @@ const MeExchangeList = () => {
     <PrivateRoute>
       <Layout>
         <AccountPage>
-          <div className={styles2.statContainer}>
+          <div className={styles.itemListContainer}>
             <p>ME OFFER an EXCHANGE</p>
             {isOfferPost.length > 0 ? (
               <div className={styles.itemList}>

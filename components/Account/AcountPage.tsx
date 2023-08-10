@@ -24,53 +24,66 @@ enum ActiveComponent {
 }
 
 const AccountPage: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  // const [activeComponent, setActiveComponent] = useState<ActiveComponent>(
-  //   ActiveComponent.PROFILE
-  // );
-  // const role = useSelector(getRole);
   const router = useRouter();
   const dispatch = useAppDispatch();
+
+  const isActiveLink = (path: string): boolean => {
+    return router.pathname === path;
+  };
 
   const handleLogOut = async () => {
     dispatch(logOut());
     router.push("/");
   };
 
-  // const handleComponentChange = (component: ActiveComponent) => {
-  //   setActiveComponent(component);
-  // };
-
   return (
     <>
       <div className={styles.accountContainer}>
         <div className={styles.buttonContainer}>
           <Link
-            className={styles.button}
-            href="/account">
+            href="/account"
+            className={`${styles.button} ${
+              isActiveLink("/account") ? styles.activeButton : ""
+            }`}>
             Profile
           </Link>
           <Link
-            className={styles.button}
-            href="/account/favorites">
+            href={"./product/create"}
+            className={styles.buttonCreate}>
+            Add product
+          </Link>
+          <Link
+            href="/account/favorites"
+            className={`${styles.button} ${
+              isActiveLink("/account/favorites") ? styles.activeButton : ""
+            }`}>
             Favorites
           </Link>
           <Link
-            className={styles.button}
+            className={`${styles.button} ${
+              isActiveLink("/account/my-product") ? styles.activeButton : ""
+            }`}
             href="/account/my-product">
             My product
           </Link>
           <Link
-            className={styles.button}
+            className={`${styles.button} ${
+              isActiveLink("/account/i-offered") ? styles.activeButton : ""
+            }`}
             href="/account/i-offered">
             I offered
           </Link>
           <Link
-            className={styles.button}
+            className={`${styles.button} ${
+              isActiveLink("/account/me-offer") ? styles.activeButton : ""
+            }`}
             href="/account/me-offer">
             Me offer
           </Link>
           <Link
-            className={styles.button}
+            className={`${styles.button} ${
+              isActiveLink("/account/my-deals") ? styles.activeButton : ""
+            }`}
             href="/account/my-deals">
             My deals
           </Link>
@@ -80,7 +93,6 @@ const AccountPage: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             <HiMiniArrowLeftOnRectangle className={styles.icon} /> LogOut
           </button>
         </div>
-        {/* {renderActiveComponent()} */}
         {children}
       </div>
     </>

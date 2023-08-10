@@ -25,13 +25,15 @@ const UserProduct = () => {
     <PrivateRoute>
       <Layout>
         <AccountPage>
-          <div className={styles.itemList}>
-            {post.map((item: IPosts) => (
-              <ItemCard
-                key={item._id}
-                item={item}
-              />
-            ))}
+          <div className={styles.itemListContainer}>
+            <div className={styles.itemList}>
+              {post.map((item: IPosts) => (
+                <ItemCard
+                  key={item._id}
+                  item={item}
+                />
+              ))}
+            </div>
           </div>
         </AccountPage>
       </Layout>

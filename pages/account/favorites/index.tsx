@@ -26,7 +26,7 @@ const MyFavorites = () => {
     <PrivateRoute>
       <Layout>
         <AccountPage>
-          <div className={styles2.statContainer}>
+          <div className={styles.itemListContainer}>
             <p>Favorites LIST</p>
             <div className={styles.itemList}>
               {post.map((item: IPosts) => (

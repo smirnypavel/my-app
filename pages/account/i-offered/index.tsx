@@ -28,7 +28,7 @@ const IExchangeList = () => {
     <PrivateRoute>
       <Layout>
         <AccountPage>
-          <div className={styles2.statContainer}>
+          <div className={styles.itemListContainer}>
             <p>They offer me an exchange</p>
             {post.length > 0 ? (
               <div className={styles.itemList}>

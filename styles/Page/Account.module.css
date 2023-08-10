@@ -14,7 +14,7 @@
   align-items: flex-start;
   padding-top: 20px;
   @media screen and (min-width: 768px) {
-    width: 100px;
+    width: 150px;
   }
   @media screen and (min-width: 1280px) {
     width: 200px;
@@ -22,7 +22,7 @@
 }
 
 .button {
-  width: 90px;
+  width: 60px;
   height: 38px;
   margin-bottom: 4px;
   margin-left: 5px;
@@ -44,11 +44,13 @@
   border-top-right-radius: 6.4px;
   text-decoration: none;
   @media screen and (min-width: 768px) {
-    width: 190px;
+    width: 100px;
+
     font-size: 14px;
     line-height: 20px;
   }
   @media screen and (min-width: 1280px) {
+    width: 170px;
   }
 }
 
@@ -64,6 +66,39 @@
   );
   box-shadow: rgba(115, 103, 240, 0.48) 0px 2px 6px 0px;
   color: rgb(255, 255, 255);
+}
+
+.buttonCreate {
+  width: 60px;
+  height: 38px;
+  margin-bottom: 4px;
+  margin-left: 5px;
+  padding-left: 12px;
+  padding-right: 12px;
+  display: flex;
+  align-items: center;
+  border: none;
+  background-color: transparent;
+  font-size: 10px;
+  line-height: 10px;
+  text-align: center;
+  color: rgba(206, 21, 21, 0.68);
+  transition: background-color 0.25s ease-in, color 0.25s ease-in;
+  position: relative;
+  border-bottom-left-radius: 6.4px;
+  border-bottom-right-radius: 6.4px;
+  border-top-left-radius: 6.4px;
+  border-top-right-radius: 6.4px;
+  text-decoration: none;
+  @media screen and (min-width: 768px) {
+    width: 100px;
+
+    font-size: 14px;
+    line-height: 20px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 170px;
+  }
 }
 
 .icon {

@@ -7,6 +7,7 @@ import styles from "../../../styles/components/Product/CreateProductForm.module.
 import productNotFound from "../../../public/productNotFound.jpeg";
 import Input from "../../UI/Input";
 import Button from "../../UI/Button";
+import { useRouter } from "next/router";
 
 const cloudName = "dvt0czglz";
 const uploadPreset = "eqykdqjy";
@@ -18,11 +19,13 @@ const ItemForm: React.FC = () => {
   const [location, setLocation] = useState("");
   const [price, setPrice] = useState("");
   const [img, setImg] = useState("");
+  const router = useRouter();
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     dispatch(createPost({ title, description, location, price, img }));
     // Handle form submission
+    router.push("/account/my-product");
   };
   const handleFileInputChange = async (
     event: ChangeEvent<HTMLInputElement>
@@ -68,10 +71,18 @@ const ItemForm: React.FC = () => {
   };
   const productImg = img || productNotFound; // Используйте productNotFound, если avatarURL не определен
 
+  const handleBack = () => {
+    router.back();
+  };
   return (
     <>
       <h1 className={styles.settingsFormTitle}>Create Product</h1>
       <div className={styles.settingsFormContainer}>
+        <button
+          onClick={handleBack}
+          className={styles.backButton}>
+          {" <<< "} Back
+        </button>
         <div className={styles.imageContainer}>
           <div className={styles.imageWrapper}>
             <Image

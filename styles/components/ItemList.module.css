@@ -1,3 +1,13 @@
+.itemListContainer {
+  margin-left: 10px;
+
+  @media screen and (min-width: 768px) {
+    width: 600px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 1000px;
+  }
+}
 .itemList {
   /* margin-left: 20px; */
   /* width: 950px; */
