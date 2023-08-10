@@ -3,6 +3,8 @@
   margin-left: 16px;
   flex-direction: column;
   /* width: fit-content; */
+  justify-content: center;
+  align-items: center;
   width: 100%;
 }
 .profile {
