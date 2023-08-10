@@ -156,7 +156,7 @@
   z-index: 2;
   position: fixed;
   display: inline-block;
-  left: -7px;
+  left: 0px;
   text-align: center;
   padding-top: 10px;
   height: 60px;
