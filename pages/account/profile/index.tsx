@@ -11,7 +11,7 @@ import Layout from "../../../components/Layout/Layout";
 import PrivateRoute from "../../../redux/PrivateRoute";
 import AccountPage from "../../../components/Account/AcountPage";
 
-const Profile: React.FC = () => {
+const Profile = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const user: IUserAuth = useSelector(getUser);
@@ -40,12 +40,15 @@ const Profile: React.FC = () => {
                 <Image
                   src={avatarURL}
                   alt="avatar"
-                  width={250}
-                  height={300}
+                  // width={300}
+                  // height={350}
+                  fill
+                  sizes="(min-width: 808px) 50vw, 100vw"
                   style={{
                     objectFit: "cover",
                     margin: "auto",
                   }}
+                  className={styles.imageWrapper}
                 />
               </div>
               <div className={styles.profileInfo}>

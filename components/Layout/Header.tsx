@@ -72,7 +72,7 @@ const Header: React.FC = () => {
 
               {isLoggedIn && (
                 <Link
-                  href="/account"
+                  href="/account/profile"
                   className={styles.userLink}>
                   <div className={styles.userHeader}>
                     <div>
@@ -165,7 +165,7 @@ const Header: React.FC = () => {
             </li>
             <li className={styles.mobileHeaderLinkItem}>
               <Link
-                href="/account"
+                href="/account/profile"
                 className={`${styles.linkMobile} ${
                   isActiveLink("/account") ? styles.activeLinkMobile : ""
                 }`}>

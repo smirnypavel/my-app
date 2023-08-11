@@ -45,7 +45,7 @@ const AccountPage: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             <MdClear />
           </button>
           <Link
-            href="/account"
+            href="/account/"
             className={`${styles.button} ${
               isActiveLink("/account") ? styles.activeButton : ""
             }`}>
@@ -152,7 +152,6 @@ const AccountPage: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             <HiMiniArrowLeftOnRectangle className={styles.icon} /> LogOut
           </button>
         </div>
-
         {children}
       </div>
     </>
