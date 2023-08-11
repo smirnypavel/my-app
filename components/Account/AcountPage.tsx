@@ -100,14 +100,14 @@ const AccountPage: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         </div>
         <div className={styles.buttonContainer}>
           <Link
-            href="/account"
+            href="/account/profile"
             className={`${styles.button} ${
               isActiveLink("/account") ? styles.activeButton : ""
             }`}>
             Profile
           </Link>
           <Link
-            href={"./product/create"}
+            href={"/product/create"}
             className={styles.buttonCreate}>
             Add product
           </Link>

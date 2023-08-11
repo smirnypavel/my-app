@@ -135,6 +135,11 @@ const Header: React.FC = () => {
           <LanguageSwitcher />
         </nav>
       </header>
+      <div className={styles.logoMobileContainer}>
+        <h2 className={styles.logoMobile}>
+          Trade <span className={styles.logoSpanMobile}>In</span>
+        </h2>
+      </div>
       <header className={styles.mobileHeader}>
         {" "}
         <nav>
@@ -151,7 +156,7 @@ const Header: React.FC = () => {
             </li>
             <li className={styles.mobileHeaderLinkItem}>
               <Link
-                href={"./product/create"}
+                href={"/product/create"}
                 className={`${styles.linkMobile} ${
                   isActiveLink("/product/create") ? styles.activeLinkMobile : ""
                 }`}>

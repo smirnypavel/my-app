@@ -30,41 +30,52 @@ const MyDealsCard: React.FC<MyDealsCardProps> = ({ item }) => {
   return (
     <>
       <div className={styles.itemCard}>
+        <Link
+          className={styles.linkToDeal}
+          href="/deal/[id]"
+          as={`/deal/${item._id}`}>
+          to deal
+        </Link>
         <div>
-          <Image
-            src={productPhoto}
-            alt=""
-            width={150}
-            height={150}
-            style={{
-              objectFit: "cover",
-              margin: "auto",
-            }}
-            priority
-          />
+          <div className={styles.imageWrapper}>
+            <Image
+              src={productPhoto}
+              alt=""
+              // width={300}
+              // height={250}
+              style={{
+                objectFit: "cover",
+                margin: "auto",
+              }}
+              fill
+              sizes="(min-width: 808px) 50vw, 100vw"
+              className={styles.imageWrapper}
+              priority
+            />
+          </div>
           <h3 className={styles.cardTitle}>{item.product.title}</h3>
         </div>
         <MdCompareArrows style={{ fontSize: "60px" }} />
         <div>
-          <Image
-            src={offerPhoto}
-            alt=""
-            width={150}
-            height={150}
-            style={{
-              objectFit: "cover",
-              margin: "auto",
-            }}
-            priority
-          />
+          <div className={styles.imageWrapper}>
+            <Image
+              src={offerPhoto}
+              alt=""
+              // width={300}
+              // height={250}
+              style={{
+                objectFit: "cover",
+                margin: "auto",
+              }}
+              fill
+              sizes="(min-width: 808px) 50vw, 100vw"
+              className={styles.imageWrapper}
+              priority
+            />
+          </div>
           <h3 className={styles.cardTitle}>{item.offer.title}</h3>
         </div>
       </div>
-      <Link
-        href="/deal/[id]"
-        as={`/deal/${item._id}`}>
-        go to deal
-      </Link>
     </>
   );
 };

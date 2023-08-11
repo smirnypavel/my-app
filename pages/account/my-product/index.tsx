@@ -26,6 +26,7 @@ const UserProduct = () => {
       <Layout>
         <AccountPage>
           <div className={styles.itemListContainer}>
+            <h1>Your Product</h1>
             <div className={styles.itemList}>
               {post.map((item: IPosts) => (
                 <ItemCard

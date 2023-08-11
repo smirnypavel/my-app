@@ -36,7 +36,7 @@ const MeExchangeList = () => {
       <Layout>
         <AccountPage>
           <div className={styles.itemListContainer}>
-            <p>ME OFFER an EXCHANGE</p>
+            <h1>Me offered</h1>
             {isOfferPost.length > 0 ? (
               <div className={styles.itemList}>
                 {isOfferPost.map((item: IPosts) => (

@@ -1,24 +1,17 @@
 .itemListContainer {
-  margin-left: 10px;
-
-  /* @media screen and (min-width: 768px) {
-    width: 600px;
+  text-align: center;
+  @media screen and (min-width: 768px) {
+    margin-left: 50px;
+    width: 100%;
   }
   @media screen and (min-width: 1280px) {
-    width: 1000px;
-  } */
+  }
 }
 .itemList {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-  padding-bottom: 1rem;
-
   @media screen and (min-width: 768px) {
-    grid-template-columns: repeat(
-      auto-fit,
-      minmax(250px, 1fr)
-    ); /* Измените ширину колонок на больших экранах */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
   }
 }
 
@@ -34,8 +27,9 @@
   position: relative;
   transition: box-shadow 0.3s, color 0.3s;
   @media screen and (min-width: 768px) {
-    /* min-width: 280px; */
-    /* min-height: auto; */
+    min-width: 240px;
+    max-width: 240px;
+    min-height: auto;
   }
 }
 .itemCard:hover {
@@ -101,7 +95,7 @@
   border-radius: 10px;
   @media screen and (min-width: 768px) {
     /* Дополнительные стили для экранов с шириной больше 768px */
-    height: 150px; /* На больших экранах высота изображения может быть 250px */
+    height: 250px; /* На больших экранах высота изображения может быть 250px */
   }
 }
 

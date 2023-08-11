@@ -7,6 +7,8 @@
   width: 100%;
   @media screen and (min-width: 768px) {
     margin-left: 16px;
+    justify-content: flex-start;
+    align-items: center;
   }
   @media screen and (min-width: 1280px) {
   }
@@ -15,6 +17,7 @@
   width: 100%;
   @media screen and (min-width: 768px) {
     display: flex;
+    justify-content: center;
   }
   @media screen and (min-width: 1280px) {
     display: flex;
@@ -36,17 +39,12 @@
   height: 200px; /*Высота изображения фиксирована*/
   margin-bottom: 10px;
   border-radius: 10px;
+
   @media screen and (min-width: 768px) {
-    /* Дополнительные стили для экранов с шириной больше 768px */
-    height: 150px; /* На больших экранах высота изображения может быть 250px */
+    width: 250px;
+    height: 300px;
   }
-  /* @media screen and (min-width: 768px) {
-    width: 150px;
-    height: 250px;
-  } */
   @media screen and (min-width: 1280px) {
-    /* width: 250px;
-    height: 300px; */
   }
 }
 

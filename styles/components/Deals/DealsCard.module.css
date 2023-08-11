@@ -1,17 +1,21 @@
 .itemCard {
+  /* height: 250px; */
   margin-top: 10px;
   border-radius: 10px;
   padding: 1rem;
   box-shadow: 0px 0px 10px 2px rgba(49, 97, 255, 0.104);
   text-align: center;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   position: relative;
   transition: box-shadow 0.3s, color 0.3s;
   @media screen and (min-width: 768px) {
+    margin-top: 0px;
     max-width: 450px;
     max-height: 290px;
+    justify-content: space-evenly;
+    width: 100%;
   }
   @media screen and (min-width: 1280px) {
   }
@@ -19,21 +23,28 @@
 .itemCard:hover {
   box-shadow: 0px 0px 10px 2px rgba(2, 3, 4, 0.17);
 }
+.linkToDeal {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
 .cardTitle {
   white-space: nowrap; /* Запретить перенос слов на новую строку */
   overflow: hidden;
   text-overflow: ellipsis;
   cursor: pointer;
+  width: 120px;
 }
 .imageWrapper {
   cursor: pointer;
   position: relative;
-  width: 100%; /* Ширина изображения будет занимать 100% от своего контейнера */
-  height: 200px; /* Высота изображения фиксирована */
-  margin-bottom: 10px;
+  width: 120px; /* Ширина изображения будет занимать 100% от своего контейнера */
+  height: 150px; /* Высота изображения фиксирована */
+  /* margin-bottom: 10px; */
   border-radius: 10px;
   @media screen and (min-width: 768px) {
     /* Дополнительные стили для экранов с шириной больше 768px */
     height: 150px; /* На больших экранах высота изображения может быть 250px */
+    width: 100%; /* Ширина изображения будет занимать 100% от своего контейнера */
   }
 }

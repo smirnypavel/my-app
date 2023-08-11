@@ -15,6 +15,7 @@
   width: 100%; /* Это позволит контенту растягиваться на всю ширину */
   padding: 0 20px; /* Пример отступов для контента */
   box-sizing: border-box; /* Учтет отступы внутри ширины элемента */
+  margin-top: 30px;
 }
 
 .header {
@@ -33,7 +34,21 @@
 }
 .logoSpan {
   color: rgb(103, 103, 103);
-
+  font-size: 30px;
+  margin-left: -10px;
+}
+.logoMobileContainer {
+  position: absolute;
+  right: 10px;
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+}
+.logoMobile {
+  color: #46c578;
+}
+.logoSpanMobile {
+  color: rgb(103, 103, 103);
   font-size: 30px;
   margin-left: -10px;
 }

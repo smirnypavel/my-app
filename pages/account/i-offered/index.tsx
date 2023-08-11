@@ -29,7 +29,7 @@ const IExchangeList = () => {
       <Layout>
         <AccountPage>
           <div className={styles.itemListContainer}>
-            <p>They offer me an exchange</p>
+            <h1>I offered</h1>
             {post.length > 0 ? (
               <div className={styles.itemList}>
                 {post.map((item: IPosts) => (

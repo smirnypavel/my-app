@@ -27,7 +27,7 @@ const MyDeals = () => {
       <Layout>
         <AccountPage>
           <div className={styles.statContainer}>
-            <p>They MyDeals exchange</p>
+            <h1>My deals</h1>
             {post.length > 0 ? (
               <div className={styles.itemList}>
                 {post.map((item: IDeals) => (

@@ -1,21 +1,14 @@
 .accountContainer {
   @media screen and (min-width: 768px) {
-    margin: auto;
     display: flex;
-    width: fit-content;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+    width: 100%;
   }
   @media screen and (min-width: 1280px) {
-    width: 170px;
   }
 }
 .buttonContainer {
   width: 100px;
-
   display: none;
-
   @media screen and (min-width: 768px) {
     width: 150px;
     height: 100vh;

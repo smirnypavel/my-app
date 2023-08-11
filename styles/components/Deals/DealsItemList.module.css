@@ -1,19 +1,23 @@
 .statContainer {
-  margin-left: 20px;
-  padding-top: 20px;
-  /* width: 100%; */
-  min-width: 950px;
-}
-.itemList {
-  /* margin-left: 20px;
-  width: 950px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-  padding-bottom: 1rem; */
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
 
   @media screen and (min-width: 768px) {
-    /* margin-left: 30px; */
+    justify-content: flex-start;
+  }
+  @media screen and (min-width: 1280px) {
+  }
+}
+.itemList {
+  @media screen and (min-width: 768px) {
+    margin-left: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
   }
   @media screen and (min-width: 1280px) {
   }
