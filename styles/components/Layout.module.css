@@ -18,14 +18,14 @@
 }
 
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 10px;
-  width: 100%; /* Добавьте это свойство */
+  display: none; /* Скрыть заголовок на маленьких экранах */
 
-  @media screen and (max-width: 768px) {
-    display: none; /* Скрыть заголовок на маленьких экранах */
+  @media screen and (min-width: 768px) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    width: 100%; /* Добавьте это свойство */
   }
 }
 .logo {
