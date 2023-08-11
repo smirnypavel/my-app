@@ -12,11 +12,11 @@ const DealsChat = ({ chat }: { chat: IChat }) => {
   const router = useRouter();
   const { id } = router.query;
 
-  const handleDeleteComment = () => {
-    if (typeof id === "string") {
-      dispatch(deletePostComment({ postId: id, commentId: chat.id }));
-    }
-  };
+  // const handleDeleteComment = () => {
+  //   if (typeof id === "string") {
+  //     dispatch(deletePostComment({ postId: id, commentId: chat.id }));
+  //   }
+  // };
   return (
     <>
       <li className={styles.commentsList}>
@@ -36,11 +36,11 @@ const DealsChat = ({ chat }: { chat: IChat }) => {
             <h6>{chat.user.firstName}</h6>
           </div>
           <p>{chat.text}</p>
-          <button
+          {/* <button
             onClick={handleDeleteComment}
             className={styles.deleteButton}>
             <MdDeleteForever />
-          </button>
+          </button> */}
         </div>
       </li>
     </>

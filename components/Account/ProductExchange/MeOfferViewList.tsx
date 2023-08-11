@@ -31,9 +31,9 @@ const MeOfferViewList: React.FC<MeOfferViewListProps> = ({
       );
       toast.success("You have successfully Agree to exchange");
       // Вызываем функцию для обновления поста в компоненте CardExchange
+      setIsModalOpen(true);
       updatePost(response.data.data);
       setDealId(response.data.orderId);
-      setIsModalOpen(true);
     } catch (error) {
       toast.error("Something went wrong. Please try again later.");
       console.log("Error:", error);
@@ -80,11 +80,12 @@ const MeOfferViewList: React.FC<MeOfferViewListProps> = ({
           <p>want to go to the deal?</p>
           <div className={styles.modalContainer}>
             <Link
+              className={styles.buttonUpdateProduct}
               href="/deal/[id]"
               as={`/deal/${dealId}`}>
               yes
             </Link>
-            <button onClick={closeModal}>no</button>
+            <Button onClick={closeModal}>no</Button>
           </div>
         </Modal>
       )}

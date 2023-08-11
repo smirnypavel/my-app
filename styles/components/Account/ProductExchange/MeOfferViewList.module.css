@@ -23,3 +23,29 @@
   display: flex;
   justify-content: space-around;
 }
+.buttonUpdateProduct {
+  margin-top: 15px;
+  width: 100%;
+  height: 50px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  border: 1.5px solid #46c578;
+  background: #fff;
+  color: #46c578;
+  text-decoration: none;
+  font-size: 16px;
+  transition: background-color 0.3s, color 0.3s;
+  @media screen and (min-width: 768px) {
+    width: 288px;
+    margin-top: 0px;
+  }
+  @media screen and (min-width: 1280px) {
+  }
+}
+
+.buttonUpdateProduct:hover {
+  background: #46c578;
+  color: #fff;
+}

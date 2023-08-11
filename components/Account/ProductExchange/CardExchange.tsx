@@ -65,8 +65,7 @@ const CardExchange: React.FC<CardExchangeProps> = ({ item }) => {
                       : prevIndex - 1
                   )
                 }
-                disabled={currentOfferIndex === 0} // Отключаем левую кнопку, если текущий индекс равен 0
-              >
+                disabled={currentOfferIndex === 0}>
                 <FiArrowLeftCircle />
               </button>
               <MeOfferViewList
@@ -84,8 +83,7 @@ const CardExchange: React.FC<CardExchangeProps> = ({ item }) => {
                       : prevIndex + 1
                   )
                 }
-                disabled={currentOfferIndex === post.toExchange!.length - 1} // Отключаем правую кнопку, если текущий индекс равен последнему элементу
-              >
+                disabled={currentOfferIndex === post.toExchange!.length - 1}>
                 <FiArrowRightCircle />
               </button>
             </div>
