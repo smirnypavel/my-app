@@ -78,7 +78,7 @@ const Profile: React.FC = () => {
             </li>
             <li>
               <Link
-                href="./account/settings"
+                href="/account/settings"
                 className={styles.buttonUpdateProfile}>
                 Настройки профиля
               </Link>
