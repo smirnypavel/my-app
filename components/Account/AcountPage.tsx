@@ -45,7 +45,7 @@ const AccountPage: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             <MdClear />
           </button>
           <Link
-            href="/account/"
+            href="/account/profile"
             className={`${styles.button} ${
               isActiveLink("/account") ? styles.activeButton : ""
             }`}>

@@ -37,7 +37,6 @@ const MyFavorites = () => {
               ))}
             </div>
           </div>
-          {/* <MyFavorites /> */}
         </AccountPage>
       </Layout>
     </PrivateRoute>
