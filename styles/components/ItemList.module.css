@@ -1,24 +1,24 @@
 .itemListContainer {
   margin-left: 10px;
 
-  @media screen and (min-width: 768px) {
+  /* @media screen and (min-width: 768px) {
     width: 600px;
   }
   @media screen and (min-width: 1280px) {
     width: 1000px;
-  }
+  } */
 }
 .itemList {
-  /* margin-left: 20px; */
-  /* width: 950px; */
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1rem;
   padding-bottom: 1rem;
+
   @media screen and (min-width: 768px) {
-    /* margin-left: 30px; */
-  }
-  @media screen and (min-width: 1280px) {
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(280px, 1fr)
+    ); /* Измените ширину колонок на больших экранах */
   }
 }
 
@@ -34,10 +34,8 @@
   position: relative;
   transition: box-shadow 0.3s, color 0.3s;
   @media screen and (min-width: 768px) {
-    max-width: 185px;
-    max-height: 290px;
-  }
-  @media screen and (min-width: 1280px) {
+    /* min-width: 280px; */
+    /* min-height: auto; */
   }
 }
 .itemCard:hover {

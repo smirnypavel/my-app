@@ -1,30 +1,31 @@
 .layout {
   display: flex;
   flex-direction: column;
-  width: 360px;
   min-height: 100vh;
 
   @media screen and (min-width: 768px) {
-    width: 680px;
-  }
-  @media screen and (min-width: 1280px) {
-    width: 1176px;
+    max-width: 1176px; /* Добавьте это свойство для ограничения ширины */
+    margin: 0 auto;
+    align-items: stretch; /* Выравнивание по вертикали */
   }
 }
 
 .content {
   flex: 1;
+  width: 100%; /* Это позволит контенту растягиваться на всю ширину */
+  padding: 0 20px; /* Пример отступов для контента */
+  box-sizing: border-box; /* Учтет отступы внутри ширины элемента */
 }
 
 .header {
-  display: none;
-  @media screen and (min-width: 768px) {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-    align-items: center;
-  }
-  @media screen and (min-width: 1280px) {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  width: 100%; /* Добавьте это свойство */
+
+  @media screen and (max-width: 768px) {
+    display: none; /* Скрыть заголовок на маленьких экранах */
   }
 }
 .logo {
@@ -120,33 +121,6 @@
 
 .mobileHeader {
   width: 100%;
-  /* background-color: rgb(224, 223, 223);
-  position: fixed;
-  bottom: 0;
-  z-index: 2;
-  left: -7px;
-  height: 60px;
-  border-top-right-radius: 10px;
-  border-top-left-radius: 10px;
-  --key-text-color: #969faf;
-  --docsearch-key-shadow: inset 0 -2px 0 0 #cdcde6, inset 0 0 1px 1px #fff,
-    0 1px 2px 1px rgba(30, 35, 90, 0.4);
-  --docsearch-key-gradient: linear-gradient(-225deg, #d5dbe4, #f8f8f8);
-  border: none;
-  background: var(--docsearch-key-gradient);
-  border-radius: 10px;
-  box-shadow: var(--docsearch-key-shadow);
-  color: var(--key-text-color);
-  height: 2.5em;
-  text-align: center;
-  padding: 0.6em;
-  display: inline-block;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 1em;
-  min-width: 1em;
-  line-height: 1em;
-  user-select: none; */
   background: #fff;
   box-shadow: 0px -1.5683629512786865px 16.643320083618164px 0px rgba(0, 0, 0, 0.05),
     0px -5.050702095031738px 49.033172607421875px 0px rgba(0, 0, 0, 0.03),
