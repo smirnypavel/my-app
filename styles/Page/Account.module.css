@@ -22,17 +22,16 @@
     padding-top: 20px;
   }
   @media screen and (min-width: 1280px) {
-    width: 200px;
+    width: 170px;
   }
 }
 
 .button {
-  width: 140px;
+  width: 150px;
   height: 38px;
   margin-bottom: 30px;
   margin-left: 5px;
   padding-left: 12px;
-  padding-right: 12px;
   display: flex;
   align-items: center;
   border: none;
@@ -43,10 +42,7 @@
   color: rgba(47, 43, 61, 0.68);
   transition: background-color 0.25s ease-in, color 0.25s ease-in;
   position: relative;
-  border-bottom-left-radius: 6.4px;
-  border-bottom-right-radius: 6.4px;
-  border-top-left-radius: 6.4px;
-  border-top-right-radius: 6.4px;
+  border-radius: 6.4px;
   text-decoration: none;
   @media screen and (min-width: 768px) {
     width: 100px;
@@ -56,7 +52,7 @@
     line-height: 20px;
   }
   @media screen and (min-width: 1280px) {
-    width: 170px;
+    width: 150px;
   }
 }
 

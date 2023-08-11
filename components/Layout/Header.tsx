@@ -21,8 +21,13 @@ const Header: React.FC = () => {
   const router = useRouter();
   const { t } = useTranslation();
 
-  const isActiveLink = (path: string): boolean => {
-    return router.pathname === path;
+  const isActiveLink = (paths: string[]): boolean => {
+    for (const path of paths) {
+      if (router.pathname === path) {
+        return true;
+      }
+    }
+    return false;
   };
 
   return (
@@ -37,7 +42,7 @@ const Header: React.FC = () => {
               <Link
                 href="/"
                 className={`${styles.link} ${
-                  isActiveLink("/") ? styles.activeLink : ""
+                  isActiveLink(["/"]) ? styles.activeLink : ""
                 }`}>
                 <p className={styles.textLink}>{t("header.home")}</p>
               </Link>
@@ -46,7 +51,7 @@ const Header: React.FC = () => {
               <Link
                 href="/product"
                 className={`${styles.link} ${
-                  isActiveLink("/product") ? styles.activeLink : ""
+                  isActiveLink(["/product"]) ? styles.activeLink : ""
                 }`}>
                 <p className={styles.textLink}>{t("header.products")}</p>
               </Link>
@@ -64,7 +69,7 @@ const Header: React.FC = () => {
                 <Link
                   href="/auth/login"
                   className={`${styles.link} ${
-                    isActiveLink("/auth/login") ? styles.activeLink : ""
+                    isActiveLink(["/auth/login"]) ? styles.activeLink : ""
                   }`}>
                   <p className={styles.textLink}>{t("header.login")}</p>
                 </Link>
@@ -148,7 +153,7 @@ const Header: React.FC = () => {
               <Link
                 href="/product"
                 className={`${styles.linkMobile} ${
-                  isActiveLink("/product") ? styles.activeLinkMobile : ""
+                  isActiveLink(["/product"]) ? styles.activeLinkMobile : ""
                 }`}>
                 <GoHome />
                 <p>home</p>
@@ -158,7 +163,9 @@ const Header: React.FC = () => {
               <Link
                 href={"/product/create"}
                 className={`${styles.linkMobile} ${
-                  isActiveLink("/product/create") ? styles.activeLinkMobile : ""
+                  isActiveLink(["/product/create"])
+                    ? styles.activeLinkMobile
+                    : ""
                 }`}>
                 <GoPlusCircle />
                 <p>create</p>
@@ -172,7 +179,16 @@ const Header: React.FC = () => {
               <Link
                 href="/account/profile"
                 className={`${styles.linkMobile} ${
-                  isActiveLink("/account") ? styles.activeLinkMobile : ""
+                  isActiveLink([
+                    "/account/profile",
+                    "/account/favorites",
+                    "/account/my-product",
+                    "/account/i-offered",
+                    "/account/me-offered",
+                    "/account/my-deals",
+                  ])
+                    ? styles.activeLinkMobile
+                    : ""
                 }`}>
                 <GoPerson />
                 <p>Profile</p>

@@ -5,6 +5,7 @@
   justify-content: center;
   text-align: center;
   width: 100%;
+  margin-bottom: 30px;
 
   @media screen and (min-width: 768px) {
     justify-content: flex-start;
@@ -14,11 +15,13 @@
 }
 .itemList {
   @media screen and (min-width: 768px) {
-    margin-left: 20px;
+    margin-left: 10px;
+
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
   }
   @media screen and (min-width: 1280px) {
+    margin-left: 20px;
   }
 }

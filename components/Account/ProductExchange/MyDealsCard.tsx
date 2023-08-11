@@ -3,7 +3,7 @@ import Image from "next/image";
 import { MdCompareArrows } from "react-icons/md";
 import styles from "../../../styles/components/Deals/DealsCard.module.css";
 import productNotFound from "../../../public/productNotFound.jpeg";
-
+import { GiTrade } from "react-icons/gi";
 import { IDeals } from "../../../types/IDeals";
 import Link from "next/link";
 
@@ -34,7 +34,8 @@ const MyDealsCard: React.FC<MyDealsCardProps> = ({ item }) => {
           className={styles.linkToDeal}
           href="/deal/[id]"
           as={`/deal/${item._id}`}>
-          to deal
+          go to deal
+          <GiTrade />
         </Link>
         <div>
           <div className={styles.imageWrapper}>
