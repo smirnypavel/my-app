@@ -79,9 +79,7 @@ const DealsDetail: React.FC<DealsDetailProps> = () => {
                 alt=""
                 width={50}
                 height={50}
-                style={{
-                  objectFit: "cover",
-                }}
+                className={styles.ownerImage}
                 priority
               />
               <h6>{deal.product.owner.firstName}</h6>
@@ -96,11 +94,30 @@ const DealsDetail: React.FC<DealsDetailProps> = () => {
                 margin: "auto",
               }}
               priority
+              className={styles.productPhoto}
             />
           </div>
-          <h3>{deal.product.title}</h3>
+          <h3 className={styles.productTitle}>{deal.product.title}</h3>
           <p>{deal.product.location}</p>
-          <p>{deal.product.description}</p>
+          <p className={styles.productDescription}>
+            {deal.product.description} Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Aperiam tenetur minus velit vel molestiae, dolor
+            repudiandae incidunt ullam quaerat laboriosam quidem eligendi
+            exercitationem modi minima sint consequatur ipsam deserunt fugiat!
+            Nihil ex ullam, sint, illo maiores commodi magni, doloremque a unde
+            adipisci laborum quisquam dolorem reiciendis expedita mollitia.
+            Ipsam similique ab aut ex repudiandae labore animi eligendi dolore
+            ducimus ad. Iste at iusto beatae maiores eos ut adipisci tenetur
+            ipsa omnis totam, minima autem cum fuga laborum. Quas magni quae
+            rem, eius sed perspiciatis doloremque impedit ullam modi ex facere.
+            Iusto quidem ipsum rem cumque, totam provident error asperiores
+            pariatur quae, beatae laudantium, repellat laboriosam aspernatur
+            neque quaerat sint quod fugiat? Minima expedita cupiditate magnam
+            error corrupti ut nesciunt eligendi. Vero delectus at reprehenderit
+            accusantium sit. Itaque culpa similique id impedit laudantium,
+            tenetur explicabo eum at consequatur maiores? Odio ad asperiores
+            dicta vitae debitis reiciendis tenetur quidem nobis totam dolorum.
+          </p>
         </div>
         <div className={styles.MdCompareArrows}>
           <MdCompareArrows />
@@ -113,9 +130,7 @@ const DealsDetail: React.FC<DealsDetailProps> = () => {
                 alt=""
                 width={50}
                 height={50}
-                style={{
-                  objectFit: "cover",
-                }}
+                className={styles.ownerImage}
                 priority
               />
               <h6>{deal.offer.owner.firstName}</h6>
@@ -129,12 +144,13 @@ const DealsDetail: React.FC<DealsDetailProps> = () => {
                 objectFit: "cover",
                 margin: "auto",
               }}
+              className={styles.productPhoto}
               priority
             />
           </div>
-          <h3>{deal.offer.title}</h3>
+          <h3 className={styles.productTitle}>{deal.offer.title}</h3>
           <p>{deal.offer.location}</p>
-          <p>{deal.offer.description}</p>
+          <p className={styles.productDescription}>{deal.offer.description}</p>
         </div>
       </div>
       <ul className={styles.commentWrapper}>

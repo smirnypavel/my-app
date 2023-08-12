@@ -19,10 +19,63 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  margin-bottom: 16px;
+  margin-left: 10px;
+}
+.ownerImage {
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.productPhoto {
+  border-radius: 10px;
 }
 .dealsProductInfo {
   width: 150px;
+  margin-bottom: 16px;
 }
+.productTitle {
+  width: 100%;
+  white-space: nowrap; /* Запретить перенос слов на новую строку */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.productDescription {
+  width: 140px;
+  height: 200px;
+  border: 1px solid #46c578;
+  border-radius: 10px;
+  padding: 5px;
+  overflow: auto;
+  /* overflow-y: scroll; */
+}
+
+.productDescription::-webkit-scrollbar {
+  width: 10px; /* Width of the scrollbar */
+  height: 30px;
+  margin: 10px;
+}
+
+.productDescription::-webkit-scrollbar-thumb {
+  background-color: #999; /* Color of the scrollbar thumb */
+  border-radius: 5px; /* Border radius of the scrollbar thumb */
+}
+
+.productDescription::-webkit-scrollbar-thumb:hover {
+  background-color: #666; /* Color of the scrollbar thumb on hover */
+}
+.productDescription::-webkit-scrollbar-thumb:active {
+  background-color: #444; /* Color of the scrollbar thumb on hover */
+}
+
+.productDescription::-webkit-scrollbar-track {
+  background-color: transparent; /* Color of the scrollbar track */
+  border-radius: 10px; /* Border radius of the scrollbar thumb */
+}
+
 .MdCompareArrows {
   display: flex;
   align-items: center;

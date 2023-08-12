@@ -88,12 +88,14 @@ const ItemForm: React.FC = () => {
             <Image
               src={productImg}
               alt="product image"
-              width={250}
-              height={300}
+              fill
+              sizes="(min-width: 768px) 50vw, 100vw"
               style={{
                 objectFit: "cover",
                 margin: "auto",
               }}
+              priority
+              className={styles.image}
             />
           </div>
           <label

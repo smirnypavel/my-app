@@ -2,7 +2,7 @@ import React, { ChangeEvent, useState } from "react";
 import Image from "next/image";
 import { useAppDispatch } from "../../../redux/hooks";
 import { updatePost } from "../../../redux/posts/postsOperations";
-import styles from "../../../styles/components/Product/UpdateProductForm.module.css";
+import styles from "../../../styles/components/Product/CreateProductForm.module.css";
 import productNotFound from "../../../public/productNotFound.jpeg";
 import { useSelector } from "react-redux";
 import { getPost } from "../../../redux/posts/postsSelectors";
@@ -85,22 +85,33 @@ const UpdateItemForm: React.FC<{ productId: string }> = ({ productId }) => {
     return response.json();
   };
   const productImg = img || productNotFound; // Используйте productNotFound, если avatarURL не определен
+  const handleBack = () => {
+    router.back();
+  };
 
   return (
     <>
       <h1 className={styles.settingsFormTitle}>Update Product</h1>
+
       <div className={styles.settingsFormContainer}>
+        <button
+          onClick={handleBack}
+          className={styles.backButton}>
+          {" <<< "} Back
+        </button>
         <div className={styles.imageContainer}>
           <div className={styles.imageWrapper}>
             <Image
               src={productImg}
               alt="product image"
-              width={200}
-              height={250}
+              fill
+              sizes="(min-width: 768px) 50vw, 100vw"
               style={{
                 objectFit: "cover",
                 margin: "auto",
               }}
+              priority
+              className={styles.image}
             />
           </div>
           <label
