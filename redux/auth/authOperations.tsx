@@ -56,7 +56,7 @@ export const signUp = createAsyncThunk(
       localStorage.setItem("refreshToken", data.token);
       return data;
     } catch (error: any) {
-      if (error.response.data.message === "Email in use") {
+      if (error.response.status === 409) {
         toast.error("Email is already in use");
       } else {
         toast.error("Wrong login or password");

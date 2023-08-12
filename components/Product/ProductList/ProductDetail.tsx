@@ -161,8 +161,6 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
               <Image
                 src={productPhoto}
                 alt="product photo"
-                // width={288}
-                // height={300}
                 fill
                 sizes="(min-width: 768px) 50vw, 100vw"
                 style={{
@@ -199,7 +197,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
                 <label>{t("productDetail.location")}:</label>
                 <li className={styles.productInfoItem}>
                   <p className={styles.productInfoItemText}>
-                    {product.owner.location}
+                    {product.location}
                   </p>
                 </li>
               </ul>

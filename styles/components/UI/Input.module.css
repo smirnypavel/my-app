@@ -8,9 +8,10 @@
   font-style: normal;
   font-weight: 300;
   line-height: 100%;
+  /* padding-left: 15px; */
   border: 1px solid var(--text-color-captions, #a7aed2);
   @media screen and (min-width: 768px) {
-    width: 380px;
+    width: auto;
   }
   @media screen and (min-width: 1280px) {
   }
@@ -21,5 +22,7 @@
   font-style: normal;
   font-weight: 300;
   line-height: 100%; /* 16px */
+}
+.input:focus {
   padding-left: 15px;
 }

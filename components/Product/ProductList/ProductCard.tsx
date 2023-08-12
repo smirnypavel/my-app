@@ -87,8 +87,6 @@ const ItemCard: React.FC<ItemCardProps> = ({ item }) => {
         <Image
           src={productPhoto}
           alt=""
-          // width={300}
-          // height={250}
           style={{
             objectFit: "cover",
             margin: "auto",
@@ -118,7 +116,7 @@ const ItemCard: React.FC<ItemCardProps> = ({ item }) => {
         </Link>
         <div className={styles.ownerNameWrapper}>
           <p className={styles.ownerName}> {owner?.firstName}</p>
-          <p className={styles.ownerName}> {owner?.location}</p>
+          <p className={styles.ownerName}> {item.location}</p>
         </div>
       </div>
       <div className={styles.footerCard}>
