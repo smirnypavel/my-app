@@ -6,7 +6,6 @@
   justify-content: space-between;
   /* align-items: center; */
   margin-top: 16px;
-  margin-bottom: 30px;
 }
 .name {
   display: inline-block;
@@ -93,6 +92,7 @@
 .inputCommentWrapper {
   display: flex;
   justify-content: center;
+  margin-bottom: 30px;
 }
 .inputComment {
   width: 550px;
