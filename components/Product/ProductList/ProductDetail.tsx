@@ -24,6 +24,7 @@ import Modal from "../../Modal/Modal";
 import ToExchangeList from "../../Account/ProductExchange/ToExchangeList";
 import Button from "../../UI/Button";
 import { IPosts } from "../../../types/IPost";
+import { useTranslation } from "react-i18next";
 
 interface ProductDetailProps {
   productId: string;
@@ -44,6 +45,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
   const router = useRouter();
   const { id } = router.query;
   const dispatch = useAppDispatch();
+  const { t } = useTranslation();
 
   const isAccountPage = router.pathname === "/admin";
   const updateProductLink = `/product/${productId}/update`;
@@ -175,13 +177,13 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
               <Link
                 href={updateProductLink}
                 className={styles.buttonUpdateProduct}>
-                Update Product
+                {t("productDetail.updateButton")}
               </Link>
             ) : (
               <button
                 className={styles.buttonUpdateProduct}
                 onClick={openModal}>
-                Offer to exchange
+                {t("productDetail.offerTo")}
               </button>
             )}
           </div>
@@ -191,18 +193,20 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
                 <h2>{product.title}</h2>
                 <li className={styles.productInfoItem}>
                   <p className={styles.productInfoItemText}>
-                    Price: {product.price}
+                    {t("productDetail.price")}: {product.price}
                   </p>
                 </li>
-                <label>Location:</label>
+                <label>{t("productDetail.location")}:</label>
                 <li className={styles.productInfoItem}>
                   <p className={styles.productInfoItemText}>
                     {product.owner.location}
                   </p>
                 </li>
               </ul>
-              <p>Views: {product.views}</p>
-              <label>Description:</label>
+              <p>
+                {t("productDetail.views")}: {product.views}
+              </p>
+              <label>{t("productDetail.description")}</label>
               <div className={styles.productInfoItem}>
                 <p className={styles.productInfoItemDescription}>
                   {product.description} Lorem ipsum dolor sit amet consectetur
@@ -247,7 +251,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
           <div className={styles.inputCommentWrapper}>
             <textarea
               value={comment}
-              placeholder="leave your comment"
+              placeholder={t("productDetail.comment")}
               onChange={(e) => setComment(e.target.value)}
               className={styles.inputComment}
             />
@@ -255,7 +259,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
               className={styles.inputCommentButton}
               type="button"
               onClick={() => handleCommentAdd()}>
-              Submit
+              {t("productDetail.submitComment")}
             </button>
           </div>
         </div>
@@ -265,19 +269,19 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
             <button
               onClick={openModalHide}
               className={styles.hidePostButton}>
-              {active ? "hide post" : "publish post"}
+              {active ? t("productDetail.hide") : t("productDetail.publish")}
             </button>
             <button
               onClick={openModalDelete}
               className={styles.deletePostButton}>
-              Delete Post
+              {t("productDetail.delete")}
             </button>
           </>
         )}
         <button
           onClick={handleBack}
           className={styles.backButton}>
-          {" <<< "} Back
+          {" <<< "} {t("productDetail.backButton")}
         </button>
         {isModalOpen && (
           <Modal
@@ -293,11 +297,11 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
           onClose={() => setIsModalHidePostOpen(false)}>
           <div>
             <h3 className={styles.hidePostMassageTitle}>
-              Do you want to hide the post?
+              {t("productDetail.hideQ")}
             </h3>
             <div className={styles.hidePostMassageButton}>
-              <Button onClick={handleHidePost}>yes</Button>
-              <Button onClick={closeModalHide}>no</Button>
+              <Button onClick={handleHidePost}>{t("productDetail.yes")}</Button>
+              <Button onClick={closeModalHide}>{t("productDetail.no")}</Button>
             </div>
           </div>
         </Modal>
@@ -308,11 +312,15 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
           onClose={() => setIsModalDeletePostOpen(false)}>
           <div>
             <h3 className={styles.hidePostMassageTitle}>
-              Do you want to Delete the post?
+              {t("productDetail.deleteQ")}
             </h3>
             <div className={styles.hidePostMassageButton}>
-              <Button onClick={handleDeletePost}>yes</Button>
-              <Button onClick={closeModalDelete}>no</Button>
+              <Button onClick={handleDeletePost}>
+                {t("productDetail.yes")}
+              </Button>
+              <Button onClick={closeModalDelete}>
+                {t("productDetail.no")}
+              </Button>
             </div>
           </div>
         </Modal>

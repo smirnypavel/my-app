@@ -1,9 +1,12 @@
-import headerRU from "./header.json";
-import loginRu from "./auth.json";
+import headerEng from "./header.json";
+import loginEng from "./auth.json";
+import searchBar from "./searchBar.json";
+import productDetail from "./productDetail.json";
 
-const translationsRU = {
-  header: headerRU,
-  login: loginRu,
+export const translationsEng = {
+  header: headerEng,
+  login: loginEng,
+  search: searchBar,
+  productDetail: productDetail,
 };
-
-export default translationsRU;
+export default translationsEng;

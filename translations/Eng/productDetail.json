@@ -1,0 +1,20 @@
+{
+  "backButton": "Back",
+  "price": "Price",
+  "location": "Location",
+  "views": "Views",
+  "description": "Description:",
+  "offerTo": "Offer to exchange",
+  "updateButton": "Update product",
+  "hide": "Hide",
+  "hideQ": "Do you want to hide the post?",
+  "publish": "Publish",
+  "delete": "Delete",
+  "deleteQ": "Do you want to Delete the post?",
+  "yes": "Yes",
+  "no": "No",
+  "comment": "leave your comment",
+  "submitComment": "Submit",
+  "addAnswer": "add answer",
+  "closeAnswer": "close answer"
+}

@@ -9,11 +9,13 @@ import {
   replyPostComment,
 } from "../../redux/posts/postsOperations";
 import { useRouter } from "next/router";
+import { useTranslation } from "react-i18next";
 
 const Comment = ({ comment }: { comment: IComment }) => {
   const [isShowInput, setIsShowInput] = useState(false);
   const router = useRouter();
   const { id } = router.query;
+  const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const [commentReply, setCommentReply] = useState("");
 
@@ -65,7 +67,9 @@ const Comment = ({ comment }: { comment: IComment }) => {
           <button
             onClick={handleOpenAnswer}
             className={styles.answerButton}>
-            {isShowInput ? "close answer" : "add answer"}
+            {isShowInput
+              ? t("productDetail.closeAnswer")
+              : t("productDetail.addAnswer")}
           </button>
 
           <button
@@ -79,7 +83,7 @@ const Comment = ({ comment }: { comment: IComment }) => {
             <div className={styles.inputReplyWrapper}>
               <textarea
                 value={commentReply}
-                placeholder="leave your answer"
+                placeholder={t("productDetail.comment")}
                 onChange={(e) => setCommentReply(e.target.value)}
                 className={styles.inputReply}
               />
@@ -87,7 +91,7 @@ const Comment = ({ comment }: { comment: IComment }) => {
                 className={styles.replyButton}
                 type="button"
                 onClick={() => handleCommentAdd()}>
-                Submit
+                {t("productDetail.submitComment")}
               </button>
             </div>
           </>

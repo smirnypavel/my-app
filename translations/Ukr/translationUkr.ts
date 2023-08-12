@@ -1,8 +1,12 @@
-import headerUkr from "./header.json";
-import loginUkr from "./auth.json";
+import headerEng from "./header.json";
+import loginEng from "./auth.json";
+import searchBar from "./searchBar.json";
+import productDetail from "./productDetail.json";
 
-const translationsUkr = {
-  header: headerUkr,
-  login: loginUkr,
+export const translationsEng = {
+  header: headerEng,
+  login: loginEng,
+  search: searchBar,
+  productDetail: productDetail,
 };
-export default translationsUkr;
+export default translationsEng;

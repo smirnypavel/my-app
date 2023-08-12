@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { MdClose } from "react-icons/md";
+import { useTranslation } from "react-i18next";
 
 import Link from "next/link";
 import styles from "../../styles/Page/ItemPage.module.css";
@@ -10,6 +11,7 @@ export default function SearchBar({
   onSearch: (term: string) => void;
 }) {
   const [searchTerm, setSearchTerm] = useState("");
+  const { t } = useTranslation();
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -30,7 +32,7 @@ export default function SearchBar({
           onSubmit={onSubmit}>
           <input
             type="text"
-            placeholder="Поиск...."
+            placeholder={t("search.search")}
             className={styles.search}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
@@ -82,7 +84,7 @@ export default function SearchBar({
           <Link
             href={"./product/create"}
             className={styles.linkAdd}>
-            Add product
+            {t("search.addButton")}
           </Link>
         </div>
       </div>
