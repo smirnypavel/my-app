@@ -45,6 +45,7 @@
   text-overflow: ellipsis;
 }
 .productDescription {
+  margin-top: 10px;
   width: 140px;
   height: 200px;
   border: 1px solid #46c578;
