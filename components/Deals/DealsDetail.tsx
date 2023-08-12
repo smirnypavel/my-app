@@ -59,7 +59,7 @@ const DealsDetail: React.FC<DealsDetailProps> = () => {
   const ownerOfferPhoto = deal.offer.owner.avatarURL || photoNotFound;
 
   return (
-    <>
+    <div className={styles.deals}>
       <h4 className={styles.dealsTitle}>
         Deal between{" "}
         <h2 className={styles.name}>{deal.product.owner.firstName}</h2> and{" "}
@@ -84,18 +84,20 @@ const DealsDetail: React.FC<DealsDetailProps> = () => {
               />
               <h6>{deal.product.owner.firstName}</h6>
             </div>
-            <Image
-              src={productPhoto}
-              alt=""
-              width={150}
-              height={150}
-              style={{
-                objectFit: "cover",
-                margin: "auto",
-              }}
-              priority
-              className={styles.productPhoto}
-            />
+            <div className={styles.imageWrapper}>
+              <Image
+                src={productPhoto}
+                alt=""
+                style={{
+                  objectFit: "cover",
+                  margin: "auto",
+                }}
+                fill
+                sizes="(min-width: 808px) 50vw, 100vw"
+                priority
+                className={styles.imageWrapper}
+              />
+            </div>
           </div>
           <h3 className={styles.productTitle}>{deal.product.title}</h3>
           <p>{deal.product.location}</p>
@@ -135,22 +137,26 @@ const DealsDetail: React.FC<DealsDetailProps> = () => {
               />
               <h6>{deal.offer.owner.firstName}</h6>
             </div>
-            <Image
-              src={offerPhoto}
-              alt=""
-              width={150}
-              height={150}
-              style={{
-                objectFit: "cover",
-                margin: "auto",
-              }}
-              className={styles.productPhoto}
-              priority
-            />
+            <div className={styles.imageWrapper}>
+              <Image
+                src={offerPhoto}
+                alt=""
+                style={{
+                  objectFit: "cover",
+                  margin: "auto",
+                }}
+                fill
+                sizes="(min-width: 808px) 50vw, 100vw"
+                priority
+                className={styles.imageWrapper}
+              />
+            </div>
+            <h3 className={styles.productTitle}>{deal.offer.title}</h3>
+            <p>{deal.offer.location}</p>
+            <p className={styles.productDescription}>
+              {deal.offer.description}
+            </p>
           </div>
-          <h3 className={styles.productTitle}>{deal.offer.title}</h3>
-          <p>{deal.offer.location}</p>
-          <p className={styles.productDescription}>{deal.offer.description}</p>
         </div>
       </div>
       <ul className={styles.commentWrapper}>
@@ -175,7 +181,7 @@ const DealsDetail: React.FC<DealsDetailProps> = () => {
           Submit
         </button>
       </div>
-    </>
+    </div>
   );
 };
 export default DealsDetail;
