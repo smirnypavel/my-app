@@ -96,22 +96,31 @@ const SettingsForm: React.FC = () => {
     dispatch(updateUser(updatedUser));
     router.push("/account");
   };
-
+  const handleBack = () => {
+    router.back();
+  };
   return (
     <>
       <h1 className={styles.settingsFormTitle}>Change your Profile</h1>
       <div className={styles.settingsFormContainer}>
+        <button
+          onClick={handleBack}
+          className={styles.backButton}>
+          {" <<< "} Back
+        </button>
         <div className={styles.imageContainer}>
           <div className={styles.imageWrapper}>
             <Image
               src={user.avatarURL}
               alt="avatar"
-              width={200}
-              height={250}
+              fill
+              sizes="(min-width: 768px) 50vw, 100vw"
               style={{
                 objectFit: "cover",
                 margin: "auto",
               }}
+              priority
+              className={styles.image}
             />
           </div>
           <label
