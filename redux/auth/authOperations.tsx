@@ -73,13 +73,13 @@ export const signIn = createAsyncThunk(
       const { data } = await axios.post("/users/login", credentials);
       setAuthHeader(data.token);
       localStorage.setItem("refreshToken", data.token);
-      toast.success("Welcome!");
+      // toast.success("Welcome!");
       return data;
     } catch (error: any) {
       if (error.response.status === 404) {
         toast.error("Wrong login or password");
       } else {
-        toast.error("An error occurred during login");
+        toast.error("Wrong login or password");
       }
       return thunkAPI.rejectWithValue(error.message);
     }

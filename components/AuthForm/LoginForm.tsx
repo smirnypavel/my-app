@@ -5,6 +5,7 @@ import styles from "../../styles/components/Auth/LoginForm.module.css";
 import { signIn } from "../../redux/auth/authOperations";
 import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
+import { toast } from "react-hot-toast";
 
 const LoginForm: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -14,11 +15,17 @@ const LoginForm: React.FC = () => {
   const dispatch = useAppDispatch();
   const router = useRouter();
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    dispatch(signIn({ email, password }));
-    router.push("/");
-    // Handle form submission
+    try {
+      const result = await dispatch(signIn({ email, password }));
+      if (signIn.fulfilled.match(result)) {
+        toast.success("Welcome!"); // Вывод успешного уведомления
+        router.push("/"); // Перенаправление при успешном входе
+      }
+    } catch (error) {
+      console.error("Ошибка при входе:", error);
+    }
   };
 
   const onChangeInputEmail = (event: { target: { value: string } }) => {

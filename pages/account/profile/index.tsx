@@ -12,22 +12,12 @@ import PrivateRoute from "../../../redux/PrivateRoute";
 import AccountPage from "../../../components/Account/AcountPage";
 
 const Profile = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
   const user: IUserAuth = useSelector(getUser);
-
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-  console.log(user.createdAt);
 
   const createdAtDate = new Date(user.createdAt);
   const currentDate = new Date();
   const daysAgo = differenceInDays(currentDate, createdAtDate);
-  const avatarURL = user.avatarURL || photoNotFound; // Используйте photoNotFound, если avatarURL не определен
+  const avatarURL = user.avatarURL || photoNotFound;
 
   return (
     <PrivateRoute>
@@ -40,8 +30,6 @@ const Profile = () => {
                 <Image
                   src={avatarURL}
                   alt="avatar"
-                  // width={300}
-                  // height={350}
                   fill
                   sizes="(min-width: 808px) 50vw, 100vw"
                   style={{
