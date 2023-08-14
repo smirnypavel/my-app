@@ -13,6 +13,7 @@ import { IUserAuth } from "../../types/IAuth";
 import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher";
 import { useTranslation } from "react-i18next";
 import { GoHome, GoPlusCircle, GoPerson, GoUnread } from "react-icons/go";
+import logo from "../../public/my-logo2.svg";
 
 const Header: React.FC = () => {
   const user: IUserAuth = useSelector(getUser);
@@ -33,9 +34,12 @@ const Header: React.FC = () => {
   return (
     <>
       <header className={styles.header}>
-        <h2 className={styles.logo}>
-          Trade <span className={styles.logoSpan}>In</span>
-        </h2>{" "}
+        <Image
+          width="60"
+          height="60"
+          src={logo}
+          alt={""}
+        />
         <nav className={styles.nav}>
           <ul className={styles.ul}>
             <li className={styles.li}>
@@ -141,9 +145,12 @@ const Header: React.FC = () => {
         </nav>
       </header>
       <div className={styles.logoMobileContainer}>
-        <h2 className={styles.logoMobile}>
-          Trade <span className={styles.logoSpanMobile}>In</span>
-        </h2>
+        <Image
+          width="60"
+          height="60"
+          src={logo}
+          alt={""}
+        />
       </div>
       <header className={styles.mobileHeader}>
         {" "}
