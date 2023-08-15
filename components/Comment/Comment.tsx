@@ -10,6 +10,8 @@ import {
 } from "../../redux/posts/postsOperations";
 import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
+import { selectIsLoggedIn } from "../../redux/auth/authSelectors";
 
 const Comment = ({ comment }: { comment: IComment }) => {
   const [isShowInput, setIsShowInput] = useState(false);
@@ -17,6 +19,7 @@ const Comment = ({ comment }: { comment: IComment }) => {
   const { id } = router.query;
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
+  const IsLogin = useSelector(selectIsLoggedIn);
   const [commentReply, setCommentReply] = useState("");
 
   const handleOpenAnswer = () => {
@@ -64,19 +67,22 @@ const Comment = ({ comment }: { comment: IComment }) => {
             <h6>{comment.user.firstName}</h6>
           </div>
           <p>{comment.text}</p>
-          <button
-            onClick={handleOpenAnswer}
-            className={styles.answerButton}>
-            {isShowInput
-              ? t("productDetail.closeAnswer")
-              : t("productDetail.addAnswer")}
-          </button>
-
-          <button
-            onClick={handleDeleteComment}
-            className={styles.deleteButton}>
-            <MdDeleteForever />
-          </button>
+          {IsLogin && (
+            <>
+              <button
+                onClick={handleOpenAnswer}
+                className={styles.answerButton}>
+                {isShowInput
+                  ? t("productDetail.closeAnswer")
+                  : t("productDetail.addAnswer")}
+              </button>
+              <button
+                onClick={handleDeleteComment}
+                className={styles.deleteButton}>
+                <MdDeleteForever />
+              </button>
+            </>
+          )}
         </div>
         {isShowInput && (
           <>

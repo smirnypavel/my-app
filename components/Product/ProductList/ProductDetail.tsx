@@ -11,7 +11,7 @@ import {
   hidePost,
   updatePostStatus,
 } from "../../../redux/posts/postsOperations";
-import toast from "react-hot-toast";
+import { toast } from "react-hot-toast";
 import { getPost } from "../../../redux/posts/postsSelectors";
 import productNotFound from "../../../public/productNotFound.jpeg";
 import {
@@ -42,6 +42,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalHidePostOpen, setIsModalHidePostOpen] = useState(false);
   const [isModalDeletePostOpen, setIsModalDeletePostOpen] = useState(false);
+  const [IsModalImageOpen, setIsModalImageOpen] = useState(false);
   const [comment, setComment] = useState("");
   const product = useSelector(getPost);
   const IsLogin = useSelector(selectIsLoggedIn);
@@ -58,6 +59,9 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
   const active = product.isActive;
 
   const openModal = () => {
+    if (!IsLogin) {
+      return toast.error("You need to login");
+    }
     setIsModalOpen(true);
   };
   const closeModal = () => {
@@ -69,6 +73,15 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
   };
   const closeModalHide = () => {
     setIsModalHidePostOpen(false);
+  };
+  const openModalImage = () => {
+    // Ошибка: должно быть setIsModalImageOpen, а не isModalImageOpen
+    setIsModalImageOpen(true);
+  };
+
+  const closeModalImage = () => {
+    // Ошибка: должно быть setIsModalImageOpen, а не setIisModalImageOpen
+    setIsModalImageOpen(false);
   };
 
   const openModalDelete = () => {
@@ -178,6 +191,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
                 }}
                 priority
                 className={styles.image}
+                onClick={openModalImage}
               />
             </div>
             {product.owner.id === myPost._id ? (
@@ -255,20 +269,26 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
               />
             ))}
           </ul>
-          <div className={styles.inputCommentWrapper}>
-            <textarea
-              value={comment}
-              placeholder={t("productDetail.comment")}
-              onChange={(e) => setComment(e.target.value)}
-              className={styles.inputComment}
-            />
-            <button
-              className={styles.inputCommentButton}
-              type="button"
-              onClick={() => handleCommentAdd()}>
-              {t("productDetail.submitComment")}
-            </button>
-          </div>
+          {IsLogin ? (
+            <div className={styles.inputCommentWrapper}>
+              <textarea
+                value={comment}
+                placeholder={t("productDetail.comment")}
+                onChange={(e) => setComment(e.target.value)}
+                className={styles.inputComment}
+              />
+              <button
+                className={styles.inputCommentButton}
+                type="button"
+                onClick={() => handleCommentAdd()}>
+                {t("productDetail.submitComment")}
+              </button>
+            </div>
+          ) : (
+            <p className={styles.commentMessage}>
+              You need to login to post comments
+            </p>
+          )}
         </div>
         {product.owner.id === myPost._id && (
           <>
@@ -329,6 +349,27 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
                 {t("productDetail.no")}
               </Button>
             </div>
+          </div>
+        </Modal>
+      )}
+      {IsModalImageOpen && (
+        <Modal
+          isOpen={true}
+          onClose={() => closeModalImage()}>
+          <div className={styles.openImage}>
+            <Image
+              src={productPhoto}
+              alt="product photo"
+              width="500"
+              height="500"
+              style={{
+                objectFit: "cover",
+                margin: "auto",
+              }}
+              priority
+              className={styles.image}
+              onClick={closeModalImage}
+            />
           </div>
         </Modal>
       )}
