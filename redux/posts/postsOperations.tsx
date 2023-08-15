@@ -101,7 +101,7 @@ export const getView = createAsyncThunk(
       const { data } = await axios.patch(`/posts/view/${id}`);
       return data;
     } catch (error: any) {
-      toast.error("An error occurred while fetching product data");
+      // toast.error("An error occurred while fetching product data");
       return thunkAPI.rejectWithValue(error.message);
     }
   }

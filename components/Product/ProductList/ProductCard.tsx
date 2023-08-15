@@ -6,13 +6,14 @@ import photoNotFound from "../../../public/photoNotFound.png";
 import productNotFound from "../../../public/productNotFound.jpeg";
 import Link from "next/link";
 import { useSelector } from "react-redux";
-import { getUser } from "../../../redux/auth/authSelectors";
+import { getUser, selectIsLoggedIn } from "../../../redux/auth/authSelectors";
 import axios from "axios";
 import ProductVerifyView from "../ProductVerifyView";
 import { useRouter } from "next/router";
 import { IPosts } from "../../../types/IPost";
 import { differenceInDays } from "date-fns";
 import { useTranslation } from "react-i18next";
+import { toast } from "react-hot-toast";
 
 interface ItemCardProps {
   item: IPosts; // Assuming you have an Item type defined
@@ -23,6 +24,7 @@ const ItemCard: React.FC<ItemCardProps> = ({ item }) => {
   const myPost = useSelector(getUser);
   const owner = item.owner;
   const router = useRouter();
+  const IsLogin = useSelector(selectIsLoggedIn);
   const isAccountPage = router.pathname === "/account";
   const handleLinkClick = () => {
     router.push(`/product/${item._id}`);
@@ -31,6 +33,10 @@ const ItemCard: React.FC<ItemCardProps> = ({ item }) => {
     event
   ) => {
     const addFavorite = async () => {
+      if (!IsLogin) {
+        toast.error("You must be logged in");
+        return;
+      }
       try {
         const response = await axios.patch(`/posts/fav/${item._id}`);
         // Добавьте необходимую логику обработки ответа

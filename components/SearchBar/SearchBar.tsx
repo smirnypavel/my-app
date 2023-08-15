@@ -4,6 +4,9 @@ import { useTranslation } from "react-i18next";
 
 import Link from "next/link";
 import styles from "../../styles/Page/ItemPage.module.css";
+import { useSelector } from "react-redux";
+import { selectIsLoggedIn } from "../../redux/auth/authSelectors";
+import { useRouter } from "next/router";
 
 export default function SearchBar({
   onSearch,
@@ -11,8 +14,9 @@ export default function SearchBar({
   onSearch: (term: string) => void;
 }) {
   const [searchTerm, setSearchTerm] = useState("");
+  const IsLogin = useSelector(selectIsLoggedIn);
+  const router = useRouter();
   const { t } = useTranslation();
-
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSearch(searchTerm);
@@ -21,6 +25,13 @@ export default function SearchBar({
   const clearSearch = () => {
     setSearchTerm("");
     onSearch(""); // Отправляем пустую строку вместо поискового запроса
+  };
+  const handleAddProduct = () => {
+    if (!IsLogin) {
+      router.push("/auth/login");
+      return;
+    }
+    router.push("/product/create");
   };
 
   return (
@@ -81,11 +92,15 @@ export default function SearchBar({
           )}
         </form>
         <div className={styles.container}>
-          <Link
-            href={"./product/create"}
-            className={styles.linkAdd}>
+          {/* <Link
+            href={"/product/create"}
+            className={styles.linkAdd}></Link> */}
+
+          <button
+            className={styles.linkAdd}
+            onClick={handleAddProduct}>
             {t("search.addButton")}
-          </Link>
+          </button>
         </div>
       </div>
     </>

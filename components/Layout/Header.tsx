@@ -30,6 +30,9 @@ const Header: React.FC = () => {
     }
     return false;
   };
+  const handleLogoClick = () => {
+    router.push("/");
+  };
 
   return (
     <>
@@ -39,6 +42,8 @@ const Header: React.FC = () => {
           height="60"
           src={logo}
           alt={""}
+          onClick={handleLogoClick}
+          style={{ cursor: "pointer" }}
         />
         <nav className={styles.nav}>
           <ul className={styles.ul}>
@@ -78,7 +83,8 @@ const Header: React.FC = () => {
                   <p className={styles.textLink}>{t("header.login")}</p>
                 </Link>
               )}
-
+            </li>
+            <li className={styles.li}>
               {isLoggedIn && (
                 <Link
                   href="/account/profile"
@@ -140,8 +146,10 @@ const Header: React.FC = () => {
                 </Link>
               )}
             </li>
+            <li>
+              <LanguageSwitcher />
+            </li>
           </ul>
-          <LanguageSwitcher />
         </nav>
       </header>
       <div className={styles.logoMobileContainer}>

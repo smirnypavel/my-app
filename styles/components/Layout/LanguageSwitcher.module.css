@@ -1,11 +1,22 @@
+.switcherContainer {
+  /* display: flex;
+  justify-content: start; */
+  /* position: relative; */
+}
+
 .toggleWrapper {
   display: flex;
   flex-direction: column;
   position: absolute;
   z-index: 1;
 }
-
 .toggleButton {
   background-color: transparent;
   border: none;
+  margin-top: 1px;
+  cursor: pointer;
+  display: flex;
+  outline: none;
+  transition: 0.1s ease-in-out, 0.4s color;
+  margin-left: 10px;
 }

@@ -8,6 +8,7 @@ import { MdMenu, MdClear } from "react-icons/md";
 
 import { HiMiniArrowLeftOnRectangle } from "react-icons/hi2";
 import Link from "next/link";
+import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher";
 
 const AccountPage: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const router = useRouter();
@@ -86,6 +87,10 @@ const AccountPage: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             href="/account/my-deals">
             My deals
           </Link>
+          <div className={styles.button}>
+            <LanguageSwitcher />
+          </div>
+
           <button
             onClick={handleLogOut}
             className={styles.logOutButton}>
@@ -146,6 +151,7 @@ const AccountPage: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             href="/account/my-deals">
             My deals
           </Link>
+
           <button
             onClick={handleLogOut}
             className={styles.logOutButton}>

@@ -14,7 +14,11 @@ import {
 import toast from "react-hot-toast";
 import { getPost } from "../../../redux/posts/postsSelectors";
 import productNotFound from "../../../public/productNotFound.jpeg";
-import { getRole, getUser } from "../../../redux/auth/authSelectors";
+import {
+  getRole,
+  getUser,
+  selectIsLoggedIn,
+} from "../../../redux/auth/authSelectors";
 import Comment from "../../Comment/Comment";
 import CustomDropdown from "../../UI/CustomDropdown";
 import Link from "next/link";
@@ -40,11 +44,13 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
   const [isModalDeletePostOpen, setIsModalDeletePostOpen] = useState(false);
   const [comment, setComment] = useState("");
   const product = useSelector(getPost);
+  const IsLogin = useSelector(selectIsLoggedIn);
   const myPost = useSelector(getUser);
   const role = useSelector(getRole);
   const router = useRouter();
   const { id } = router.query;
   const dispatch = useAppDispatch();
+
   const { t } = useTranslation();
 
   const isAccountPage = router.pathname === "/admin";
@@ -83,6 +89,9 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
   }, [id]);
 
   useEffect(() => {
+    if (!IsLogin) {
+      return;
+    }
     try {
       if (typeof id === "string") {
         dispatch(getView(id));

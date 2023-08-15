@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 import { getDeal } from "../../redux/deals/dealsSelectors";
 import styles from "../../styles/components/Deals/DealsDetail.module.css";
 import DealsChat from "./DealsChat";
+import Button from "../UI/Button";
 
 interface DealsDetailProps {
   dealId: string;
@@ -158,6 +159,10 @@ const DealsDetail: React.FC<DealsDetailProps> = () => {
             </p>
           </div>
         </div>
+      </div>
+      <div>
+        <Button>Leave deal</Button>
+        <Button>Complete deal</Button>
       </div>
       <ul className={styles.commentWrapper}>
         {deal.chat.map((item) => (

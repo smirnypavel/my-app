@@ -4,6 +4,7 @@ import Image from "next/image";
 import FlagUkraine from "../../public/Flags/FlagUkraine.png";
 import styles from "../../styles/components/Layout/LanguageSwitcher.module.css";
 import FlagUnitedKingdom from "../../public/Flags/FlagUnitedKingdom.png";
+
 const LanguageSwitcher: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { i18n } = useTranslation();
@@ -19,7 +20,7 @@ const LanguageSwitcher: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className={styles.switcherContainer}>
       <button
         onClick={toggleDropdown}
         className={styles.toggleButton}>

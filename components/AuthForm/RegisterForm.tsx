@@ -4,6 +4,8 @@ import Link from "next/link";
 import styles from "../../styles/components/AuthForm.module.css";
 import { useAppDispatch } from "../../redux/hooks";
 import { signUp, signIn } from "../../redux/auth/authOperations";
+import { useSelector } from "react-redux";
+import { selectIsLoggedIn } from "../../redux/auth/authSelectors";
 
 const RegisterForm: React.FC = () => {
   const [firstName, setFirstname] = useState("");
@@ -12,23 +14,20 @@ const RegisterForm: React.FC = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const router = useRouter();
+  const IsLogin = useSelector(selectIsLoggedIn);
   const dispatch = useAppDispatch();
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     try {
-      const singUpResp = await dispatch(signUp({ email, password }));
-      if (!singUpResp) {
-        return;
+      await dispatch(signUp({ email, password }));
+      if (!IsLogin) {
+        return console.log("Registration failed");
       }
       await dispatch(signIn({ email, password }));
       router.push("/account/settings");
-    } catch (error) {
-      // console.error('Error logging in:', error);
-    }
-    // Handle form submission
+    } catch (error) {}
   };
-
   const handleChangeFirstname = (event: { target: { value: string } }) => {
     const firstName = event.target.value;
     setFirstname(firstName);
