@@ -87,10 +87,16 @@ const AccountPage: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             href="/account/my-deals">
             My deals
           </Link>
+          <Link
+            className={`${styles.button} ${
+              isActiveLink("/account/history") ? styles.activeButton : ""
+            }`}
+            href="/account/history">
+            My history
+          </Link>
           <div className={styles.button}>
             <LanguageSwitcher />
           </div>
-
           <button
             onClick={handleLogOut}
             className={styles.logOutButton}>
@@ -150,6 +156,13 @@ const AccountPage: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             }`}
             href="/account/my-deals">
             My deals
+          </Link>
+          <Link
+            className={`${styles.button} ${
+              isActiveLink("/account/history") ? styles.activeButton : ""
+            }`}
+            href="/account/history">
+            My history
           </Link>
 
           <button
