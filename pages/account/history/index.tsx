@@ -7,7 +7,7 @@ import Layout from "../../../components/Layout/Layout";
 import PrivateRoute from "../../../redux/PrivateRoute";
 import AccountPage from "../../../components/Account/AcountPage";
 
-const MyDeals = () => {
+const MyHistory = () => {
   const [post, setPost] = useState<IDeals[]>([]);
 
   useEffect(() => {
@@ -47,4 +47,4 @@ const MyDeals = () => {
   );
 };
 
-export default MyDeals;
+export default MyHistory;

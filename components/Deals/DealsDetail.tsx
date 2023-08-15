@@ -81,7 +81,6 @@ const DealsDetail: React.FC<DealsDetailProps> = () => {
                 width={50}
                 height={50}
                 className={styles.ownerImage}
-                priority
               />
               <h6>{deal.product.owner.firstName}</h6>
             </div>
@@ -95,7 +94,6 @@ const DealsDetail: React.FC<DealsDetailProps> = () => {
                 }}
                 fill
                 sizes="(min-width: 808px) 50vw, 100vw"
-                priority
                 className={styles.imageWrapper}
               />
             </div>
@@ -134,7 +132,6 @@ const DealsDetail: React.FC<DealsDetailProps> = () => {
                 width={50}
                 height={50}
                 className={styles.ownerImage}
-                priority
               />
               <h6>{deal.offer.owner.firstName}</h6>
             </div>
@@ -148,7 +145,6 @@ const DealsDetail: React.FC<DealsDetailProps> = () => {
                 }}
                 fill
                 sizes="(min-width: 808px) 50vw, 100vw"
-                priority
                 className={styles.imageWrapper}
               />
             </div>
@@ -163,6 +159,7 @@ const DealsDetail: React.FC<DealsDetailProps> = () => {
       <div>
         <Button>Leave deal</Button>
         <Button>Complete deal</Button>
+        <Button>Сomplain</Button>
       </div>
       <ul className={styles.commentWrapper}>
         {deal.chat.map((item) => (

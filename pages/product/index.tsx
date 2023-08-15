@@ -5,6 +5,7 @@ import Layout from "../../components/Layout/Layout";
 import { ItemList } from "../../components/Product/ProductList/ProductList";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import axios from "axios";
+import { toast } from "react-hot-toast";
 import { IPosts } from "../../types/IPost";
 
 interface ItemsPageProps {
@@ -26,7 +27,8 @@ const ItemsPage: React.FC<ItemsPageProps> = ({ post }) => {
         setFilteredPost(response.data);
       }
     } catch (error) {
-      console.log("Ошибка:", error);
+      toast.error(`Nothing found for your request ${searchTerm}`);
+
       setFilteredPost([]); // В случае ошибки, установите пустой массив
     }
   };
