@@ -132,12 +132,6 @@ const ItemCard: React.FC<ItemCardProps> = ({ item }) => {
         <p className={styles.date}>
           {t("header.createdXDaysAgo", { count: daysAgo })}
         </p>
-        {/* <Link
-          href="/product/[id]"
-          as={`/product/${item._id}`}
-          className={styles.button}>
-          View
-        </Link> */}
       </div>
     </div>
   );
