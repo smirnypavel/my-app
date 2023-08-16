@@ -2,7 +2,8 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 
-axios.defaults.baseURL = "https://test-server-thing.onrender.com/";
+// axios.defaults.baseURL = "https://test-server-thing.onrender.com/";
+axios.defaults.baseURL = "https://swap-server.cyclic.clouds/";
 
 const setAuthHeader = (token: string) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;

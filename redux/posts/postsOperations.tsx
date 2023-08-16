@@ -28,7 +28,8 @@ export interface MyPostResponse {
   };
 }
 
-axios.defaults.baseURL = "https://test-server-thing.onrender.com/";
+// axios.defaults.baseURL = "https://test-server-thing.onrender.com/";
+axios.defaults.baseURL = "https://swap-server.cyclic.cloud/";
 
 const setAuthHeader = (token: string) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;

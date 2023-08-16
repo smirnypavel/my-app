@@ -3,7 +3,8 @@ import { toast } from "react-hot-toast";
 import axios from "axios";
 import { IDeals } from "../../types/IDeals";
 
-axios.defaults.baseURL = "https://test-server-thing.onrender.com/";
+// axios.defaults.baseURL = "https://test-server-thing.onrender.com/";
+axios.defaults.baseURL = "https://swap-server.cyclic.cloud";
 
 const setAuthHeader = (token: string) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;

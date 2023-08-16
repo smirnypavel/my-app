@@ -34,7 +34,7 @@ const DealsDetail: React.FC<DealsDetailProps> = () => {
       }
     };
     fetchMyDeals();
-  }, []);
+  }, [id]);
 
   const handleCommentAdd = async () => {
     try {
