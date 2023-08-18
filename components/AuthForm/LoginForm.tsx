@@ -5,6 +5,7 @@ import styles from "../../styles/components/Auth/LoginForm.module.css";
 import { signIn } from "../../redux/auth/authOperations";
 import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
+import { FcGoogle } from "react-icons/fc";
 import { toast } from "react-hot-toast";
 
 const LoginForm: React.FC = () => {
@@ -43,6 +44,11 @@ const LoginForm: React.FC = () => {
       <form
         className={styles.form}
         onSubmit={handleSubmit}>
+        <Link
+          href="https://swap-server.cyclic.cloud/auth/google/login"
+          className={styles.googleButton}>
+          <FcGoogle /> Google
+        </Link>
         <div className={styles.flexColumn}>
           <label>{t("login.mail")}</label>
         </div>
@@ -112,10 +118,6 @@ const LoginForm: React.FC = () => {
           </Link>
         </p>
       </form>
-
-      <Link href="https://swap-server.cyclic.cloud/auth/google/login">
-        Google auth
-      </Link>
     </>
   );
 };

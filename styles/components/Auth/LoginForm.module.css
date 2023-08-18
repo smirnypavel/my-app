@@ -17,7 +17,22 @@
     width: 100%; /* На узких экранах форма займет всю доступную ширину */
   }
 }
-
+.googleButton {
+  text-decoration: none;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border: 1px solid #a7aed2;
+  border-radius: 10px;
+  height: 50px;
+  font-size: 20px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.googleButton:hover {
+  background-color: #a7aed251;
+}
 .form button {
   align-self: flex-end;
 }
