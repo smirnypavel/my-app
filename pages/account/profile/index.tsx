@@ -90,6 +90,11 @@ const Profile = () => {
                       Настройки профиля
                     </Link>
                   </li>
+                  <li>
+                    <button className={styles.buttonUpdateProfile}>
+                      Change password
+                    </button>
+                  </li>
                 </ul>
               </div>
             </div>

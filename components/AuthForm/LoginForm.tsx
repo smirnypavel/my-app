@@ -113,7 +113,7 @@ const LoginForm: React.FC = () => {
         </p>
       </form>
 
-      <Link href="https://test-server-thing.onrender.com/auth/google/login">
+      <Link href="https://swap-server.cyclic.cloud/auth/google/login">
         Google auth
       </Link>
     </>

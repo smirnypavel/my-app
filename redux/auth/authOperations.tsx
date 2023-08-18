@@ -86,6 +86,26 @@ export const signIn = createAsyncThunk(
     }
   }
 );
+export const googleAuth = createAsyncThunk(
+  "auth/googleAuth",
+  async (token: string, thunkAPI) => {
+    try {
+      setAuthHeader(token);
+      const { data } = await axios.post("/auth/refresh");
+      setAuthHeader(data.token);
+      localStorage.setItem("refreshToken", data.token);
+      toast.success("Welcome!");
+      return data;
+    } catch (error: any) {
+      if (error.response.status === 404) {
+        toast.error("Wrong login or password");
+      } else {
+        toast.error("Wrong login or password");
+      }
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
 
 export const logOut = createAsyncThunk("auth/logOut", async (_, thunkAPI) => {
   try {

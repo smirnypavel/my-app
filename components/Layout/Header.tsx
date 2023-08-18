@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -14,6 +14,8 @@ import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher";
 import { useTranslation } from "react-i18next";
 import { GoHome, GoPlusCircle, GoPerson, GoUnread } from "react-icons/go";
 import logo from "../../public/my-logo2.svg";
+import toast from "react-hot-toast";
+import { googleAuth } from "../../redux/auth/authOperations";
 
 const Header: React.FC = () => {
   const user: IUserAuth = useSelector(getUser);
@@ -217,3 +219,6 @@ const Header: React.FC = () => {
 };
 
 export default Header;
+function dispatch(arg0: any) {
+  throw new Error("Function not implemented.");
+}
