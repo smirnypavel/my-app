@@ -10,9 +10,20 @@ import { differenceInDays } from "date-fns";
 import Layout from "../../../components/Layout/Layout";
 import PrivateRoute from "../../../redux/PrivateRoute";
 import AccountPage from "../../../components/Account/AcountPage";
+import Modal from "../../../components/Modal/Modal";
+import ChangePassword from "../../../components/Account/ChangePassword";
 
 const Profile = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const user: IUserAuth = useSelector(getUser);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   const createdAtDate = new Date(user.createdAt);
   const currentDate = new Date();
@@ -91,13 +102,22 @@ const Profile = () => {
                     </Link>
                   </li>
                   <li>
-                    <button className={styles.buttonUpdateProfile}>
+                    <button
+                      className={styles.buttonUpdateProfile}
+                      onClick={openModal}>
                       Change password
                     </button>
                   </li>
                 </ul>
               </div>
             </div>
+            {isModalOpen && (
+              <Modal
+                isOpen={true}
+                onClose={() => closeModal()}>
+                <ChangePassword />
+              </Modal>
+            )}
           </div>
         </AccountPage>
       </Layout>
