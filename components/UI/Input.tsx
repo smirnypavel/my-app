@@ -2,7 +2,7 @@ import React from "react";
 import styles from "../../styles/components/UI/Input.module.css";
 
 interface InputProps {
-  type: string;
+  type: string | any;
   placeholder: string;
   value?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
