@@ -12,7 +12,7 @@ export const GoogleAuth = () => {
     const authenticateWithGoogle = async () => {
       try {
         if (typeof id === "string") {
-          const result = await dispatch(googleAuth(id)); // Передаем id как параметр
+          await dispatch(googleAuth(id));
         }
       } catch (error) {
         console.error("Ошибка при входе:", error);

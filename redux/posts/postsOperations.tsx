@@ -274,3 +274,45 @@ export const deletePostExchange = createAsyncThunk<
     return thunkAPI.rejectWithValue(error.message);
   }
 });
+export const setPostExchangeTrue = createAsyncThunk<
+  MyPostResponse,
+  { postId: string; offerPostId: string },
+  { rejectValue: string }
+>("posts/setPostExchangeTrue", async ({ postId, offerPostId }, thunkAPI) => {
+  const initialToken = localStorage.getItem("refreshToken");
+  if (initialToken) {
+    setAuthHeader(initialToken);
+  }
+  try {
+    const { data } = await axios.delete(
+      `/posts/to-exchange-true/${postId}/${offerPostId}`
+    );
+    toast.success("You have successfully delete offer");
+
+    return data;
+  } catch (error: any) {
+    toast.error("Something went wrong. Please try again later.");
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});
+export const setPostExchangeFalse = createAsyncThunk<
+  MyPostResponse,
+  { postId: string; offerPostId: string },
+  { rejectValue: string }
+>("posts/setPostExchangeFalse", async ({ postId, offerPostId }, thunkAPI) => {
+  const initialToken = localStorage.getItem("refreshToken");
+  if (initialToken) {
+    setAuthHeader(initialToken);
+  }
+  try {
+    const { data } = await axios.delete(
+      `/posts/to-exchange-false/${postId}/${offerPostId}`
+    );
+    toast.success("You have successfully delete offer");
+
+    return data;
+  } catch (error: any) {
+    toast.error("Something went wrong. Please try again later.");
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});

@@ -30,17 +30,27 @@ const MeOfferViewList: React.FC<MeOfferViewListProps> = ({
         `/posts/to-exchange-true/${id}/${offer.data.id}`
       );
       toast.success("You have successfully Agree to exchange");
-      // Вызываем функцию для обновления поста в компоненте CardExchange
       setIsModalOpen(true);
       updatePost(response.data.data);
       setDealId(response.data.orderId);
     } catch (error) {
       toast.error("Something went wrong. Please try again later.");
-      console.log("Error:", error);
     }
   };
   const closeModal = () => {
     setIsModalOpen(false);
+  };
+  const handleRejectOffer = async () => {
+    try {
+      const response = await axios.post(
+        `/posts/to-exchange-false/${id}/${offer.data.id}`
+      );
+      toast.success("You have successfully Rejected to exchange");
+      updatePost(response.data);
+      console.log(response.data);
+    } catch (error) {
+      toast.error("Something went wrong. Please try again later.");
+    }
   };
 
   return (
@@ -70,7 +80,7 @@ const MeOfferViewList: React.FC<MeOfferViewListProps> = ({
         cupiditate.
       </p>
       <div className={styles.MeOfferViewListButton}>
-        <Button>Rejected</Button>
+        <Button onClick={handleRejectOffer}>Rejected</Button>
         <Button onClick={handleAddOffer}>Agree</Button>
       </div>
       {isModalOpen && (

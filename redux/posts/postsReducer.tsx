@@ -9,6 +9,8 @@ import {
   deletePostComment,
   hidePost,
   deletePost,
+  setPostExchangeTrue,
+  setPostExchangeFalse,
 } from "./postsOperations";
 import { IPostState } from "../../types/IPost";
 
@@ -140,6 +142,28 @@ export const postsSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(offerPostExchange.fulfilled, (state, action) => {
+        state.post = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(setPostExchangeTrue.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(setPostExchangeTrue.rejected, (state, action) => {
+        state.error = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(setPostExchangeTrue.fulfilled, (state, action) => {
+        state.post = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(setPostExchangeFalse.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(setPostExchangeFalse.rejected, (state, action) => {
+        state.error = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(setPostExchangeFalse.fulfilled, (state, action) => {
         state.post = action.payload;
         state.isLoading = false;
       });
