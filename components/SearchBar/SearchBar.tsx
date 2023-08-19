@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MdClose } from "react-icons/md";
 import { useTranslation } from "react-i18next";
 
@@ -7,6 +7,8 @@ import styles from "../../styles/Page/ItemPage.module.css";
 import { useSelector } from "react-redux";
 import { selectIsLoggedIn } from "../../redux/auth/authSelectors";
 import { useRouter } from "next/router";
+import { useAppDispatch } from "../../redux/hooks";
+import { googleAuth } from "../../redux/auth/authOperations";
 
 export default function SearchBar({
   onSearch,
@@ -15,8 +17,29 @@ export default function SearchBar({
 }) {
   const [searchTerm, setSearchTerm] = useState("");
   const IsLogin = useSelector(selectIsLoggedIn);
+  const dispatch = useAppDispatch();
+
   const router = useRouter();
   const { t } = useTranslation();
+
+  const { id } = router.query;
+
+  useEffect(() => {
+    const authenticateWithGoogle = async () => {
+      try {
+        if (typeof id === "string") {
+          await dispatch(googleAuth(id));
+        }
+      } catch (error) {
+        console.error("Ошибка при входе:", error);
+      }
+    };
+
+    if (id) {
+      authenticateWithGoogle();
+    }
+  }, [id]);
+
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSearch(searchTerm);

@@ -7,7 +7,7 @@ import SearchBar from "../../components/SearchBar/SearchBar";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import { IPosts } from "../../types/IPost";
-import { GoogleAuth } from "../../components/AuthForm/GoogleAuth";
+// import { GoogleAuth } from "../../components/AuthForm/GoogleAuth";
 
 interface ItemsPageProps {
   post: IPosts[];
@@ -39,8 +39,8 @@ const ItemsPage: React.FC<ItemsPageProps> = ({ post }) => {
       <div>
         <SearchBar onSearch={handleSearch} />
         <ItemList post={filteredPost} />
-        <GoogleAuth />
       </div>
+      {/* <GoogleAuth /> */}
     </Layout>
   );
 };
