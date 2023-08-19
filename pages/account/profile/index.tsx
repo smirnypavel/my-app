@@ -115,7 +115,7 @@ const Profile = () => {
               <Modal
                 isOpen={true}
                 onClose={() => closeModal()}>
-                <ChangePassword />
+                <ChangePassword onClose={closeModal} />
               </Modal>
             )}
           </div>

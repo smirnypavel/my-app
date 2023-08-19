@@ -9,7 +9,7 @@ interface FormValues {
   repeatPassword: string;
 }
 
-const ChangePassword = () => {
+const ChangePassword = ({ onClose }: { onClose: () => void }) => {
   const initialValues: FormValues = {
     oldPassword: "",
     newPassword: "",
@@ -33,6 +33,11 @@ const ChangePassword = () => {
   const handleSubmit = (values: FormValues) => {
     // Handle form submission here
     console.log(values);
+    onClose(); // Вызываем переданную функцию при успешной смене пароля
+  };
+
+  const handleCloseModal = () => {
+    onClose();
   };
 
   return (
@@ -103,7 +108,7 @@ const ChangePassword = () => {
             <div className={styles.buttonWrapper}>
               {" "}
               <Button type="submit">Change password</Button>
-              <Button>Exit</Button>
+              <Button onClick={handleCloseModal}>Exit</Button>
             </div>
           </Form>
         )}
