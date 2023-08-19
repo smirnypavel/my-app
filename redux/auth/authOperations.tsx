@@ -91,7 +91,7 @@ export const googleAuth = createAsyncThunk(
   async (token: string, thunkAPI) => {
     try {
       setAuthHeader(token);
-      const { data } = await axios.post("/auth/refresh");
+      const { data } = await axios.patch("/auth/refresh");
       setAuthHeader(data.token);
       localStorage.setItem("refreshToken", data.token);
       toast.success("Welcome!");
