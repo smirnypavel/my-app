@@ -219,6 +219,3 @@ const Header: React.FC = () => {
 };
 
 export default Header;
-function dispatch(arg0: any) {
-  throw new Error("Function not implemented.");
-}

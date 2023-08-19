@@ -23,7 +23,7 @@ export default function SearchBar({
   const { t } = useTranslation();
 
   const { id } = router.query;
-
+  console.log({ id });
   useEffect(() => {
     const authenticateWithGoogle = async () => {
       try {
@@ -38,7 +38,7 @@ export default function SearchBar({
     if (id) {
       authenticateWithGoogle();
     }
-  }, [id]);
+  }, []);
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
