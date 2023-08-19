@@ -4,7 +4,7 @@ import styles from "../../styles/components/UI/Input.module.css";
 interface InputProps {
   type: string | any;
   placeholder: string;
-  value?: string;
+  value?: string | number;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   name?: string;
   className?: string; // Добавьте свойство className здесь
