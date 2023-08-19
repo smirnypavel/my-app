@@ -18,24 +18,23 @@ export default function SearchBar({
   const [searchTerm, setSearchTerm] = useState("");
   const IsLogin = useSelector(selectIsLoggedIn);
   const dispatch = useAppDispatch();
-
   const router = useRouter();
   const { t } = useTranslation();
+  const token = router.query.token;
 
-  const { id } = router.query;
-  console.log({ id });
+  console.log(token);
   useEffect(() => {
     const authenticateWithGoogle = async () => {
       try {
-        if (typeof id === "string") {
-          await dispatch(googleAuth(id));
+        if (typeof token === "string") {
+          await dispatch(googleAuth(token));
         }
       } catch (error) {
         console.error("Ошибка при входе:", error);
       }
     };
 
-    if (id) {
+    if (token) {
       authenticateWithGoogle();
     }
   }, []);
