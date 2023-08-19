@@ -16,7 +16,6 @@ export interface MyPostResponse {
   updatedAt: string;
   location: string;
   toExchange: [];
-
   comments?: [];
   owner: {
     id: string;
@@ -25,6 +24,32 @@ export interface MyPostResponse {
     phone: string;
     avatarURL: string;
     location: string;
+  };
+}
+export interface MyPostResponse2 {
+  data: {
+    _id: string;
+    title: string;
+    description: string;
+    category: string;
+    img: string;
+    price: number;
+    verify: string;
+    views: number;
+    favorite: any[];
+    createdAt: string;
+    updatedAt: string;
+    location: string;
+    toExchange: [];
+    comments?: [];
+    owner: {
+      id: string;
+      firstName: string;
+      lastName: string;
+      phone: string;
+      avatarURL: string;
+      location: string;
+    };
   };
 }
 
@@ -275,7 +300,7 @@ export const deletePostExchange = createAsyncThunk<
   }
 });
 export const setPostExchangeTrue = createAsyncThunk<
-  MyPostResponse,
+  MyPostResponse2,
   { postId: string; offerPostId: string },
   { rejectValue: string }
 >("posts/setPostExchangeTrue", async ({ postId, offerPostId }, thunkAPI) => {

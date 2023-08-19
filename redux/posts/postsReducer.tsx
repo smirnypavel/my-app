@@ -153,7 +153,7 @@ export const postsSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(setPostExchangeTrue.fulfilled, (state, action) => {
-        state.post = action.payload;
+        state.post = action.payload.data;
         state.isLoading = false;
       })
       .addCase(setPostExchangeFalse.pending, (state) => {
