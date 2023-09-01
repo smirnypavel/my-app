@@ -1,6 +1,7 @@
 {
   "home": "Головна",
   "products": "Товари",
+  "auction": "Аукцiон",
   "login": "Увійти",
   "language": "Мова",
   "createdXDaysAgo": "{{count}} днів тому"

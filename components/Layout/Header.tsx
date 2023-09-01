@@ -68,6 +68,15 @@ const Header: React.FC = () => {
               </Link>
             </li>
             <li className={styles.li}>
+              <Link
+                href="/auction"
+                className={`${styles.link} ${
+                  isActiveLink(["/auction"]) ? styles.activeLink : ""
+                }`}>
+                <p className={styles.textLink}>{t("header.auction")}</p>
+              </Link>
+            </li>
+            <li className={styles.li}>
               {isLoggedIn ? (
                 role !== "user" && (
                   <Link

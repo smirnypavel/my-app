@@ -1,6 +1,7 @@
 {
   "home": "Home",
   "products": "Products",
+  "auction": "Auction",
   "login": "Login",
   "language": "Language",
   "createdXDaysAgo": "{{count}} days ago"
