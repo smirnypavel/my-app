@@ -187,6 +187,16 @@ const Header: React.FC = () => {
             </li>
             <li className={styles.mobileHeaderLinkItem}>
               <Link
+                href="/auction"
+                className={`${styles.linkMobile} ${
+                  isActiveLink(["/auction"]) ? styles.activeLinkMobile : ""
+                }`}>
+                <GoHome />
+                <p>Auction</p>
+              </Link>
+            </li>
+            <li className={styles.mobileHeaderLinkItem}>
+              <Link
                 href={"/product/create"}
                 className={`${styles.linkMobile} ${
                   isActiveLink(["/product/create"])
