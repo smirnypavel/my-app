@@ -2,6 +2,8 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import styles from "../../styles/components/Account/ChangePassword.module.css";
 import Button from "../UI/Button";
+import axios from "axios";
+import { toast } from "react-hot-toast";
 
 interface FormValues {
   oldPassword: string;
@@ -30,10 +32,23 @@ const ChangePassword = ({ onClose }: { onClose: () => void }) => {
     return errors;
   };
 
-  const handleSubmit = (values: FormValues) => {
-    // Handle form submission here
-    console.log(values);
-    onClose(); // Вызываем переданную функцию при успешной смене пароля
+  const handleSubmit = async (values: FormValues) => {
+    const changePassword = async () => {
+      const requestBody = {
+        oldPassword: values.oldPassword,
+        password: values.newPassword,
+      };
+
+      try {
+        await axios.patch("/auth/change-password/", requestBody);
+        toast.success("You have successfully changed your password!");
+      } catch (error) {
+        console.log("Error:", error);
+      }
+    };
+
+    await changePassword();
+    onClose();
   };
 
   const handleCloseModal = () => {

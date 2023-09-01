@@ -8,15 +8,15 @@ import ItemCard from "../Product/ProductList/ProductCard";
 const ModerateProduct = () => {
   const [post, setPost] = useState<IPosts[]>([]);
   useEffect(() => {
-    const fetchUsers = async () => {
+    const fetchPostNew = async () => {
       try {
-        const response = await axios.get("/posts/new");
+        const response = await axios.get("/admin/new");
         setPost(response.data);
       } catch (error) {
         console.log("Error:", error);
       }
     };
-    fetchUsers();
+    fetchPostNew();
   }, []);
   return (
     <>

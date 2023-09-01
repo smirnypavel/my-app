@@ -45,7 +45,7 @@ export const roleSelect = createAsyncThunk(
       setAuthHeader(initialToken);
     }
     try {
-      const { data } = await axios.patch(`/users/role/${userId}`);
+      const { data } = await axios.patch(`/admin/role/${userId}`);
       return data;
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.message);
@@ -60,7 +60,7 @@ export const banSelect = createAsyncThunk(
       setAuthHeader(initialToken);
     }
     try {
-      const { data } = await axios.patch(`/users/ban/${userId}`);
+      const { data } = await axios.patch(`/admin/ban/${userId}`);
       return data;
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.message);

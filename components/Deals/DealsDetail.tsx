@@ -7,7 +7,11 @@ import photoNotFound from "../../public/photoNotFound.png";
 import { useAppDispatch } from "../../redux/hooks";
 import { addDealComment, getDealById } from "../../redux/deals/dealsOperations";
 import { useSelector } from "react-redux";
-import { getDeal } from "../../redux/deals/dealsSelectors";
+import {
+  getDeal,
+  getOfferProductStatus,
+  getOwnerProductStatus,
+} from "../../redux/deals/dealsSelectors";
 import styles from "../../styles/components/Deals/DealsDetail.module.css";
 import DealsChat from "./DealsChat";
 import Button from "../UI/Button";
@@ -18,6 +22,8 @@ interface DealsDetailProps {
 
 const DealsDetail: React.FC<DealsDetailProps> = () => {
   const deal = useSelector(getDeal);
+  const offerStatus = useSelector(getOfferProductStatus);
+  const productStatus = useSelector(getOwnerProductStatus);
   const router = useRouter();
   const { id } = router.query;
   const dispatch = useAppDispatch();
@@ -157,7 +163,7 @@ const DealsDetail: React.FC<DealsDetailProps> = () => {
         </div>
       </div>
       <div>
-        <Button>Leave deal</Button>
+        <Button disabled={offerStatus || productStatus}>Leave deal</Button>
         <Button>Complete deal</Button>
         <Button>Сomplain</Button>
       </div>

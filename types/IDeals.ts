@@ -4,7 +4,9 @@ export interface IDeals {
   _id: string;
   product: IPosts;
   offer: IPosts;
-  status?: any;
+  status?: boolean | any;
+  productStatus?: boolean | any;
+  offerStatus?: boolean | any;
   chat: IChat[];
   createdAt: string;
   updatedAt: string;

@@ -190,7 +190,7 @@ export const updatePostStatus = createAsyncThunk<
     setAuthHeader(initialToken);
   }
   try {
-    const { data } = await axios.patch(`/posts/verify/${postId}`, credentials);
+    const { data } = await axios.patch(`/admin/verify/${postId}`, credentials);
     return data;
   } catch (error: any) {
     return thunkAPI.rejectWithValue(error.message);
@@ -299,6 +299,7 @@ export const deletePostExchange = createAsyncThunk<
     return thunkAPI.rejectWithValue(error.message);
   }
 });
+
 export const setPostExchangeTrue = createAsyncThunk<
   MyPostResponse2,
   { postId: string; offerPostId: string },
