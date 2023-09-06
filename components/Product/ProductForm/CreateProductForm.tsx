@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import Image from "next/image";
 
 import { useAppDispatch } from "../../../redux/hooks";
@@ -8,6 +8,8 @@ import productNotFound from "../../../public/productNotFound.jpeg";
 import Input from "../../UI/Input";
 import Button from "../../UI/Button";
 import { useRouter } from "next/router";
+import axios from "axios";
+import CategorySwitcher from "../../LanguageSwitcher/CategorySwitcher";
 
 const cloudName = "dvt0czglz";
 const uploadPreset = "eqykdqjy";
@@ -20,11 +22,18 @@ const ItemForm: React.FC = () => {
   const [price, setPrice] = useState("");
   const [img, setImg] = useState("");
   const router = useRouter();
+  const [category, setCategory] = useState("Category"); // Состояние для хранения выбранной категории
+
+  // Функция обратного вызова для обновления выбранной категории
+  const handleCategoryChange = (item: string) => {
+    setCategory(item);
+  };
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    dispatch(createPost({ title, description, location, price, img }));
-    // Handle form submission
+    dispatch(
+      createPost({ title, description, location, price, img, category })
+    );
     router.push("/account/my-product");
   };
   const handleFileInputChange = async (
@@ -54,7 +63,6 @@ const ItemForm: React.FC = () => {
     const formData = new FormData();
     formData.append("file", imageUrl);
     formData.append("upload_preset", uploadPreset);
-
     const response = await fetch(
       `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
       {
@@ -62,14 +70,13 @@ const ItemForm: React.FC = () => {
         body: formData,
       }
     );
-
     if (!response.ok) {
       throw new Error("Error uploading image to Cloudinary");
     }
-
     return response.json();
   };
-  const productImg = img || productNotFound; // Используйте productNotFound, если avatarURL не определен
+
+  const productImg = img || productNotFound;
 
   const handleBack = () => {
     router.back();
@@ -84,6 +91,9 @@ const ItemForm: React.FC = () => {
           {" <<< "} Back
         </button>
         <div className={styles.imageContainer}>
+          <div>
+            <CategorySwitcher onCategoryChange={handleCategoryChange} />
+          </div>
           <div className={styles.imageWrapper}>
             <Image
               src={productImg}
@@ -112,9 +122,11 @@ const ItemForm: React.FC = () => {
             className={styles.hiddenInput}
           />
         </div>
+
         <form
           className={styles.settingsForm}
           onSubmit={handleSubmit}>
+          <p>{category}</p>
           <Input
             type="string"
             placeholder="Title"

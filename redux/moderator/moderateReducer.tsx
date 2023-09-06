@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { IUserAuth } from "../../types/IAuth";
 import {
-  getUser,
+  // getUser,
   getUserById,
   roleSelect,
   banSelect,
@@ -33,17 +33,17 @@ export const moderateSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(getUser.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(getUser.rejected, (state, action) => {
-        state.error = action.payload as string;
-        state.isLoading = false;
-      })
-      .addCase(getUser.fulfilled, (state, action) => {
-        state.user = action.payload;
-        state.isLoading = false;
-      })
+      // .addCase(getUser.pending, (state) => {
+      //   state.isLoading = true;
+      // })
+      // .addCase(getUser.rejected, (state, action) => {
+      //   state.error = action.payload as string;
+      //   state.isLoading = false;
+      // })
+      // .addCase(getUser.fulfilled, (state, action) => {
+      //   state.user = action.payload;
+      //   state.isLoading = false;
+      // })
       .addCase(getUserById.pending, (state) => {
         state.isLoading = true;
       })
